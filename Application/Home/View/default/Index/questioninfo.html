@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head"/>
+</head>
+<body>
+<div class="wt_info ">
+    <div class="question_info container  oh underline">
+            <h3>{$info['title']}</h3>
+
+            <p>{$info['content']}</p>
+        <if condition="$info['userinfo']['face']">
+            <p>
+            <span class="q_img1 fl">
+                <a href="{:U('Index/userinfo?uid='.$info['uid'])}">
+                     <img class="fl" src="{$info['userinfo']['face']}" alt="aa" width="40">
+                </a>
+            
+            <span class="q_text1" style="">{$info['userinfo']['username']}</span>
+            </span>
+            <span class="q_text2 fr">{$info['userinfo']['company']} | {$info['userinfo']['position']}</span></p>
+        </if>
+    </div>
+    <div class="q_a container oh">
+        <div class="q_a_title oh">
+            <a href="{:U('Index/question_release')}"><span><img src="images/wt_03.png" alt="aa" width="100%" align="absmiddle"></span>我要提问</a>
+            <if condition="$flag">
+            <a href="{:U('Index/answer',array('id'=>$info['id']))}"
+            style="pointer-events:none; color:#ccc; cursor:default "><span><img src="images/h_03.png" alt=" aa" width="100%" align="absmiddle"></span>我已回答</a>
+            <else/>
+            <a href="{:U('Index/answer',array('id'=>$info['id']))}"><span><img src="images/h_03.png" alt=" aa" width="100%" align="absmiddle"></span>我要回答</a>
+            </if>
+            <a href="##" class="fr r_2"> <span>{$info['number']}</span>人回答</a>
+        </div>
+        <div class="q_a_info1">
+        <if condition="$info['questionlist']">
+        <volist name="info['questionlist']" id="v">
+            <div class="yy_btn yy_btn2 ">
+                <div class="wd_img_t fl">
+                    <img src="{$v['face']}" alt="aa" width="100%">
+                </div>
+                <div class="wd_img_y fl">
+                    <img src="images/w_10.png" alt="aa" width="100%" align="bottom">
+
+                    <!--语音上显示价格-->
+                    <span>{$v['money']}元试听</span>
+                </div>
+                <div class="wd_t fr"><span>{$v['num']}</span>人听过</div>
+            </div>
+        </volist>
+        <else/>
+        <div class="yy_btn"><span style="width:65px;">暂无回答</span></div>
+        </if>
+        </div>
+    </div>
+    <div class="xg_question oh ">
+        <div class="xg_title underline oh container ">
+            <a href=""><span><img src="images/wt_06.png" alt=" aa" width="100%" align="absmiddle"></span>相关问题</a>
+        </div>
+        <div class="xg_info container">
+            <div class="wd_cont ">
+            <volist name="xglist" id="x">
+                <div class="wd_c_box underline oh ">
+                    <a href="{:U('Index/questioninfo?id='.$x['pid'])}">
+                    <p>{$x['title']}</p>
+                    <p>{$x.userinfo.username}（{$x.userinfo.position}）  |  {$x.userinfo.area}   {$x.userinfo.company}</p>
+                    <if condition="$x['questionlist']">
+                    <div style="">
+                        <div class="wd_img_t fl"><img src="{$x.questionlist.face}" alt="aa" width="48" style="border-radius: 24px"></div>
+                        <div class="wd_img_y fl"><img src="images/w_10.png" alt="aa" width="100%" align="bottom"><span>{$x['questionlist']['money']}</span></div>
+                        <div class="wd_t fr"><span>{$x.questionlist.num}</span>人听过</div>
+
+                    </div>
+                    </if>
+                    </a>
+                </div>
+            </volist>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public/footer"/>

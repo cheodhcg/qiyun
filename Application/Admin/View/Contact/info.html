@@ -1,0 +1,64 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+            <label class="item-label">资讯类型</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="repassword" value="{$info['type_txt']}" readonly>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">资讯标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="username" value="{$info['title']}" readonly>
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">资讯封面<span class="check-tips"></span></label>
+            <div class="controls">
+                <img src="{$info['icon']}" width="300px;" height="200px;">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">资讯内容</label>
+            <div class="controls">
+                <textarea cols="100" rows="5">{$info['content']}</textarea>
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">发布时间<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$info['addtime']|date='Y-m-d H:i',###}" readonly>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">是否推荐<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="text" name="is_tj" value="1" style="width:20px;" <eq name="info['is_tj']" value="1"> checked </eq> >是 &nbsp;
+                <input type="radio" class="text" name="is_tj" value="0" style="width:20px;" <eq name="info['is_tj']" value="0"> checked </eq>>否
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">是否删除<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="text" name="is_del" value="1" style="width:20px;">是 &nbsp;
+				<input type="radio" class="text" name="is_del" value="0" style="width:20px;" checked>否
+            </div>
+        </div>
+        <div class="form-item">
+                    <input type="hidden" name="id" value="{$info['id']}">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">删 除</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Contact/index')}');
+    </script>
+</block>

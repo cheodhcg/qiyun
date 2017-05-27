@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>会员主页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <!--<link rel="stylesheet" href="../style.css">-->
+</head>
+<body style="">
+<div class="my container oh">
+
+
+    <div class="my_text">
+        <p><span>
+		<if condition="$info['face']">
+		<img src="{$info['face']}" alt="aa" width="100%">
+		<else/>
+		<img src="images/timg.jpg" alt="aa" width="100%">
+		</if>
+		</span></p>
+        <p><strong>{$info['nickname']}</strong></p>
+    </div>
+</div>
+<div class="my_fl">
+    <ul class="my_fl_ul">
+        <a href="{:U('User/myQuestion')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+              我的提问
+            </p>
+        </li>
+        </a>
+        <a href="{:U('User/myAnswer')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m2.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                我的回答
+            </p>
+        </li>
+        </a>
+        <a href="{:U('User/myheard')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m3.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                我听过的
+            </p>
+        </li>
+        </a>
+    </ul>
+    <ul class="my_fl_ul">
+        <a href="{:U('User/myLecture')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m4.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                我的讲座
+            </p>
+        </li>
+        </a>
+        <a href="{:U('User/myMoney')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m5.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                我的账户
+            </p>
+        </li>
+        </a>
+        <a href="{:U('User/myAuthentication')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m6.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                申请会员
+            </p>
+        </li>
+        </a>
+    </ul>
+    <ul class="my_fl_ul">
+        <a href="{:U('User/mySms')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m7.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                我的通知
+            </p>
+        </li>
+        </a>
+        <a href="{:U('User/about')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m8.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                关于企业知道
+            </p>
+        </li>
+        </a>
+        <a href="{:U('User/news')}">
+        <li>
+            <p>
+                <span>
+    <img src="images/m9.png" alt="aa" width="100%">
+                </span>
+            </p>
+            <p>
+                系统动态
+            </p>
+        </li>
+        </a>
+
+    </ul>
+    <ul class="my_fl_ul">
+        <a href="{:U('User/myinfo')}">
+            <li>
+                <p>
+                <span>
+    <img src="images/m10.png" alt="aa" width="100%">
+                </span>
+                </p>
+                <p>
+                    我的信息
+                </p>
+            </li>
+        </a>
+
+
+    </ul>
+</div>
+
+<include file="Public/footer"/>
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+//    $(function () {
+//        var w = $('.my_fl_ul li p:first-child').width();
+//        var q = $('.my_fl_ul li p:last-child').width();
+//        console.log(w,q);
+//        $('.my_fl_ul li').css({
+//            height:w + q
+//        })
+//    })
+</script>

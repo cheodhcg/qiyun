@@ -1,0 +1,94 @@
+<extend name="Public/base"/>
+<block name="body">
+<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+            <label class="item-label">资讯类型</label>
+            <div class="controls">
+                <select name="cid">
+				<volist name="list" id="vo">
+					<option value="{$vo['id']}">{$vo['title']}</option>
+				</volist>
+				</select>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">资讯标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="" placeholder="请填写资讯标题">
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">资讯封面<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="file" id="upload_picture_{$field.name}">
+                <input type="hidden" name="cover_id" id="cover_id_{$field.name}"/>
+                <div class="upload-img-box">
+                
+                </div>
+            </div>
+            <script type="text/javascript">
+            //上传图片
+            /* 初始化上传插件 */
+            $("#upload_picture_{$field.name}").uploadify({
+                "height"          : 30,
+                "swf"             : "__STATIC__/uploadify/uploadify.swf",
+                "fileObjName"     : "download",
+                "buttonText"      : "上传图片",
+                "uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+                "width"           : 150,
+                'removeTimeout'   : 1,
+                'fileTypeExts'    : '*.jpg; *.png; *.gif;',
+                "onUploadSuccess" : uploadPicture{$field.name},
+                'onFallback' : function() {
+                    alert('未检测到兼容版本的Flash.');
+                }
+            });
+            function uploadPicture{$field.name}(file, data){
+                var data = $.parseJSON(data);
+                var src = '';
+                if(data.status){
+                    $("#cover_id_{$field.name}").val(data.id);
+                    src = data.url || '__ROOT__' + data.path
+                    $("#cover_id_{$field.name}").parent().find('.upload-img-box').html(
+                        '<div class="upload-pre-item"><img src="' + src + '"/></div>'
+                    );
+                } else {
+                    updateAlert(data.info);
+                    setTimeout(function(){
+                        $('#top-alert').find('button').click();
+                        $(that).removeClass('disabled').prop('disabled',false);
+                    },1500);
+                }
+            }
+            </script>
+        </div>
+        <div class="form-item">
+            <label class="item-label">资讯内容</label>
+            <div class="controls">
+                <textarea cols="100" rows="5" name="content" placeholder="请填写资讯内容"></textarea>
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">是否推荐<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="text" name="is_tj" value="1" style="width:20px;">是 &nbsp;
+                <input type="radio" class="text" name="is_tj" value="0" style="width:20px;" checked>否
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 认</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Contact/index')}');
+    </script>
+</block>

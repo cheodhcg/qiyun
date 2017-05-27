@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>人脉圈</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+    <!--<link rel="stylesheet" href="../style.css">-->
+</head>
+<body>
+<div class="rmq_title oh">
+    <ul class="rmq_t_ul">
+        <li><a href="{:U('Contact/index')}" class="rmq_a" >人脉圈</a></li>
+        <li><a href="{:U('Contact/news')}">信息交流</a></li>
+        <li><a href="{:U('Contact/release_news')}">信息发布</a></li>
+        <a href="搜索.html" class="search_r">
+
+                <img src="images/search.png" alt="aa" width="100%">
+
+
+        </a>
+    </ul>
+    <div class="rmq_list container oh" align="center">
+        <ul>
+        <volist name="catelist" id="v">
+            <li><a href="{:U('index?cate_id='.$v['id'])}" <eq name="v['id']" value="$cate_id"> class="rmq_a2" </eq>>{$v['title']}</a></li>
+        </volist>
+        </ul>
+        
+    </div>
+</div>
+<div class="rmq_info">
+<volist name="list" id="vo">
+    <div class="rmq_person oh ">
+        <div class="rmq-title">
+            <div class="fl rmq_q_img">
+                <img src="{$vo['face']}" alt="aa" width="100%">
+            </div>
+            <div class="fl rmq_i">
+                <p>{$vo['username']}
+                    <eq name="vo['status']" value="0">
+                    <span class="fr rmq_span1 db">关注</span>
+                    <span class="fr rmq_span2 dn">已关注</span>
+                    <else/>
+                    <span class="fr rmq_span1 db">关注</span>
+                    <span class="fr rmq_span2 dn">已关注</span>
+                    </eq>
+                </p>
+                <p>{$vo['area']} | {$vo['company']} | {$vo['position']}</p>
+            </div>
+        </div>
+
+            <div class="rmq_p_text">
+                <p>{$vo['content']}</p>
+            </div>
+    </div>
+</volist>    
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+$(function () {
+    var a = $('.rmq_t_ul li').width();
+    $('.rmq_t_ul').css({
+        width:a * 3 +40
+    });
+//    $('.rmq_list ul').css({
+//        width:a * 3 +40
+//    });
+})
+</script>
+
+<include file="Public/footer"/>

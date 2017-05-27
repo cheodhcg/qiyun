@@ -1,0 +1,130 @@
+@charset "utf-8";
+html{width:100%;height:100%;}
+body{ width:100%;height:100%; max-width: 750px; margin: 0 auto; font:400 14px/1.5 "微软雅黑","Hiragino Sans GB",tahoma,sans-serif; color:#404040; background-color:#f2f2f2;}
+*{ margin:0px; padding:0px; list-style:none; outline:none;}
+img{ border:0;}
+a{ color:#404040; text-decoration:none;}
+a:hover{ text-decoration:none;}
+
+li{list-style: none;}
+input,select,button,textarea{ font-family: '微软雅黑';outline: none;border: none; }
+dl,dt,dd{padding: 0;margin: 0}
+.fl{ float: left;}
+.fr{ float: right;}
+.db{display:block;}
+.dn{display: none;}
+.container{width: 92%;padding: 10px 4%;background: #fff}
+.underline{border-bottom: 1px solid #ccc}
+.oh{overflow: hidden}
+
+.nav{
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+    width: 100%;
+    max-width: 750px;
+    border-top:1px solid #ccc;
+    padding: 10px 0 0 0;
+}
+.nav_ul{
+
+}
+.nav_ul li{
+    width: 20%;
+    float: left;
+    padding-bottom:5px;
+    font-size: 12px;
+}
+.nav_ul li span:first-child{
+    width: 100%;
+    height: 23px;
+    display: block;
+    margin-bottom: 5px;
+}
+.nav_ul li span:first-child img{
+    /*width: 33px;*/
+}
+.nav_ul li:last-child span img{
+    height: 100%;
+}
+.nav_ul li span:last-child{
+    display: block;
+    width:100%;
+    text-align: center;
+
+}
+.nav_a{
+    color: #0076c2;;
+}
+.nav_h{
+    height: 60px;
+
+}
+
+
+
+/*名片*/
+.user_t_p{
+    width: 100%;
+    /*height: 160px;*/
+    background: url("../images/bg_03.png") center no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+}
+.card_one{
+    display: block;
+    width: 50px;
+    position: absolute;
+    top:35%;
+    left: 15%;
+
+}
+.user_text p:first-child{
+
+}
+.user_text p:nth-child(2){
+
+}
+.card_two {
+    display: block;
+    position: absolute;
+    top:35%;
+    right: 25%;
+
+}
+.card_two p{
+    color: #fff;
+    line-height: 18px;
+    width: 65px;
+}
+.card_two p:first-child{
+    font-size: 18px;
+    text-align: left;
+}
+
+.card_two p:last-child{
+    font-size: 12px;
+    text-align: left;
+}
+
+.card_three {
+    display: block;
+    position: absolute;
+    right: 4%;
+    bottom: 10%;
+    font-size: 12px;
+}
+.card_three p{
+    color: #fff;
+
+    line-height: 13px;
+}
+.card_three p:first-child{
+
+
+}
+
+.card_three p:last-child{
+    font-size: 14px;
+
+}

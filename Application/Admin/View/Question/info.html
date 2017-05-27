@@ -1,0 +1,71 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+<block name="body">
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+            <label class="item-label">提问类型</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="repassword" value="{$info['type_txt']}" readonly>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">讲座标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="username" value="{$info['title']}" readonly>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">提问内容</label>
+            <div class="controls">
+                <textarea cols="100" rows="5">{$info['content']}</textarea>
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">发布人/发布时间<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$info['username']} / {$info['addtime']|date='Y-m-d H:i',###}" readonly>
+            </div>
+        </div>
+		<!-- 数据列表 -->
+    <div class="data-table table-striped">
+    <table class="">
+    <thead>
+        <tr>
+        <th class="">回答人</th>
+        <th class="">回答时间</th>
+        </tr>
+    </thead>
+    <tbody>
+        <notempty name="$info['list']">
+        <volist name="$info['list']" id="vo">
+        <tr>
+            <td>{$vo.username}</td>
+            <td>{$vo.addtime|date='Y-m-d H:i',###}</td>
+            
+        </tr>
+        </volist>
+        <else/>
+        <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+        </notempty>
+    </tbody>
+    </table>
+    </div>
+        <!-- <div class="form-item">
+                    <input type="hidden" name="id" value="{$info['id']}">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div> -->
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Question/index')}');
+    </script>
+</block>

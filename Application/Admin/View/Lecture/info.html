@@ -1,0 +1,72 @@
+<extend name="Public/base"/>
+<block name="sidebar">
+    <include file="sidemenu" />
+</block>
+<block name="body">
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+            <label class="item-label">讲座类型</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="repassword" value="{$info['type_txt']}" readonly>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">讲座标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="username" value="{$info['title']}" readonly>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">讲座封面<span class="check-tips"></span></label>
+            <div class="controls">
+                <img src="{$info['icon']}" width="300px;"height="200px;"/>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">讲座内容</label>
+            <div class="controls">
+                <textarea rows="5" cols="100">{$info['content']}</textarea>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">讲座金额<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$info['money']}" readonly>
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">试听次数<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$info['number']}" readonly>
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">发布人/发布时间<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="email" value="{$info['username']} / {$info['addtime']|date='Y-m-d H:i',###}" readonly>
+            </div>
+        </div>
+		<div class="form-item">
+            <label class="item-label">是否推荐<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="radio" class="text" name="is_tj" style="width:20px;" value="0" <if condition="$info['number'] eq 0"> checked </if>>否
+				<input type="radio" class="text" name="is_tj" style="width:20px;" value="1" <if condition="$info['number'] eq 1"> checked </if>>是
+            </div>
+        </div>
+        <div class="form-item">
+			<input type="hidden" name="id" value="{$info['id']}">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Lecture/index')}');
+    </script>
+</block>

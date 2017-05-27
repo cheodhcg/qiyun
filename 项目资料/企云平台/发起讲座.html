@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>发起讲座</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body style="background: #fff">
+<div class="tw_info container oh">
+    <div class="tw_title">
+        <span>讲座标题</span>
+        <input type="text">
+    </div>
+    <div class="tw_cont">
+        <span>讲座介绍</span>
+        <textarea></textarea>
+    </div>
+    <div class="tw_fl oh">
+        <span>讲座类型 <br>
+        <small>(最多选两个)</small>
+        </span>
+        <div class="tw_form">
+            <form action="">
+                <div class="fl_btn">
+                    <input type="checkbox" name="oneCheck" id="oCheck">
+                    <label for="oCheck">销售</label>
+                </div>
+                <div class="fl_btn">
+                    <input type="checkbox" name="oneCheck" id="tCheck">
+                    <label for="tCheck">律师</label>
+                </div>
+                <div class="fl_btn">
+                    <input type="checkbox" name="oneCheck" id="sCheck">
+                    <label for="sCheck">管理</label>
+                </div>
+                <div class="fl_btn">
+                    <input type="checkbox" name="oneCheck" id="aCheck">
+                    <label for="aCheck">销售</label>
+                </div>
+                <div class="fl_btn">
+                    <input type="checkbox" name="oneCheck" id="dCheck">
+                    <label for="dCheck">融资</label>
+                </div>
+                <div class="fl_btn">
+                    <input type="checkbox" name="oneCheck" id="oneCheck">
+                    <label for="oneCheck">股权</label>
+                </div>
+
+
+            </form>
+        </div>
+
+
+    </div>
+    <div class="jz_fm fl">
+        <span class="fl">讲座封面</span>
+        <img class="fl" src="images/fq_03.png" alt="aa">
+    </div>
+    <div class="jz-fs fl ">
+        <span class="fl">讲座方式</span>
+        <div class="jz-xz fl">
+            <div class="jz_xz_box oh">
+                <a href="##" class="jz-xz-a jz-xz-a1">视屏</a>
+                <a href="##" class="jz-xz-a2">语音</a>
+            </div>
+
+            <div class="jz_xz_1 jz_xz_info ">
+                <label for="fileOne">选择文件</label>
+                <input type="file" class="dn" id="fileOne" name="fileOne" style="">
+            </div>
+            <div class="jz_xz_2 jz_xz_info dn ">
+                <img src="images/wt1_03.png" alt="aa">
+            </div>
+        </div>
+
+    </div>
+</div>
+<input style="margin-bottom: 30px;" class="tj_btn" type="submit" value="提交问题">
+
+<div class="nav_h">
+</div>
+<div class="nav oh">
+    <ul class="nav_ul">
+        <a href="01问答.html">
+            <li align="center" class="">
+                <span><img src="images/w_1.png" alt="aa" width=""></span><span>问答</span>
+            </li></a>
+        <a href="微讲座.html">
+            <li align="center" class="nav_a">
+                <span><img src="images/w_4.png" alt="aa" width=""></span><span>微讲座</span>
+            </li></a>
+        <a href="商城.html">
+            <li align="center"><span>
+                <img src="images/w_21.png" alt="aa" width=""></span><span>商城</span>
+            </li>
+        </a>
+        <a href="人脉圈.html">
+            <li align="center">
+                <span><img src="images/w_23.png" alt="aa" width="" align="absmiddle"></span><span>人脉圈</span>
+            </li></a>
+        <a href="我的.html">
+            <li align="center">
+                <span><img src="images/w_25.png" alt="aa" width="" ></span><span>我的</span>
+            </li>
+        </a>
+    </ul>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function () {
+
+        $('.jz-xz-a1').click(function () {
+            $('.jz_xz_box a').removeClass('jz-xz-a');
+            $(this).addClass('jz-xz-a');
+            $('.jz_xz_2').addClass('dn');
+            $('.jz_xz_1').removeClass('dn')
+        });
+        $('.jz-xz-a2').click(function () {
+            $('.jz_xz_box a').removeClass('jz-xz-a');
+            $(this).addClass('jz-xz-a');
+            $('.jz_xz_1').addClass('dn');
+            $('.jz_xz_2').removeClass('dn')
+        })
+    })
+</script>
+</body>
+</html>
