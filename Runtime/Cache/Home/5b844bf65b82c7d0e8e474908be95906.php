@@ -216,17 +216,36 @@
             <a href="##" class="fr r_2"> <span><?php echo ($info['number']); ?></span>人回答</a>
         </div>
         <div class="q_a_info1">
-        <?php if($info['questionlist']): if(is_array($info['questionlist'])): $i = 0; $__LIST__ = $info['questionlist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="yy_btn yy_btn2 ">
+        <?php if($info['questionlist']): if(is_array($info['questionlist'])): $i = 0; $__LIST__ = $info['questionlist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><!--<div class="yy_btn yy_btn2 ">-->
+            <div style="min-height: 48px">
                 <div class="wd_img_t fl">
-                    <img src="<?php echo ($v['face']); ?>" alt="aa" width="100%">
+                    <img src="<?php echo ($v['face']); ?>" alt="aa" width="45" style="border-radius: 23px">
                 </div>
-                <div class="wd_img_y fl">
+                <!--<div class="wd_img_y fl">
                     <img src="images/w_10.png" alt="aa" width="100%" align="bottom">
 
-                    <!--语音上显示价格-->
+                    &lt;!&ndash;语音上显示价格&ndash;&gt;
                     <span><?php echo ($v['money']); ?>元试听</span>
+                </div>-->
+                <div class="weixinAudio fl">
+                    <!--http://wbcfzk.natappfree.cc/qiyun/Public/static/webchataudio/sound/2.mp3-->
+                    <audio src="/qiyun<?php echo ($v["content"]); ?>" id="media" width="1" height="1" preload></audio>
+                    <span id="audio_area" class="db audio_area">
+                                <span class="audio_wrp db">
+                                <span class="audio_play_area">
+                                    <i class="db icon_audio_default"></i>
+                                    <i class="db icon_audio_playing"></i>
+                                </span>
+
+                                <span class="db audio_info_area">
+                                    <strong class="db audio_title"><?php echo ($v['money']); ?>元试听</strong>
+                                </span>
+                                <span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+                                </span>
+                                </span>
+                    <span id="audio_length" class="audio_length tips_global" style="float: right;">00:00"</span>
                 </div>
-                <div class="wd_t fr"><span><?php echo ($v['num']); ?></span>人听过</div>
+                <!--<div class="wd_t fr"><span><?php echo ($v['num']); ?></span>人听过</div>-->
             </div><?php endforeach; endif; else: echo "" ;endif; ?>
         <?php else: ?>
         <div class="yy_btn"><span style="width:65px;">暂无回答</span></div><?php endif; ?>
@@ -238,8 +257,8 @@
         </div>
         <div class="xg_info container">
             <div class="wd_cont ">
-            <?php if(is_array($xglist)): $i = 0; $__LIST__ = $xglist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$x): $mod = ($i % 2 );++$i;?><div class="wd_c_box underline oh ">
-                    <a href="<?php echo U('Index/questioninfo?id='.$x['pid']);?>">
+            <?php if(is_array($xglist)): $i = 0; $__LIST__ = $xglist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$x): $mod = ($i % 2 );++$i;?><a href="<?php echo U('Index/questioninfo?id='.$x['pid']);?>">
+                <div class="wd_c_box underline oh ">
                     <p><?php echo ($x['title']); ?></p>
                     <p><?php echo ($x["userinfo"]["username"]); ?>（<?php echo ($x["userinfo"]["position"]); ?>）  |  <?php echo ($x["userinfo"]["area"]); ?>   <?php echo ($x["userinfo"]["company"]); ?></p>
                     <?php if($x['questionlist']): ?><div style="">
@@ -248,8 +267,8 @@
                         <div class="wd_t fr"><span><?php echo ($x["questionlist"]["num"]); ?></span>人听过</div>
 
                     </div><?php endif; ?>
-                    </a>
-                </div><?php endforeach; endif; else: echo "" ;endif; ?>
+                </div>
+                </a><?php endforeach; endif; else: echo "" ;endif; ?>
 
             </div>
         </div>

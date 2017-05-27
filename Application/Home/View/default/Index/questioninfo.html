@@ -35,17 +35,36 @@
         <div class="q_a_info1">
         <if condition="$info['questionlist']">
         <volist name="info['questionlist']" id="v">
-            <div class="yy_btn yy_btn2 ">
+            <!--<div class="yy_btn yy_btn2 ">-->
+            <div style="min-height: 48px">
                 <div class="wd_img_t fl">
-                    <img src="{$v['face']}" alt="aa" width="100%">
+                    <img src="{$v['face']}" alt="aa" width="45" style="border-radius: 23px">
                 </div>
-                <div class="wd_img_y fl">
+                <!--<div class="wd_img_y fl">
                     <img src="images/w_10.png" alt="aa" width="100%" align="bottom">
 
-                    <!--语音上显示价格-->
+                    &lt;!&ndash;语音上显示价格&ndash;&gt;
                     <span>{$v['money']}元试听</span>
+                </div>-->
+                <div class="weixinAudio fl">
+                    <!--http://wbcfzk.natappfree.cc/qiyun/Public/static/webchataudio/sound/2.mp3-->
+                    <audio src="__ROOT__{$v.content}" id="media" width="1" height="1" preload></audio>
+                    <span id="audio_area" class="db audio_area">
+                                <span class="audio_wrp db">
+                                <span class="audio_play_area">
+                                    <i class="db icon_audio_default"></i>
+                                    <i class="db icon_audio_playing"></i>
+                                </span>
+
+                                <span class="db audio_info_area">
+                                    <strong class="db audio_title">{$v['money']}元试听</strong>
+                                </span>
+                                <span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+                                </span>
+                                </span>
+                    <span id="audio_length" class="audio_length tips_global" style="float: right;">00:00"</span>
                 </div>
-                <div class="wd_t fr"><span>{$v['num']}</span>人听过</div>
+                <!--<div class="wd_t fr"><span>{$v['num']}</span>人听过</div>-->
             </div>
         </volist>
         <else/>
@@ -60,8 +79,8 @@
         <div class="xg_info container">
             <div class="wd_cont ">
             <volist name="xglist" id="x">
+                <a href="{:U('Index/questioninfo?id='.$x['pid'])}">
                 <div class="wd_c_box underline oh ">
-                    <a href="{:U('Index/questioninfo?id='.$x['pid'])}">
                     <p>{$x['title']}</p>
                     <p>{$x.userinfo.username}（{$x.userinfo.position}）  |  {$x.userinfo.area}   {$x.userinfo.company}</p>
                     <if condition="$x['questionlist']">
@@ -72,8 +91,8 @@
 
                     </div>
                     </if>
-                    </a>
                 </div>
+                </a>
             </volist>
 
             </div>

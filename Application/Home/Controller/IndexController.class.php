@@ -77,7 +77,7 @@ class IndexController extends HomeController
         $list            = $question_answer
             -> field('qy_user.uid,qy_user.face,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content')
             -> where("pid={$question_id}")
-            -> JOIN("JOIN qy_user ON qy_user.uid = qy_question_answer.uid")
+            -> JOIN("JOIN qy_user ON qy_user.id = qy_question_answer.uid")
             -> select();
         if (empty($type)) { //否，只查询一条记录
             $list = $list[0];
@@ -121,7 +121,7 @@ class IndexController extends HomeController
         $question_answer = M('question_answer');
         $flag            = false;
         //获取专业会员回答列表
-        $info                 = $question
+        $info = $question
             -> where("id={$id}")
             -> field("id,uid,title,content,type")
             -> find();
@@ -260,6 +260,7 @@ class IndexController extends HomeController
         $data1['pid']     = $pid;
         $data1['uid']     = $_COOKIE['qiyun_user'];
         $data1['content'] = $path . "/" . $name;
+        $data1['addtime'] = time();
         $res              = $model -> add($data1);
         if ($res) {
             $data["code"] = 1;
