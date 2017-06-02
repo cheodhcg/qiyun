@@ -18,12 +18,23 @@
             </volist>
         </ul>
     </div>
-    <span class="fr wd_t_cont_span ">
+    <!--<span class="fr wd_t_cont_span ">
             <a href="{:U('lecture_release')}">
                 <img src="images/w_03.png" alt="aa" width="100%">
             </a>
 
-        </span>
+        </span>-->
+
+        <if condition="member_level() eq 3">
+            <span class="fr wd_t_cont_span ">
+            <a href="{:U('lecture_release')}" class="question-btn2">
+                <!--<img src="images/w_03.png" alt="aa" width="100%">-->
+                <span style="">上传</span>
+            </a>
+                 </span>
+        </if>
+
+
 </div>
 <div class="w_cont container oh" id="listdiv">
     <volist name="list" id="v">
@@ -32,11 +43,14 @@
             <img src="__ROOT__{$v['icon']}" alt=" aa" height="100%" width="100%" >
         </div>
         <div class="w_text_r fr">
-            <a href="{:U('lectureinfo?id='.$v['id'])}">{$v['content']}</a>
+            <h3>{$v['title'],0,20|msubstr}</h3>
+            {$v['content']}
+            <!--<a href="{:U('lectureinfo?id='.$v['id'])}">{$v['content']}</a>-->
         </div>
         <div class="w_btn_p fl">
             <div class="mf fr">
-            <a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">{$v['money']}元培训<else/>免费培训</if></a>
+            <!--<a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">{$v['money']}元培训<else/>免费培训</if></a>-->
+            <a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">前去围观</if></a>
             </div>
         </div>
     </div>

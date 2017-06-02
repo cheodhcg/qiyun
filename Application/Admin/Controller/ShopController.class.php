@@ -38,6 +38,7 @@ class ShopController extends AdminController {
 		$shop = M('shop');
 		$id = I('id');
 		if(IS_POST){
+
 			if($id){
 				$_POST['addtime'] = time();
 				$re = $shop->where("id={$id}")->save($_POST);
@@ -50,9 +51,9 @@ class ShopController extends AdminController {
 				$_POST['addtime'] = time();
 				$re = $shop->add($_POST);
 				if($re){
-					$this->success('添加成功','Shop/index');
+					$this->success('添加成功',U('shop/index'));
 				}else{
-					$this->error('添加失败','Shop/index');
+					$this->error('添加失败',U('shop/index'));
 				}
 			}
 		}
@@ -80,13 +81,16 @@ class ShopController extends AdminController {
         switch ( strtolower($method) ){
             case 'forbiduser':
                 $this->forbid('Shop', $map );
+                $this->success('操作成功');
                 break;
             case 'resumeuser':
                 $this->resume('Shop', $map );
+                $this->success('操作成功');
                 break;
             case 'deleteuser':
                 //$this->delete('Shop', $map );
 				M('shop')->where($map)->delete();
+                $this->success('操作成功');
                 break;
             default:
                 $this->error('参数非法');

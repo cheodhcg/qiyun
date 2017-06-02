@@ -30,13 +30,15 @@ class ContactController extends HomeController {
 	    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 	    //$show = $Page->show();// 分页显示输出
 	    // 进行分页数据查询
-		$field = "qy_user.uid,qy_user.username,qy_user.face,qy_user.company,qy_category.title,qy_user.content,qy_user_follow.status";
-	    $list = $user->where($where)->order('qy_user.uid')
-	    		->join("JOIN qy_category ON qy_category.id = qy_user.position")
-	    		->join("JOIN qy_user_follow ON qy_user.uid = qy_user_follow.fuid")
-	    		->limit($Page->firstRow.','.$Page->listRows)
-	    		->field($field)
+		$field = "qy_user.id,qy_user.username,qy_user.face,qy_user.company,qy_category.title,qy_user.content,qy_user_follow.status";
+	    $list = $user->where($where)->order('qy_user.id')
+//	    		->join("JOIN qy_category ON qy_category.id = qy_user.position")
+//	    		->join("JOIN qy_user_follow ON qy_user.uid = qy_user_follow.fuid")
+//	    		->limit($Page->firstRow.','.$Page->listRows)
+	    		->field(true)
 	    		->select(); // $Page->firstRow 起始条数 $Page->listRows 获取多少条
+//        echo $user->getLastSql();
+
 	    if($p > 1){
 			if($list){
 				$this->success($list);exit;

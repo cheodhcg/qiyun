@@ -14,14 +14,11 @@
 <body>
 <div class="rmq_title oh">
     <ul class="rmq_t_ul">
-        <li><a href="{:U('Contact/index')}" class="rmq_a" >人脉圈</a></li>
-        <li><a href="{:U('Contact/news')}">信息交流</a></li>
-        <li><a href="{:U('Contact/release_news')}">信息发布</a></li>
+        <li><a href="{:U('Contact/index')}" class="rmq_a" >人脉</a></li>
+        <li><a href="{:U('Contact/news')}">商机</a></li>
+        <li><a href="{:U('Contact/release_news')}">发布</a></li>
         <a href="搜索.html" class="search_r">
-
-                <img src="images/search.png" alt="aa" width="100%">
-
-
+            <img src="images/search.png" alt="aa" width="100%">
         </a>
     </ul>
     <div class="rmq_list container oh" align="center">
@@ -35,6 +32,24 @@
 </div>
 <div class="rmq_info">
 <volist name="list" id="vo">
+
+    <div class="rmq_person oh ">
+        <div class="card_img">
+            <img src="{$vo['face']}" alt="企知道头像" width="50" style="border-radius: 25px">
+        </div>
+        <div class="card-userinfo">
+            <h3 style="color: #ff827e;">{$vo['username']}</h3>
+            <p>{$vo['position']}</p>
+        </div>
+        <div class="card-contact">
+            <p>Tel:{$vo['phone']}</p>
+            <p>{$vo['company']}</p>
+        </div>
+
+    </div>
+</volist>
+</div>
+<!--<volist name="list" id="vo">
     <div class="rmq_person oh ">
         <div class="rmq-title">
             <div class="fl rmq_q_img">
@@ -58,7 +73,7 @@
                 <p>{$vo['content']}</p>
             </div>
     </div>
-</volist>    
+</volist> -->
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script>

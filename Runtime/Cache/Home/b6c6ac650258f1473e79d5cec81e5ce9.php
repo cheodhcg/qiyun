@@ -22,10 +22,19 @@
         <span>商品描述:</span>
         <p><?php echo ($info['content']); ?></p>
     </div>
-    <input style="margin-bottom: 30px;" class="sp_btn" type="submit" value="我要购买">
+    <input style="margin-bottom: 30px;" id="buy-vip" data-price="" class="sp_btn" type="submit" value="购买服务">
 </div>
-
-
+<script src="/qiyun/Public/static/jquery-2.0.3.min.js"></script>
+<script>
+    $('#buy-vip').click(function () {
+        var k = "<?php echo ($info["money"]); ?>";
+        var t = "<?php echo ($info["id"]); ?>";
+        var key = "<?php echo think_encrypt('adadqwe5123_ad1!');?>";//传递一个加密key
+        $.post("<?php echo U('shop/buyGoods');?>",{money:k,gid:t,key:key},function (data) {
+            alert(data.msg);
+        })
+    })
+</script>
 <div class="nav_h">
 </div>
 <?php  $url = $_SERVER['QUERY_STRING']; $arr = explode('/', $url); $str = $arr[2]; ?>
@@ -34,9 +43,9 @@
         <a href="<?php echo U('Index/index?type=1');?>">
             <li align="center" <?php if(($str) == "Index"): ?>class="nav_a"<?php endif; ?>>
                 <span>
-                <?php if(($str) == "Index"): ?><img src="images/w_17.png" alt="aa" width="" >
+                <?php if(($str) == "Index"): ?><img src="images/w_17.png" alt="aa" width="32" >
                 <?php else: ?>
-                <img src="images/w_1.png" alt="aa" width="" ><?php endif; ?>
+                <img src="images/w_1.png" alt="aa" width="32" ><?php endif; ?>
                 </span>
                 <span>问答</span>
             </li></a>
@@ -47,7 +56,7 @@
                 <?php else: ?>
                 <img src="images/w_19.png" alt="aa" width="" ><?php endif; ?>
                 </span>
-                <span>微讲座</span>
+                <span>学习</span>
             </li></a>
         <a href="<?php echo U('Shop/index?type=3');?>" <?php if(($str) == "Shop"): ?>class="nav_a"<?php endif; ?>>
             <li align="center">
@@ -56,7 +65,7 @@
                 <?php else: ?>
                 <img src="images/w_21.png" alt="aa" width="" ><?php endif; ?>
                 </span>
-                <span>商城</span>
+                <span>服务</span>
             </li>
         </a>
         <a href="<?php echo U('Contact/index?type=4');?>" <?php if(($str) == "Contact"): ?>class="nav_a"<?php endif; ?>>
@@ -79,6 +88,85 @@
         </a>
     </ul>
 </div>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="/qiyun/Public/static/jquery-2.0.3.min.js"></script>
 
+<script>
+    var voice = {
+        localId: '',
+        serverId: ''
+    };
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo ($jssdk["appId"]); ?>', // 必填，公众号的唯一标识
+        timestamp: '<?php echo ($jssdk["timestamp"]); ?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo ($jssdk["nonceStr"]); ?>', // 必填，生成签名的随机串
+        signature: '<?php echo ($jssdk["signature"]); ?>',// 必填，签名，见附录1
+
+        jsApiList: [
+
+            'startRecord',
+            'stopRecord',
+            'onVoiceRecordEnd',
+            'playVoice',
+            'onVoicePlayEnd',
+            'pauseVoice',
+            'stopVoice',
+            'uploadVoice',
+            'downloadVoice'
+        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+
+    //假设全局变量已经在外部定义
+    //按下开始录音
+    $('.startRecord').on('touchstart', function (event) {
+        event.preventDefault();
+        START = new Date().getTime();
+
+        recordTimer = setTimeout(function () {
+            wx.startRecord({
+                /*    success: function(){
+                 localStorage.rainAllowRecord = 'true';
+                 },*/
+                cancel: function () {
+                    alert('用户拒绝授权录音');
+                }
+            });
+        }, 300);
+    });
+    //松手结束录音
+    $('.startRecord').on('touchend', function (event) {
+        event.preventDefault();
+        END = new Date().getTime();
+
+        if ((END - START) < 300) {
+            END = 0;
+            START = 0;
+            //小于300ms，不录音
+            clearTimeout(recordTimer);
+        } else {
+            wx.stopRecord({
+                success: function (res) {
+                    voice.localId = res.localId;
+                    if (voice.localId == '') {
+                        alert('请先录制一段声音');
+                        return;
+                    }
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+        }
+    });
+
+</script>
+<script src="/qiyun/Public/static/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $('.weixinAudio').weixinAudio({
+        autoplay:true,
+
+    });
+</script>-->
 </body>
 </html>

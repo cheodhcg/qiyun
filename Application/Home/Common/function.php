@@ -111,8 +111,6 @@ function getJson($url){
     return json_decode($output, true);
 }
 
-
-
 /**
 * 根据时间戳计算多少小时前
 */

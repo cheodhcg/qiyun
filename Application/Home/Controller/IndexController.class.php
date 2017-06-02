@@ -224,13 +224,8 @@ class IndexController extends HomeController
         $access_token = $jssdk -> getAccessToken();
 
         $date    = date("Ymd", time());
-        $path    = "/weixinrecord/" . $date;   //保存路径，相对当前文件的路径
+        $path    = "./weixinrecord/" . $date;   //保存路径，相对当前文件的路径
         $outPath = "/qiyun/weixinrecord/";  //输出路径，给show.php 文件用，上一级
-
-        if (!is_dir($path)) {
-            //检查是否为目录，如果没有目录则创建一个目录
-            mkdir($path);
-        }
 
         if (!is_dir($path)) {
             //检查是否为目录，如果没有目录则创建一个目录
@@ -246,10 +241,14 @@ class IndexController extends HomeController
         $this -> downAndSaveFile($url, $path . "/" . $filename);
         //存储的amr文件通过ffmpeg转换为mp3
         $name = substr($filename, 0, -4) . ".mp3";
+//        $from = "E:\\wwwroot\\qiyun\\weixinrecord\\" . $date . "\\";
+//        $to   = "E:\\wwwroot\\qiyun\\weixinrecord\\" . $date . "\\";
         $from = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
         $to   = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
         $str  = "ffmpeg -i " . $from . $filename . " " . $to . $name;
         system($str);//或者 exec($str);
+     /*   echo $str;
+        exit();*/
         //删除之前的amr文件
         unlink($from . $filename);
 
@@ -257,6 +256,7 @@ class IndexController extends HomeController
         //TODO:插入数据库
         $model            = M('question_answer');
         $model2           = M('answer_file');
+        $path    = "/weixinrecord/" . $date;
         $data1['pid']     = $pid;
         $data1['uid']     = $_COOKIE['qiyun_user'];
         $data1['content'] = $path . "/" . $name;
@@ -266,6 +266,7 @@ class IndexController extends HomeController
             $data["code"] = 1;
             $data["path"] = $outPath . $name;
             $data["msg"]  = "已提交";
+            $data['ff'] = $str;
         } else {
             $data["code"] = 0;
             $data["path"] = $outPath . $name;

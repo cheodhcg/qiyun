@@ -470,5 +470,9 @@ class UserController extends HomeController {
             $this->display();
         }
     }
+    public function phpinfo(){
+        echo phpinfo();
+        $this->display();
+    }
 
 }

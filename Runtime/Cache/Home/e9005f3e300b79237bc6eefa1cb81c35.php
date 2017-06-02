@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>商城</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/swiper.min.css">
     <style>
-        .sb_mc{
+        .sb_mc {
             width: 55%;
             display: block;
             color: #000 !important;
@@ -18,9 +18,10 @@
             display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
             -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
             -webkit-line-clamp: 1; /** 显示的行数 **/
-            overflow: hidden;  /** 隐藏超出的内容 **/
+            overflow: hidden; /** 隐藏超出的内容 **/
         }
-        .sb_mc2{
+
+        .sb_mc2 {
             width: 45%;
             display: block;
             word-break: break-all;
@@ -28,7 +29,7 @@
             display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
             -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
             -webkit-line-clamp: 1; /** 显示的行数 **/
-            overflow: hidden;  /** 隐藏超出的内容 **/
+            overflow: hidden; /** 隐藏超出的内容 **/
         }
     </style>
 </head>
@@ -37,10 +38,12 @@
 
     <div class="swiper-container">
         <div class="swiper-wrapper">
-		<?php if(is_array($bannerlist)): $i = 0; $__LIST__ = $bannerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="swiper-slide"> <a href="<?php echo U('Shop/info',array('id'=>$v['id']));?>">
-                <img src="<?php echo (get_cover($v['cover_id'],'path')); ?>" alt="aa" width="100%">
-            </a></div><?php endforeach; endif; else: echo "" ;endif; ?>    
-			
+            <?php if(is_array($bannerlist)): $i = 0; $__LIST__ = $bannerlist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="swiper-slide">
+                    <a href="<?php echo U('Shop/info',array('id'=>$v['id']));?>">
+                        <img src="<?php echo (get_cover($v['cover_id'],'path')); ?>" alt="aa" width="100%" height="220">
+                    </a>
+                </div><?php endforeach; endif; else: echo "" ;endif; ?>
+
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination" style="bottom: 10px;"></div>
@@ -50,13 +53,14 @@
     </div>
 </div>
 <div class="sc_list  oh" id="listdiv">
-<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="sc_list_info fl oh">
-        <a href="<?php echo U('info?id='.$vo['id']);?>">
-            <img src="<?php echo ($vo["path"]); ?>" alt="aa" width="100%">
-            <p><span class="sb_mc fl"><?php echo ($vo["title"]); ?></span><span class="fr sb_mc2" style="text-align: right">￥<?php echo ($vo["money"]); ?></span></p>
-        </a>
-    </div><?php endforeach; endif; else: echo "" ;endif; ?>
-    
+    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="sc_list_info fl oh">
+            <a href="<?php echo U('info?id='.$vo['id']);?>">
+                <img src="/qiyun<?php echo ($vo["path"]); ?>" alt="aa" width="140" height="96">
+                <p><span class="sb_mc fl"><?php echo ($vo["title"]); ?></span><span class="fr sb_mc2" style="text-align: right">￥<?php echo ($vo["money"]); ?></span>
+                </p>
+            </a>
+        </div><?php endforeach; endif; else: echo "" ;endif; ?>
+
 </div>
 <?php if($page == 1): ?><span class="loading">
    <img class="fl" src="images/load.png" alt="aa" height="100%"> 
@@ -70,9 +74,9 @@
         <a href="<?php echo U('Index/index?type=1');?>">
             <li align="center" <?php if(($str) == "Index"): ?>class="nav_a"<?php endif; ?>>
                 <span>
-                <?php if(($str) == "Index"): ?><img src="images/w_17.png" alt="aa" width="" >
+                <?php if(($str) == "Index"): ?><img src="images/w_17.png" alt="aa" width="32" >
                 <?php else: ?>
-                <img src="images/w_1.png" alt="aa" width="" ><?php endif; ?>
+                <img src="images/w_1.png" alt="aa" width="32" ><?php endif; ?>
                 </span>
                 <span>问答</span>
             </li></a>
@@ -83,7 +87,7 @@
                 <?php else: ?>
                 <img src="images/w_19.png" alt="aa" width="" ><?php endif; ?>
                 </span>
-                <span>微讲座</span>
+                <span>学习</span>
             </li></a>
         <a href="<?php echo U('Shop/index?type=3');?>" <?php if(($str) == "Shop"): ?>class="nav_a"<?php endif; ?>>
             <li align="center">
@@ -92,7 +96,7 @@
                 <?php else: ?>
                 <img src="images/w_21.png" alt="aa" width="" ><?php endif; ?>
                 </span>
-                <span>商城</span>
+                <span>服务</span>
             </li>
         </a>
         <a href="<?php echo U('Contact/index?type=4');?>" <?php if(($str) == "Contact"): ?>class="nav_a"<?php endif; ?>>
@@ -102,7 +106,7 @@
                 <?php else: ?>
                 <img src="images/w_23.png" alt="aa" width="" align="absmiddle"><?php endif; ?>
                 </span>
-                <span>人脉圈</span>
+                <span>人脉</span>
             </li></a>
         <a href="<?php echo U('User/index?type=5');?>" <?php if(($str) == "User"): ?>class="nav_a"<?php endif; ?>>
             <li align="center">
@@ -115,7 +119,86 @@
         </a>
     </ul>
 </div>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="/qiyun/Public/static/jquery-2.0.3.min.js"></script>
 
+<script>
+    var voice = {
+        localId: '',
+        serverId: ''
+    };
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo ($jssdk["appId"]); ?>', // 必填，公众号的唯一标识
+        timestamp: '<?php echo ($jssdk["timestamp"]); ?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo ($jssdk["nonceStr"]); ?>', // 必填，生成签名的随机串
+        signature: '<?php echo ($jssdk["signature"]); ?>',// 必填，签名，见附录1
+
+        jsApiList: [
+
+            'startRecord',
+            'stopRecord',
+            'onVoiceRecordEnd',
+            'playVoice',
+            'onVoicePlayEnd',
+            'pauseVoice',
+            'stopVoice',
+            'uploadVoice',
+            'downloadVoice'
+        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+
+    //假设全局变量已经在外部定义
+    //按下开始录音
+    $('.startRecord').on('touchstart', function (event) {
+        event.preventDefault();
+        START = new Date().getTime();
+
+        recordTimer = setTimeout(function () {
+            wx.startRecord({
+                /*    success: function(){
+                 localStorage.rainAllowRecord = 'true';
+                 },*/
+                cancel: function () {
+                    alert('用户拒绝授权录音');
+                }
+            });
+        }, 300);
+    });
+    //松手结束录音
+    $('.startRecord').on('touchend', function (event) {
+        event.preventDefault();
+        END = new Date().getTime();
+
+        if ((END - START) < 300) {
+            END = 0;
+            START = 0;
+            //小于300ms，不录音
+            clearTimeout(recordTimer);
+        } else {
+            wx.stopRecord({
+                success: function (res) {
+                    voice.localId = res.localId;
+                    if (voice.localId == '') {
+                        alert('请先录制一段声音');
+                        return;
+                    }
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+        }
+    });
+
+</script>
+<script src="/qiyun/Public/static/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $('.weixinAudio').weixinAudio({
+        autoplay:true,
+
+    });
+</script>-->
 </body>
 </html>
 <script src="js/jquery-1.9.1.min.js"></script>
@@ -123,29 +206,31 @@
 
 <script>
     var p = 2;
-    $("#gengduo").click(function(event) {
+    $("#gengduo").click(function (event) {
         $.ajax({
             url: "<?php echo U('Shop/index');?>",
             type: 'GET',
             dataType: 'json',
-            data: {p:p},
-            success: function(data, textStatus, xhr) {
-              var tmp='';
-              if (data.status==0) {
-                 $("#gengduo").text('没有更多信息');
-                 $(".loading").css("background-color","#cccccc");
-                 return false;
-              };
-              $.each(data.info, function(index, v) {
-                   tmp+='<div class="sc_list_info fl oh"><a href="index.php?s=/Home/Shop/info/id/'+v.id+'"><img src="'+v.path+'" alt="aa" width="100%"><p><span class="sb_mc fl">'+v.title+'</span><span class="fr sb_mc2" style="text-align: right">￥'+v.money+'</span></p></a></div>';
-              });
-              if (tmp) {
+            data: {p: p},
+            success: function (data, textStatus, xhr) {
+                var tmp = '';
+                if (data.status == 0) {
+                    $("#gengduo").text('没有更多信息');
+                    $(".loading").css("background-color", "#cccccc");
+                    return false;
+                }
+                ;
+                $.each(data.info, function (index, v) {
+                    tmp += '<div class="sc_list_info fl oh"><a href="index.php?s=/Home/Shop/info/id/' + v.id + '"><img src="' + v.path + '" alt="aa" width="100%"><p><span class="sb_mc fl">' + v.title + '</span><span class="fr sb_mc2" style="text-align: right">￥' + v.money + '</span></p></a></div>';
+                });
+                if (tmp) {
                     $('#listdiv').append(tmp);
-              };
-             p++;
+                }
+                ;
+                p++;
             },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-             
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
             }
         })
     });

@@ -80,9 +80,9 @@
         <a href="<?php echo U('Index/index?type=1');?>">
             <li align="center" <?php if(($str) == "Index"): ?>class="nav_a"<?php endif; ?>>
                 <span>
-                <?php if(($str) == "Index"): ?><img src="images/w_17.png" alt="aa" width="" >
+                <?php if(($str) == "Index"): ?><img src="images/w_17.png" alt="aa" width="32" >
                 <?php else: ?>
-                <img src="images/w_1.png" alt="aa" width="" ><?php endif; ?>
+                <img src="images/w_1.png" alt="aa" width="32" ><?php endif; ?>
                 </span>
                 <span>问答</span>
             </li></a>
@@ -102,7 +102,7 @@
                 <?php else: ?>
                 <img src="images/w_21.png" alt="aa" width="" ><?php endif; ?>
                 </span>
-                <span>商城</span>
+                <span>服务</span>
             </li>
         </a>
         <a href="<?php echo U('Contact/index?type=4');?>" <?php if(($str) == "Contact"): ?>class="nav_a"<?php endif; ?>>
@@ -125,7 +125,7 @@
         </a>
     </ul>
 </div>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="/qiyun/Public/static/jquery-2.0.3.min.js"></script>
 
 <script>
@@ -201,9 +201,9 @@
 <script src="/qiyun/Public/static/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
     $('.weixinAudio').weixinAudio({
-        autoplay:false,
+        autoplay:true,
 
     });
-</script>
+</script>-->
 </body>
 </html>

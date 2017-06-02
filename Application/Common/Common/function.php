@@ -30,6 +30,14 @@ function is_login(){
     }
 }
 
+function member_level(){
+    $uid = $_COOKIE['qiyun_user'];
+    $model = M('user');
+    $where['id'] = $uid;
+    $res = $model->where($where)->field('level')->select();
+    return $res[0][level];
+}
+
 /**
  * 检测当前用户是否为管理员
  * @return boolean true-管理员，false-非管理员
@@ -89,7 +97,8 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
         preg_match_all($re[$charset], $str, $match);
         $slice = join("",array_slice($match[0], $start, $length));
     }
-    return $suffix ? $slice.'...' : $slice;
+//    return $suffix ? $slice.'...' : $slice;
+    return $suffix ? $slice.'' : $slice;
 }
 
 /**

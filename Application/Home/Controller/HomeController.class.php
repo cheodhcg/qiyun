@@ -19,8 +19,9 @@ class HomeController extends Controller {
 //	public $AppSecret = 'd0575f7ffc4f4829a4a4c524dcfaf521';
 	public $appid = 'wxe58e0c041bed2598';
 	public $AppSecret = '263a8ddb41435b76bd281d8117cd5efc';
-    public $hosturl = "http://nj6kxj.natappfree.cc"; //配置域名
-    public $redirect_uri =  "http://nj6kxj.natappfree.cc"; //微信授权回调域名
+    public $hosturl = "http://p9qppb.natappfree.cc"; //配置域名
+    public $redirect_uri =  "http://p9qppb.natappfree.cc"; //微信授权回调域名
+    public $key = "MDAwMDAwMDAwML6IgpuLf3-YwLiMrIbOfpaKurSpe4OicA";//全局key。加密字符串：adadqwe5123_ad1!
 
 
 
