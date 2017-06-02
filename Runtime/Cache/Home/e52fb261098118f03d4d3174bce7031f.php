@@ -4,56 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>我的名片</title>
+    <title>我的提问</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
 </head>
-<body style="background: #fff">
-<div class="my_card container" style="height: 110%">
-    <!--<div class="my_card_info oh">-->
-        <!--<div class="my_head fl">-->
-            <!--<img src="images/w_07.png" alt= " aa" width="100%" align="absmiddle">-->
-        <!--</div>-->
-        <!--<div class="my_card_text fl">-->
-            <!--<p>张晓磊</p>-->
-            <!--<p>联系电话：<span>12345678910</span></p>-->
-            <!--<p>成都腾讯有限公司 | 项目经理</p>-->
-        <!--</div>-->
-     <!---->
-    <!--</div>-->
-    <div class="user_text ">
-        <div class="user_t_p">
-        <div class="card_one">
-            <img src="<?php echo ($info['face']); ?>" alt="aa" width="100%" style="border-radius: 25px">
+<body>
+<div class="wdtw_box oh" id="listdiv">
+<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="wdtw_info container oh underline">
+       <div>
+           <a href="<?php echo U('Index/questioninfo',array('id'=>$vo['id']));?>"><p><?php echo ($vo['content']); ?></p></a>
+       </div>
+        <div class="my_tw_x fl">
+            <div class="my_tw_x1 abs">
+                <span><img src="images/w_03.png" alt="aa" width="100%" align="absmiddle"></span>
+                <span><?php echo ($vo['answer_num']); ?>人</span>
+            </div>
+            <div class="my_tw_x1 abs">
+                <span><img src="images/ej_03.png" alt="aa" width="100%" align="absmiddle"></span>
+                <span><?php echo ($vo['number']); ?>人</span>
+
+            </div>
+            <div class="my_tw_time fr abs">
+                <?php echo ($vo["addtime"]); ?>
+            </div>
         </div>
-        <div   class="card_two">
-            <p><?php echo ($info['username']); ?></p>
-            <p><?php echo ($info['position']); ?></p>
-        </div>
-        <div class="card_three">
-            <p>TEL <span><?php echo ($info['phone']); ?></span></p>
-            <p><?php echo ($info['company']); ?></p>
-        </div>
-        </div>
-        <p><img src="images/yh_05.png" alt="aa" width="100%"></p>
-    </div>
-	<form action="" method="post" enctype="multipart/form-data" id="form1">
-    <div class="my_card_input">
-        <p><span>姓名</span><input type="text" name="username" value="<?php echo ($info['username']); ?>"></p>
-        <p><span>公司</span><input type="text" name="company" value="<?php echo ($info['company']); ?>"></p>
-        <p><span>职业</span><input type="text" name="position" value="<?php echo ($info['position']); ?>"></p>
-        <p><span>电话</span><input type="text" name="phone" value="<?php echo ($info['phone']); ?>"></p>
-        <p><input type="checkbox" id="my_card_c" <?php if(($info['is_zs']) == "1"): ?>checked<?php endif; ?>>        <label for="my_card_c">是否展示名片</label>
-        </p>
-    </div>
-    <div style="">
-        <a href="##" class="yue_btn">提交</a>
-    </div>
-	</form>
+    </div><?php endforeach; endif; else: echo "" ;endif; ?>
 </div>
-<!--     <div style="width: 100%;height: 20px;">
-        
-    </div> -->
+<!-- <div style="height: 65px;">
+</div> -->
+<?php if($page == 1): ?><span class="loading">
+   <img class="fl" src="images/load.png" alt="aa" height="100%"> 
+   <span id="gengduo">点击加载更多</span>
+</span><?php endif; ?>
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    var p = 2;
+    $("#gengduo").click(function(event) {
+        $.ajax({
+            url: "<?php echo U('User/myQuestion');?>",
+            type: 'GET',
+            dataType: 'json',
+            data: {p:p},
+            success: function(data, textStatus, xhr) {
+              var tmp='';
+              if (data.status==0) {
+                 $("#gengduo").text('没有更多信息');
+                 $(".loading").css("background-color","#cccccc");
+                 return false;
+              };
+              $.each(data.info, function(index, v) {
+                   tmp+='<div class="wdtw_info container oh underline"><div><a href="/index.php?s=/Home/Index/questioninfo/id/'+v.id+'"><p>'+v.content+'</p></a></div><div class="my_tw_x fl"><div class="my_tw_x1 abs"><span><img src="images/w_03.png" alt="aa" width="100%" align="absmiddle"></span><span>'+v.answer_num+'人</span></div><div class="my_tw_x1 abs"><span><img src="images/ej_03.png" alt="aa" width="100%" align="absmiddle"></span><span>'+v.number+'人</span></div><div class="my_tw_time fr abs">'+v.addtime+'</div></div></div>';
+              });
+              if (tmp) {
+                    $('#listdiv').append(tmp);
+              };
+             p++;
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+             
+            }
+        })
+    });
+</script>
 <div class="nav_h">
 </div>
 <?php  $url = $_SERVER['QUERY_STRING']; $arr = explode('/', $url); $str = $arr[2]; ?>
@@ -189,28 +202,3 @@
 </script>-->
 </body>
 </html>
-
-<script src="js/jquery-1.9.1.min.js"></script>
-<script>
-	$(".yue_btn").click(function(event){
-		$('#form1').submit();
-	});
-    $(function () {
-        w()
-    });
-    function w() {
-        var w = $(window).width();
-        if(w > 768){
-            $('.user_t_p').css({
-                height:w * 0.3
-            })
-        }else{
-            $('.user_t_p').css({
-                height:w * 0.57
-            })
-        }
-    }
-    $(window).resize(function(){
-        w ()
-    });
-</script>

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>会员主页</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
@@ -22,140 +22,119 @@
         <p><strong><?php echo ($info['nickname']); ?></strong></p>
     </div>
 </div>
-<div class="my_fl">
-    <ul class="my_fl_ul">
+<ul class="ul_option">
+    <li class="user_option">
         <a href="<?php echo U('User/myQuestion');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m.png" alt="aa" width="25">
                 </span>
+            <p class="option-text">
+                我的提问
             </p>
-            <p>
-              我的提问
-            </p>
-        </li>
         </a>
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/myAnswer');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m2.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m2.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 我的回答
             </p>
-        </li>
         </a>
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/myheard');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m3.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m3.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 我听过的
             </p>
-        </li>
         </a>
-    </ul>
-    <ul class="my_fl_ul">
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/myLecture');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m4.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m4.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 我的讲座
             </p>
-        </li>
         </a>
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/myMoney');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m5.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m5.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 我的账户
             </p>
-        </li>
         </a>
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/myAuthentication');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m6.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m6.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 申请会员
             </p>
-        </li>
         </a>
-    </ul>
-    <ul class="my_fl_ul">
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/mySms');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m7.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m7.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 我的通知
             </p>
-        </li>
         </a>
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/about');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m8.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m8.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 关于企业知道
             </p>
-        </li>
         </a>
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/news');?>">
-        <li>
-            <p>
-                <span>
-    <img src="images/m9.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m9.png" alt="aa" width="25">
                 </span>
-            </p>
-            <p>
+            <p class="option-text">
                 系统动态
             </p>
-        </li>
         </a>
-
-    </ul>
-    <ul class="my_fl_ul">
+        <div class="option_border_box"></div>
+    </li>
+    <li class="user_option">
         <a href="<?php echo U('User/myinfo');?>">
-            <li>
-                <p>
-                <span>
-    <img src="images/m10.png" alt="aa" width="100%">
+                <span class="option-icon">
+                    <img src="images/m10.png" alt="aa" width="25">
                 </span>
-                </p>
-                <p>
-                    我的信息
-                </p>
-            </li>
+            <p class="option-text">
+                我的信息
+            </p>
         </a>
-
-
-    </ul>
-    <!--<a href="<?php echo U('user/phpinfo');?>">phpinfo</a>-->
-</div>
+        <div class="option_border_box"></div>
+    </li>
+</ul>
+<a href="<?php echo U('user/phpinfo');?>">phpinfo</a>
 
 <div class="nav_h">
 </div>
@@ -210,97 +189,17 @@
         </a>
     </ul>
 </div>
-<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-<script src="/qiyun/Public/static/jquery-2.0.3.min.js"></script>
-
-<script>
-    var voice = {
-        localId: '',
-        serverId: ''
-    };
-    wx.config({
-        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: '<?php echo ($jssdk["appId"]); ?>', // 必填，公众号的唯一标识
-        timestamp: '<?php echo ($jssdk["timestamp"]); ?>', // 必填，生成签名的时间戳
-        nonceStr: '<?php echo ($jssdk["nonceStr"]); ?>', // 必填，生成签名的随机串
-        signature: '<?php echo ($jssdk["signature"]); ?>',// 必填，签名，见附录1
-
-        jsApiList: [
-
-            'startRecord',
-            'stopRecord',
-            'onVoiceRecordEnd',
-            'playVoice',
-            'onVoicePlayEnd',
-            'pauseVoice',
-            'stopVoice',
-            'uploadVoice',
-            'downloadVoice'
-        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    });
-
-    //假设全局变量已经在外部定义
-    //按下开始录音
-    $('.startRecord').on('touchstart', function (event) {
-        event.preventDefault();
-        START = new Date().getTime();
-
-        recordTimer = setTimeout(function () {
-            wx.startRecord({
-                /*    success: function(){
-                 localStorage.rainAllowRecord = 'true';
-                 },*/
-                cancel: function () {
-                    alert('用户拒绝授权录音');
-                }
-            });
-        }, 300);
-    });
-    //松手结束录音
-    $('.startRecord').on('touchend', function (event) {
-        event.preventDefault();
-        END = new Date().getTime();
-
-        if ((END - START) < 300) {
-            END = 0;
-            START = 0;
-            //小于300ms，不录音
-            clearTimeout(recordTimer);
-        } else {
-            wx.stopRecord({
-                success: function (res) {
-                    voice.localId = res.localId;
-                    if (voice.localId == '') {
-                        alert('请先录制一段声音');
-                        return;
-                    }
-                },
-                fail: function (res) {
-                    alert(JSON.stringify(res));
-                }
-            });
-        }
-    });
-
-</script>
-<script src="/qiyun/Public/static/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    $('.weixinAudio').weixinAudio({
-        autoplay:true,
-
-    });
-</script>-->
 </body>
 </html>
 
 <script src="js/jquery-1.9.1.min.js"></script>
 <script>
-//    $(function () {
-//        var w = $('.my_fl_ul li p:first-child').width();
-//        var q = $('.my_fl_ul li p:last-child').width();
-//        console.log(w,q);
-//        $('.my_fl_ul li').css({
-//            height:w + q
-//        })
-//    })
+    //    $(function () {
+    //        var w = $('.my_fl_ul li p:first-child').width();
+    //        var q = $('.my_fl_ul li p:last-child').width();
+    //        console.log(w,q);
+    //        $('.my_fl_ul li').css({
+    //            height:w + q
+    //        })
+    //    })
 </script>

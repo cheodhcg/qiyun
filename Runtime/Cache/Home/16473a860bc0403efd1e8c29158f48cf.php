@@ -2,19 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <title>人脉圈</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <script type="text/javascript" src="js/swiper.min.js"></script>
-    <!--<link rel="stylesheet" href="../style.css">-->
+    <!--<link rel="stylesheet" href="css/swiper.min.css">-->
+    <!--<script type="text/javascript" src="js/swiper.min.js"></script>-->
+
+
+    <style>
+        #overflow {
+            /*border: 1px solid #000;*/
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        #overflow .container div {
+            float: left;
+        }
+
+        #currentorders {
+            max-height: 365px;
+        }
+
+    </style>
 </head>
 <body>
 <div class="rmq_title oh">
     <ul class="rmq_t_ul">
-        <li><a href="<?php echo U('Contact/index');?>" class="rmq_a" >人脉</a></li>
+        <li><a href="<?php echo U('Contact/index');?>" class="rmq_a">人脉</a></li>
         <li><a href="<?php echo U('Contact/news');?>">商机</a></li>
         <li><a href="<?php echo U('Contact/release_news');?>">发布</a></li>
         <a href="搜索.html" class="search_r">
@@ -23,60 +40,56 @@
     </ul>
     <div class="rmq_list container oh" align="center">
         <ul>
-        <?php if(is_array($catelist)): $i = 0; $__LIST__ = $catelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><li><a href="<?php echo U('index?cate_id='.$v['id']);?>" <?php if(($v['id']) == $cate_id): ?>class="rmq_a2"<?php endif; ?>><?php echo ($v['title']); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+            <?php if(is_array($catelist)): $i = 0; $__LIST__ = $catelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><li><a href="<?php echo U('index?cate_id='.$v['id']);?>"
+                    <?php if(($v['id']) == $cate_id): ?>class="rmq_a2"<?php endif; ?>
+                    ><?php echo ($v['title']); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
         </ul>
-        
+
     </div>
 </div>
-<div class="rmq_info">
-<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="rmq_person oh ">
-        <div class="card_img">
-            <img src="<?php echo ($vo['face']); ?>" alt="企知道头像" width="50" style="border-radius: 25px">
-        </div>
-        <div class="card-userinfo">
-            <h3 style="color: #ff827e;"><?php echo ($vo['username']); ?></h3>
-            <p><?php echo ($vo['position']); ?></p>
-        </div>
-        <div class="card-contact">
-            <p>Tel:<?php echo ($vo['phone']); ?></p>
-            <p><?php echo ($vo['company']); ?></p>
-        </div>
 
-    </div><?php endforeach; endif; else: echo "" ;endif; ?>
+<div data-role="page" id="currentorders" style="margin-top: 100px;height: 365px;z-index: 99">
+    <header data-role="header" data-position="fixed">
+        <nav data-role="navbar">
+            <div id="overflow">
+                <div class="container" style="padding-top: 55px">
+                    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="rmq_person oh ">
+                            <div class="card_img">
+                                <img src="<?php echo ($vo['face']); ?>" alt="企知道头像" width="50" style="border-radius: 25px">
+                            </div>
+                            <div class="card-userinfo">
+                                <h3 style="color: #ff827e;"><?php echo ($vo['username']); ?></h3>
+                                <p><?php echo ($vo['position']); ?></p>
+                            </div>
+                            <div class="card-contact">
+                                <p>Tel:<?php echo ($vo['phone']); ?></p>
+                                <p><?php echo ($vo['company']); ?></p>
+                            </div>
+
+                        </div><?php endforeach; endif; else: echo "" ;endif; ?>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
 </div>
-<!--<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="rmq_person oh ">
-        <div class="rmq-title">
-            <div class="fl rmq_q_img">
-                <img src="<?php echo ($vo['face']); ?>" alt="aa" width="100%">
-            </div>
-            <div class="fl rmq_i">
-                <p><?php echo ($vo['username']); ?>
-                    <?php if(($vo['status']) == "0"): ?><span class="fr rmq_span1 db">关注</span>
-                    <span class="fr rmq_span2 dn">已关注</span>
-                    <?php else: ?>
-                    <span class="fr rmq_span1 db">关注</span>
-                    <span class="fr rmq_span2 dn">已关注</span><?php endif; ?>
-                </p>
-                <p><?php echo ($vo['area']); ?> | <?php echo ($vo['company']); ?> | <?php echo ($vo['position']); ?></p>
-            </div>
-        </div>
-
-            <div class="rmq_p_text">
-                <p><?php echo ($vo['content']); ?></p>
-            </div>
-    </div><?php endforeach; endif; else: echo "" ;endif; ?> -->
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
+
 <script>
-$(function () {
-    var a = $('.rmq_t_ul li').width();
-    $('.rmq_t_ul').css({
-        width:a * 3 +40
-    });
-//    $('.rmq_list ul').css({
-//        width:a * 3 +40
-//    });
-})
+
+    $(function () {
+        var width = 0;
+        var bh=$(window).height();//获取屏幕高度
+        $('#overflow .container div.rmq_person').each(function () {
+            width += $(this).width()+42;//42为margin和padding
+        });
+        $('#overflow .container').css("height",bh);
+        $('#overflow .container').css('width', width + "px");
+        $('html,body').addClass('ovfHiden');
+    })
+
 </script>
 
 <div class="nav_h">
@@ -132,85 +145,5 @@ $(function () {
         </a>
     </ul>
 </div>
-<!--<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-<script src="/qiyun/Public/static/jquery-2.0.3.min.js"></script>
-
-<script>
-    var voice = {
-        localId: '',
-        serverId: ''
-    };
-    wx.config({
-        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: '<?php echo ($jssdk["appId"]); ?>', // 必填，公众号的唯一标识
-        timestamp: '<?php echo ($jssdk["timestamp"]); ?>', // 必填，生成签名的时间戳
-        nonceStr: '<?php echo ($jssdk["nonceStr"]); ?>', // 必填，生成签名的随机串
-        signature: '<?php echo ($jssdk["signature"]); ?>',// 必填，签名，见附录1
-
-        jsApiList: [
-
-            'startRecord',
-            'stopRecord',
-            'onVoiceRecordEnd',
-            'playVoice',
-            'onVoicePlayEnd',
-            'pauseVoice',
-            'stopVoice',
-            'uploadVoice',
-            'downloadVoice'
-        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    });
-
-    //假设全局变量已经在外部定义
-    //按下开始录音
-    $('.startRecord').on('touchstart', function (event) {
-        event.preventDefault();
-        START = new Date().getTime();
-
-        recordTimer = setTimeout(function () {
-            wx.startRecord({
-                /*    success: function(){
-                 localStorage.rainAllowRecord = 'true';
-                 },*/
-                cancel: function () {
-                    alert('用户拒绝授权录音');
-                }
-            });
-        }, 300);
-    });
-    //松手结束录音
-    $('.startRecord').on('touchend', function (event) {
-        event.preventDefault();
-        END = new Date().getTime();
-
-        if ((END - START) < 300) {
-            END = 0;
-            START = 0;
-            //小于300ms，不录音
-            clearTimeout(recordTimer);
-        } else {
-            wx.stopRecord({
-                success: function (res) {
-                    voice.localId = res.localId;
-                    if (voice.localId == '') {
-                        alert('请先录制一段声音');
-                        return;
-                    }
-                },
-                fail: function (res) {
-                    alert(JSON.stringify(res));
-                }
-            });
-        }
-    });
-
-</script>
-<script src="/qiyun/Public/static/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    $('.weixinAudio').weixinAudio({
-        autoplay:true,
-
-    });
-</script>-->
 </body>
 </html>

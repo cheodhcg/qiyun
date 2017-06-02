@@ -175,7 +175,7 @@
                 <?php else: ?>
                 <img src="images/w_23.png" alt="aa" width="" align="absmiddle"><?php endif; ?>
                 </span>
-                <span>人脉圈</span>
+                <span>人脉</span>
             </li></a>
         <a href="<?php echo U('User/index?type=5');?>" <?php if(($str) == "User"): ?>class="nav_a"<?php endif; ?>>
             <li align="center">

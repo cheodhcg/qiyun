@@ -56,7 +56,7 @@ wx.ready(function () {
     // 4.5 播放音频
     document.querySelector('#push_answer3').onclick = function () {
         if (voice.localId == '') {
-            alert('请先使用 startRecord 接口录制一段声音');
+            alert('请先录制一段声音');
             return;
         }
         wx.playVoice({
@@ -110,8 +110,8 @@ wx.ready(function () {
                     success: function (res) {
                         // alert('下载语音成功，localId 为' + res.localId);
                         var pid = $('#submit_answer').attr('data-pid');
-                        var url = "http://qiyun.mmqo.com/index.php?s=/Home/Index/uploadAnswer"+"/pid/"+pid+".html";
-                        // var url = "/qiyun/index.php?s=/Home/Index/uploadAnswer"+"/pid/"+pid+".html";
+                        // var url = "http://qiyun.mmqo.com/index.php?s=/Home/Index/uploadAnswer"+"/pid/"+pid+".html";
+                        var url = "/qiyun/index.php?s=/Home/Index/uploadAnswer"+"/pid/"+pid+".html";
 
                         $.post(url,{serverId:voice.serverId},function(data){
                             data = $.parseJSON(data);

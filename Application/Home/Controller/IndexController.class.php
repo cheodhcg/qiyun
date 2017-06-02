@@ -149,6 +149,7 @@ class IndexController extends HomeController
         $this -> assign('xglist', $xglist); //相关问答
         $this -> assign('info', $info);//提问详情
         $this -> assign('flag', $flag);
+        $this->assign('_title','问题详情');
         $this -> display();
     }
 
@@ -193,8 +194,8 @@ class IndexController extends HomeController
         $this -> assign('info', $info);
         $this -> assign('pid', $id);
         $this -> assign('xglist', $xglist);
-//        var_dump($xglist);
         $this -> assign('is_answer', $is_answer);
+        $this->assign('_title','回答问题');
         $this -> display();
     }
 
