@@ -15,5 +15,6 @@
 define('UC_APP_ID', 1); //应用ID
 define('UC_API_TYPE', 'Model'); //可选值 Model / Service
 define('UC_AUTH_KEY', 'v`#jBY^Wnd?=4N7%s[~8|iX!wu5_R>}<$:Gf06ac'); //加密KEY
-define('UC_DB_DSN', 'mysql://root:@127.0.0.1:3306/qiyun'); // 数据库连接，使用Model方式调用API必须配置此项
+//define('UC_DB_DSN', 'mysql://qiyun:z2E8H4X5@qiyun.mmqo.com/qiyun'); // 数据库连接，使用Model方式调用API必须配置此项
+define('UC_DB_DSN', 'mysql://root:@127.0.1.1/qiyun'); // 数据库连接，使用Model方式调用API必须配置此项
 define('UC_TABLE_PREFIX', 'qy_'); // 数据表前缀，使用Model方式调用API必须配置此项

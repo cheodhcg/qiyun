@@ -219,10 +219,11 @@ class IndexController extends HomeController
     {
         //server_id
         $media_id = I('serverId');
-        $pid      = I('get.pid');
+        $pid      = I('pid');
         require_once 'JSSDK.php';
         $jssdk        = new \JSSDK($this -> appid, $this -> AppSecret);
         $access_token = $jssdk -> getAccessToken();
+//        $access_token = $this->get_token($this->appid,$this->AppSecret);
 
         $date    = date("Ymd", time());
         $path    = "./weixinrecord/" . $date;   //保存路径，相对当前文件的路径
@@ -233,13 +234,14 @@ class IndexController extends HomeController
             mkdir($path);
         }
 
-        //微 信上传下载媒体文件
+        //微信上传下载媒体文件接口
         $url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token={$access_token}&media_id={$media_id}";
-//        $url = "https://file.api.weixin.qq.com/cgi-bin/media/get?access_token={$access_token}&media_id={$media_id}";
 
         $filename = "wxupload_" . time() . rand(1111, 9999) . ".amr";
+
         //存储获取的amr文件
         $this -> downAndSaveFile($url, $path . "/" . $filename);
+
         //存储的amr文件通过ffmpeg转换为mp3
         $name = substr($filename, 0, -4) . ".mp3";
 //        $from = "E:\\wwwroot\\qiyun\\weixinrecord\\" . $date . "\\";
@@ -248,8 +250,12 @@ class IndexController extends HomeController
         $to   = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
         $str  = "ffmpeg -i " . $from . $filename . " " . $to . $name;
         system($str);//或者 exec($str);
-     /*   echo $str;
-        exit();*/
+//        echo $str."<br>";
+//        echo $url;
+        /*echo $pid."<br>";
+        echo $media_id."<br>";
+        echo $path . "/" . $filename;*/
+//        exit();
         //删除之前的amr文件
         unlink($from . $filename);
 
@@ -257,10 +263,10 @@ class IndexController extends HomeController
         //TODO:插入数据库
         $model            = M('question_answer');
         $model2           = M('answer_file');
-        $path    = "/weixinrecord/" . $date;
+        $path2    = "/weixinrecord/" . $date;
         $data1['pid']     = $pid;
         $data1['uid']     = $_COOKIE['qiyun_user'];
-        $data1['content'] = $path . "/" . $name;
+        $data1['content'] = $path2 . "/" . $name;
         $data1['addtime'] = time();
         $res              = $model -> add($data1);
         if ($res) {
@@ -300,19 +306,16 @@ class IndexController extends HomeController
 
         $this -> display();
     }
-
-    public function test2()
-    {
-        $date     = date("Ymd", time());
-        $filename = "wxupload_14956950955445.amr";
-        $name     = substr($filename, 0, -4) . ".mp3";
-        $from     = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
-        $to       = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
-        $str      = "ffmpeg -i " . $from . $filename . " " . $to . $name;
-        $res      = system($str);//或者 exec($str);
-        //删除之前的amr文件
-        unlink($from . $filename);
-        var_dump($res);
+    function get_token($appId,$appSecret){
+        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appId."&secret=".$appSecret;
+        $data = json_decode(file_get_contents($url),true);
+        if($data['access_token']){
+            return $data['access_token'];
+        }else{
+            echo "Error";
+            exit();
+        }
     }
+
 
 }

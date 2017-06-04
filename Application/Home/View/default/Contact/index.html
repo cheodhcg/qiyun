@@ -62,12 +62,23 @@
                                 <img src="{$vo['face']}" alt="企知道头像" width="50" style="border-radius: 25px">
                             </div>
                             <div class="card-userinfo">
-                                <h3 style="color: #ff827e;">{$vo['username']}</h3>
+                                <h3 style="color: #ff827e;">
+                                    <notEmpty name="vo['username']">
+                                        {$vo['username']}
+                                        <else/>
+                                        {$vo['nickname']}
+                                    </notEmpty>
+
+                                </h3>
                                 <p>{$vo['position']}</p>
                             </div>
                             <div class="card-contact">
-                                <p>Tel:{$vo['phone']}</p>
-                                <p>{$vo['company']}</p>
+                                <p>
+                                    Tel:{$vo['phone']}
+                                </p>
+                                <p>
+                                    {$vo['company']}
+                                </p>
                             </div>
 
                         </div>
