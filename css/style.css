@@ -427,6 +427,7 @@
 }
 
 .tw_title span {
+    display: block;
     float: left;
     height: 25px;
     line-height: 25px;
@@ -1095,7 +1096,7 @@
 }
 
 .wdtw_info:last-child {
-    border: none;
+    /*border: none;*/
 }
 
 /*我的活动*/

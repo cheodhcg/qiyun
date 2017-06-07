@@ -108,7 +108,8 @@ class LectureController extends HomeController
             'qy_lecture.icon',
             'qy_lecture.rewardnum',
             'qy_lecture.content_icon',
-            'qy_user.id',
+            'qy_lecture.likeup',
+//            'qy_user.id',
             'qy_user.username',
             'qy_user.face',
             'qy_user.company',
@@ -128,7 +129,12 @@ class LectureController extends HomeController
         } else {
             $info['likelist'] = '赞无点赞,赶快点赞吧';
         }
+        require_once 'JSSDK.php';
+        $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
+        $signPackage = $jssdk -> GetSignPackage();
+        $this -> assign('jssdk', $signPackage);
         $this -> assign('info', $info);//分类列表
+        $this->assign('uid',$_COOKIE['qiyun_user']);
         $this -> display();
     }
 
@@ -162,26 +168,34 @@ class LectureController extends HomeController
      */
     public function like()
     {
-        $uid = session('uid');
-        $id  = I('id');
-        if (empty($id)) {
-            $this -> error('点赞失败');
-            exit;
-        }
-        $lecture_like = M('lecture_like');
-        $pid          = $lecture_like -> where("uid={$uid}") -> getField('pid');
-        if ($pid) {
-            $this -> error('您已点赞过,请勿重新点赞哦');
-            exit;
-        }
-        $data['pid']     = $id;
-        $data['uid']     = $uid;
-        $data['addtime'] = time();
-        if ($lecture_like -> add($data) !== false) {
-            $this -> success('点赞成功,感谢您的参与');
-        } else {
-            $this -> error('点赞失败');
-        }
+
+            $uid = I('post.uid');
+            $pid  = I('post.pid');
+            if (empty($pid)) {
+                $this -> error('点赞失败');
+                exit;
+            }
+            $lecture_like = M('lecture_like');
+            $rs          = $lecture_like -> where("pid={$pid}") -> getField('pid');
+            if ($rs) {
+                $msg = "您已点赞过,请勿重新点赞哦";
+                $this->ajaxReturn($msg);
+                exit;
+            }
+            $where['id'] = $pid;
+            $res = M('lecture') ->where($where)-> setInc('likeup');
+            if ($res) {
+                $data['pid']     = $pid;
+                $data['uid']     = $uid;
+                $data['addtime'] = time();
+                $lecture_like->add($data);
+                $msg = "点赞成功,感谢您的参与";
+            } else {
+                $msg = "点赞失败";
+
+            }
+            $this->ajaxReturn($msg);
+
     }
 
 }

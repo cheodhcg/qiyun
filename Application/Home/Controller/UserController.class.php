@@ -33,12 +33,12 @@ class UserController extends HomeController {
 		$Question = M('Question');
 		//获取推荐的问答培训
         $field = "id,title,content,addtime";
-        $uid = session('uid');
-	    $count = $Question->where($where)->count();// 查询满足要求的总记录数 $map表示查询条件
+        $uid = $_COOKIE['qiyun_user'];
+	    $count = $Question->where('uid='.$uid)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 	    //$show = $Page->show();// 分页显示输出
 	    // 进行分页数据查询
-	    $list = $Question->where($where)->order('id')
+	    $list = $Question->where('uid='.$uid)->order('id')
 	    		->limit($Page->firstRow.','.$Page->listRows)
 	    		->field($field)
 	    		->order("id DESC")
@@ -69,15 +69,15 @@ class UserController extends HomeController {
 		$p = I('p');
 		//$question = M('question');
 		$question_answer = M('question_answer');
-		$where['uid'] = session('uid');
+		$where['uid'] = $_COOKIE['qiyun_user'];
 	    $count = $question_answer->where($where)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 	    $show = $Page->show();// 分页显示输出
 	    // 进行分页数据查询
-	    $where1['qy_question_answer.uid'] = session('uid');
+	    $where1['qy_question_answer.uid'] = $_COOKIE['qiyun_user'];
 	    $list = $question_answer->where($where1)
 	    		->join("join qy_question ON  qy_question_answer.pid = qy_question.id")
-	    		->field("qy_question.id,qy_question.content,qy_question_answer.addtime,qy_question_answer.num")
+	    		->field("qy_question.id,qy_question.title,qy_question.content,qy_question_answer.addtime,qy_question_answer.num")
 	    		->limit($Page->firstRow.','.$Page->listRows)
 	    		->order('id DESC')
 	    		->select(); // $Page->firstRow 起始条数 $Page->listRows 获取多少条
@@ -471,7 +471,7 @@ class UserController extends HomeController {
         }
     }
     public function phpinfo(){
-//        echo phpinfo();
+        echo phpinfo();
         $this->display();
     }
 

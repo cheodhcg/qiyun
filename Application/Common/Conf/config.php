@@ -43,6 +43,16 @@ return array(
     'DB_PORT'   => '3306', // 端口
     'DB_PREFIX' => 'qy_', // 数据库表前缀
 
+    /*服务器数据库*/
+    /* 服务器数据库配置 */
+//    'DB_TYPE'   => 'mysql', // 数据库类型
+//    'DB_HOST'   => 'qiyun.mmqo.com', // 服务器地址
+//    'DB_NAME'   => 'qiyun', // 数据库名
+//    'DB_USER'   => 'qiyun', // 用户名
+//    'DB_PWD'    => 'qiyun374037',  // 密码
+//    'DB_PORT'   => '3306', // 端口
+//    'DB_PREFIX' => 'qy_', // 数据库表前缀
+
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),
 );

@@ -35,8 +35,8 @@
             </a>
                 <?php if($v['questionlist']): ?><div style="min-height: 58px">
                         <div class="wd_img_t fl">
-                            <a href="<?php echo U('User/info?uid='.$v['uid']);?>">
-                                <img src="<?php echo ($v['questionlist']['face']); ?>" alt="aa" width="100%">
+                            <a href="<?php echo U('User/info?uid='.$v['id']);?>">
+                                <img src="<?php echo ($v['questionlist']['face']); ?>" alt="aa" width="58" style="border-radius: 29px">
                             </a>
                         </div>
                         <div class="wd_img_y fl">

@@ -39,7 +39,7 @@ class IndexController extends HomeController
 
         $field = "qy_question.id,qy_question.title,qy_question.content,qy_user.nickname,qy_user.company,qy_user.area,qy_user.position";
         $list  = $question -> where($where) -> order('id')
-            -> join("JOIN qy_user ON qy_user.uid = qy_question.uid")
+            -> join("JOIN qy_user ON qy_user.id = qy_question.uid")
             //->join("JOIN qy_question_answer ON qy_question_answer.pid = qy_question.id")
             -> limit($Page -> firstRow . ',' . $Page -> listRows)
             -> order('id DESC')
@@ -96,7 +96,7 @@ class IndexController extends HomeController
             $data['title']   = I('title');
             $data['content'] = I('content');
             $data['type']    = implode(',', $type);
-            $data['uid']     = session('uid');
+            $data['uid']     = $_COOKIE['qiyun_user'];
             $data['addtime'] = time();
             $id              = M('question') -> add($data);
             if ($id) {
@@ -121,7 +121,7 @@ class IndexController extends HomeController
         $question_answer = M('question_answer');
         $flag            = false;
         //获取专业会员回答列表
-        $info = $question
+        $info                 = $question
             -> where("id={$id}")
             -> field("id,uid,title,content,type")
             -> find();
@@ -137,8 +137,8 @@ class IndexController extends HomeController
         $where['qy_question.type']  = ['like', '%' . sprintf('%04d', $info['type']) . '%'];
         $where['qy_question.id']    = ['neq', $id];
         $where['qy_question.is_tj'] = 1;
-        $xglist                       = $question
-            ->join('qy_question_answer on qy_question.id = qy_question_answer.pid')
+        $xglist                     = $question
+            -> join('qy_question_answer on qy_question.id = qy_question_answer.pid')
             -> where($where)
             -> field("*")
             -> select();
@@ -149,7 +149,7 @@ class IndexController extends HomeController
         $this -> assign('xglist', $xglist); //相关问答
         $this -> assign('info', $info);//提问详情
         $this -> assign('flag', $flag);
-        $this->assign('_title','问题详情');
+        $this -> assign('_title', '问题详情');
         $this -> display();
     }
 
@@ -195,23 +195,25 @@ class IndexController extends HomeController
         $this -> assign('pid', $id);
         $this -> assign('xglist', $xglist);
         $this -> assign('is_answer', $is_answer);
-        $this->assign('_title','回答问题');
+        $this -> assign('_title', '回答问题');
         $this -> display();
     }
 
     //用户信息
-    public function userinfo($uid)
+    public function userinfo()
     {
+        /*$uid = I('uid');
         if ($uid) {
             //用户基本信息
-            $info = M('user') -> where("uid={$uid}") -> field('username,nickname,company,position,area,face') -> find();
+            $info = M('user') -> where("id={$uid}") -> field('username,nickname,company,position,area,face') -> find();
             if (empty($info['username'])) {
                 $info['username'] = $info['nickname'];
             }
+            $this -> assign('_title', '用户信息');
+            $this -> display();
         } else {
-            $info = "";
-        }
-        return $info;
+            echo "<script>alert('访问的用户不存在');history.back()</script>";
+        }*/
     }
 
     //提交回答
@@ -220,6 +222,10 @@ class IndexController extends HomeController
         //server_id
         $media_id = I('serverId');
         $pid      = I('pid');
+        /*if (empty($media_id) || $pid) {
+            echo "<script>alert('请重试');history.back()</script>";
+            exit();
+        }*/
         require_once 'JSSDK.php';
         $jssdk        = new \JSSDK($this -> appid, $this -> AppSecret);
         $access_token = $jssdk -> getAccessToken();
@@ -236,6 +242,7 @@ class IndexController extends HomeController
 
         //微信上传下载媒体文件接口
         $url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token={$access_token}&media_id={$media_id}";
+//        $url = "https://api.weixin.qq.com/cgi-bin/media/get/jssdk?access_token={$access_token}&media_id={$media_id}";
 
         $filename = "wxupload_" . time() . rand(1111, 9999) . ".amr";
 
@@ -244,26 +251,24 @@ class IndexController extends HomeController
 
         //存储的amr文件通过ffmpeg转换为mp3
         $name = substr($filename, 0, -4) . ".mp3";
-//        $from = "E:\\wwwroot\\qiyun\\weixinrecord\\" . $date . "\\";
-//        $to   = "E:\\wwwroot\\qiyun\\weixinrecord\\" . $date . "\\";
+        //本地调试
         $from = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
         $to   = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
-        $str  = "ffmpeg -i " . $from . $filename . " " . $to . $name;
-        system($str);//或者 exec($str);
-//        echo $str."<br>";
-//        echo $url;
-        /*echo $pid."<br>";
-        echo $media_id."<br>";
-        echo $path . "/" . $filename;*/
-//        exit();
+        $str = "ffmpeg -i " . $from . $filename . " " . $to . $name;
+        $r = system($str);//或者 exec($str);
         //删除之前的amr文件
-        unlink($from . $filename);
+//        unlink($from . $filename);
 
+        //远程服务器
+//        $savePath = "D:\\wwwroot\\qiyun\\wwwroot\\weixinrecord\\" . $date . "\\";
+//        $cmd      = "ffmpeg -i " . $savePath . $filename . " " . $savePath . $name;
+//        system($cmd);
+//        unlink($savePath . $filename);
 
-        //TODO:插入数据库
+        //插入数据库
         $model            = M('question_answer');
         $model2           = M('answer_file');
-        $path2    = "/weixinrecord/" . $date;
+        $path2            = "/weixinrecord/" . $date;
         $data1['pid']     = $pid;
         $data1['uid']     = $_COOKIE['qiyun_user'];
         $data1['content'] = $path2 . "/" . $name;
@@ -271,20 +276,17 @@ class IndexController extends HomeController
         $res              = $model -> add($data1);
         if ($res) {
             $data["code"] = 1;
-            $data["path"] = $outPath . $name;
             $data["msg"]  = "已提交";
-            $data['ff'] = $str;
         } else {
             $data["code"] = 0;
-            $data["path"] = $outPath . $name;
             $data["msg"]  = "提交失败";
         }
 
 
         // $data["url"] = $url;
 
-        echo json_encode($data);
-
+//        echo json_encode($data);
+        $this -> ajaxReturn($data);
     }
 
     //根据URL地址，下载文件
@@ -306,12 +308,14 @@ class IndexController extends HomeController
 
         $this -> display();
     }
-    function get_token($appId,$appSecret){
-        $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appId."&secret=".$appSecret;
-        $data = json_decode(file_get_contents($url),true);
-        if($data['access_token']){
+
+    function get_token($appId, $appSecret)
+    {
+        $url  = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=" . $appId . "&secret=" . $appSecret;
+        $data = json_decode(file_get_contents($url), true);
+        if ($data['access_token']) {
             return $data['access_token'];
-        }else{
+        } else {
             echo "Error";
             exit();
         }

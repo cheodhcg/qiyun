@@ -367,7 +367,7 @@
 <script src="/qiyun/Public/static/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
     $('.weixinAudio').weixinAudio({
-        autoplay:true,
+        autoplay:false,
 
     });
 </script>

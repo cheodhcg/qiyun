@@ -16,10 +16,10 @@
             选择金额
         </div>
         <ul>
-            <li><a href="{:U('Lecture/reward',array('id'=>$info['id']))}">5元</a></li>
-            <li><a href="{:U('Lecture/reward',array('id'=>$info['id']))}">10元</a></li>
-            <li><a href="{:U('Lecture/reward',array('id'=>$info['id']))}">20元</a></li>
-            <li><a href="{:U('Lecture/reward',array('id'=>$info['id']))}">50元</a></li>
+            <li><a href="#" onclick="onBridgeReady()">5元</a></li>
+            <li><a href="{:U('Lecture/reward',array('id'=>$info['id']))}" data-price="10">10元</a></li>
+            <li><a href="{:U('Lecture/reward',array('id'=>$info['id']))}" data-price="20">20元</a></li>
+            <li><a href="{:U('Lecture/reward',array('id'=>$info['id']))}" data-price="50">50元</a></li>
         </ul>
     </div>
 </div>
@@ -60,11 +60,18 @@
     <div class="zan_p container underline  oh">
         <div class="zan_p_l fl ">
             <span>
-                <a href="{:U('Lecture/like',array('id'=>$info['id']))}" id="like">
+                <a href="javascript:void (0);" id="like" onclick="likeUp()">
                 <img src="images/px_05.png" align="absmiddle" alt="aa" width="100%">
                 </a>
             </span>
-            <span>{$info['likelist']}</span>
+            <span>
+                <eq name="info['likeup']" value="0">
+                    还没有人点赞哦
+                    <else/>
+                    {$info['likeup']}人觉得很赞
+                </eq>
+
+            </span>
         </div>
         <div class="zan_p_r fr">
             <!--<a href="{:U('Lecture/reward',array('id'=>$info['id']))}">-->
@@ -152,6 +159,17 @@
             audio.play();
         }
     }
+    
+    function likeUp() {
+        var pid = '{$info.id}';
+        var uid = "{$uid}";
+        var url = "{:U('Lecture/like')}";
+        $.post(url,{pid:pid,uid:uid},function (data) {
+            alert(data);
+            console.log(data);
+        })
+    }
 
 </script>
+<include file=""/>
 <include file="Public/footer"/>

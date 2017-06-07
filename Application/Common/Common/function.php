@@ -98,7 +98,7 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
         $slice = join("",array_slice($match[0], $start, $length));
     }
 //    return $suffix ? $slice.'...' : $slice;
-    return $suffix ? $slice.'' : $slice;
+    return $suffix ? $slice.'...' : $slice;
 }
 
 /**
