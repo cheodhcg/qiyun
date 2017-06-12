@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head"/>
+</head>
+<body>
+<div class="wt_info ">
+    <div class="question_info container  oh underline">
+            <h3>{$info['title']}</h3>
+
+            <p>{$info['content']}</p>
+        <if condition="$info['userinfo']['face']">
+            <p>
+            <span class="q_img1 fl">
+                <a href="{:U('Index/userinfo?uid='.$info['uid'])}">
+                     <img class="fl" src="{$info['userinfo']['face']}" alt="aa" width="40">
+                </a>
+            
+            <span class="q_text1" style="">{$info['userinfo']['username']}</span>
+            </span>
+            <span class="q_text2 fr">{$info['userinfo']['company']} | {$info['userinfo']['position']}</span></p>
+        </if>
+    </div>
+    <div class="q_a container oh">
+        <div class="q_a_title oh">
+            <a href="{:U('Index/question_release')}"><span><img src="images/wt_03.png" alt="aa" width="100%" align="absmiddle"></span>我要提问</a>
+            <if condition="$flag">
+            <a href="{:U('Index/answer',array('id'=>$info['id']))}"
+            style="pointer-events:none; color:#ccc; cursor:default "><span><img src="images/h_03.png" alt=" aa" width="100%" align="absmiddle"></span>我已回答</a>
+            <else/>
+            <a href="{:U('Index/answer',array('id'=>$info['id']))}"><span><img src="images/h_03.png" alt=" aa" width="100%" align="absmiddle"></span>我要回答</a>
+            </if>
+            <a href="##" class="fr r_2"> <span>{$info['number']}</span>人回答</a>
+        </div>
+        <div class="q_a_info1">
+        <if condition="$info['questionlist']">
+        <volist name="info['questionlist']" id="v">
+            <!--<div class="yy_btn yy_btn2 ">-->
+            <div style="min-height: 48px">
+                <div class="wd_img_t fl">
+                    <img src="{$v['face']}" alt="aa" width="45" style="border-radius: 23px">
+                </div>
+                <!--<div class="wd_img_y fl">
+                    <img src="images/w_10.png" alt="aa" width="100%" align="bottom">
+
+                    &lt;!&ndash;语音上显示价格&ndash;&gt;
+                    <span>{$v['money']}元试听</span>
+                </div>-->
+                <div class="weixinAudio fl">
+                    <!--http://wbcfzk.natappfree.cc/qiyun/Public/static/webchataudio/sound/2.mp3-->
+                    <audio src="__ROOT__{$v.content}" id="media" width="1" height="1" preload></audio>
+                    <span id="audio_area" class="db audio_area">
+                                <span class="audio_wrp db">
+                                <span class="audio_play_area">
+                                    <i class="db icon_audio_default"></i>
+                                    <i class="db icon_audio_playing"></i>
+                                </span>
+
+                                <span class="db audio_info_area">
+                                    <strong class="db audio_title">{$v['money']}元试听</strong>
+                                </span>
+                                <span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
+                                </span>
+                                </span>
+                    <span id="audio_length" class="audio_length tips_global" style="float: right;">00:00"</span>
+                </div>
+                <!--<div class="wd_t fr"><span>{$v['num']}</span>人听过</div>-->
+            </div>
+        </volist>
+        <else/>
+        <div class="yy_btn"><span style="width:65px;">暂无回答</span></div>
+        </if>
+        </div>
+    </div>
+    <div class="xg_question oh ">
+        <div class="xg_title underline oh container ">
+            <a href=""><span><img src="images/wt_06.png" alt=" aa" width="100%" align="absmiddle"></span>相关问题</a>
+        </div>
+        <div class="xg_info container">
+            <div class="wd_cont ">
+            <volist name="xglist" id="x">
+                <a href="{:U('Index/questioninfo?id='.$x['pid'])}">
+                <div class="wd_c_box underline oh ">
+                    <p>{$x['title']}</p>
+                    <p>{$x.userinfo.username}（{$x.userinfo.position}）  |  {$x.userinfo.area}   {$x.userinfo.company}</p>
+                    <if condition="$x['questionlist']">
+                    <div style="">
+                        <div class="wd_img_t fl"><img src="{$x.questionlist.face}" alt="aa" width="48" style="border-radius: 24px"></div>
+                        <div class="wd_img_y fl"><img src="images/w_10.png" alt="aa" width="100%" align="bottom"><span>{$x['questionlist']['money']}</span></div>
+                        <div class="wd_t fr"><span>{$x.questionlist.num}</span>人听过</div>
+
+                    </div>
+                    </if>
+                </div>
+                </a>
+            </volist>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="__STATIC__/jquery-2.0.3.min.js"></script>
+
+<script>
+    var voice = {
+        localId: '',
+        serverId: ''
+    };
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '{$jssdk.appId}', // 必填，公众号的唯一标识
+        timestamp: '{$jssdk.timestamp}', // 必填，生成签名的时间戳
+        nonceStr: '{$jssdk.nonceStr}', // 必填，生成签名的随机串
+        signature: '{$jssdk.signature}',// 必填，签名，见附录1
+
+        jsApiList: [
+
+            'startRecord',
+            'stopRecord',
+            'onVoiceRecordEnd',
+            'playVoice',
+            'onVoicePlayEnd',
+            'pauseVoice',
+            'stopVoice',
+            'uploadVoice',
+            'downloadVoice'
+        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+
+    //假设全局变量已经在外部定义
+    //按下开始录音
+    $('.startRecord').on('touchstart', function (event) {
+        event.preventDefault();
+        START = new Date().getTime();
+
+        recordTimer = setTimeout(function () {
+            wx.startRecord({
+                /*    success: function(){
+                 localStorage.rainAllowRecord = 'true';
+                 },*/
+                cancel: function () {
+                    alert('用户拒绝授权录音');
+                }
+            });
+        }, 300);
+    });
+    //松手结束录音
+    $('.startRecord').on('touchend', function (event) {
+        event.preventDefault();
+        END = new Date().getTime();
+
+        if ((END - START) < 300) {
+            END = 0;
+            START = 0;
+            //小于300ms，不录音
+            clearTimeout(recordTimer);
+        } else {
+            wx.stopRecord({
+                success: function (res) {
+                    voice.localId = res.localId;
+                    if (voice.localId == '') {
+                        alert('请先录制一段声音');
+                        return;
+                    }
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });
+        }
+    });
+
+</script>
+<script src="__STATIC__/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $('.weixinAudio').weixinAudio({
+        autoplay:true,
+
+    });
+</script>
+<include file="Public/footer"/>

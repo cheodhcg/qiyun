@@ -7,6 +7,13 @@
     <title>微讲座</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
+    <style>
+        .w_info a{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 <div class="wd_title">
@@ -39,24 +46,23 @@
 <div class="w_cont container oh" id="listdiv">
     <volist name="list" id="v">
     <div class="w_info underline oh">
-        <div class="w_img_l fl">
-            <img src="__ROOT__{$v['icon']}" alt=" aa" height="100%" width="100%" >
-        </div>
-        <div class="w_text_r fr">
-            <h3>{$v['title'],0,20|msubstr}</h3>
-            {$v['content']}
-            <!--<a href="{:U('lectureinfo?id='.$v['id'])}">{$v['content']}</a>-->
-        </div>
-        <div class="w_btn_p fl">
-            <div class="mf fr">
-            <!--<a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">{$v['money']}元培训<else/>免费培训</if></a>-->
-            <a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">前去围观</if></a>
+        <a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">
+
+            <div class="w_img_l fl">
+                <img src="__ROOT__{$v['icon']}" alt=" aa" height="100%" width="100%" >
             </div>
-        </div>
+            <div class="w_text_r fr">
+                <h3>{$v['title'],0,20|msubstr}</h3>
+                {$v['content']}
+                <!--<a href="{:U('lectureinfo?id='.$v['id'])}">{$v['content']}</a>-->
+            </div>
+
+        </if></a>
+
     </div>
     </volist>
 
-    
+
 </div>
 
 <!--点击更多显示-->
@@ -68,6 +74,11 @@
 </if>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
+    $(function () {
+        $('.w_img_l img').css({
+            height: $('.w_img_l img').width()     
+        })
+    });
     var p = 2;
     $("#gengduo").click(function(event) {
         var id = "{$_GET['id']}";

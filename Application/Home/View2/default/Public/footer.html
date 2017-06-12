@@ -1,0 +1,70 @@
+<div class="nav_h">
+</div>
+<?php 
+    //获取当前域名详情地址
+    $url = $_SERVER['QUERY_STRING'];
+    $arr = explode('/', $url);
+    $str = $arr[2];
+?>
+<div class="nav oh">
+    <ul class="nav_ul">
+        <a href="{:U('Index/index?type=1')}">
+            <li align="center" <eq name="str" value="Index"> class="nav_a" </eq>>
+                <span>
+                <eq name="str" value="Index">
+                <img src="images/w_17.png" alt="aa" width="32" >
+                <else/>
+                <img src="images/w_1.png" alt="aa" width="32" >
+                </eq>
+                </span>
+                <span>问答</span>
+            </li></a>
+        <a href="{:U('Lecture/index?type=2')}" <eq name="str" value="Lecture"> class="nav_a" </eq>>
+            <li align="center" class="">
+                <span>
+                <eq name="str" value="Lecture">
+                <img src="images/w_4.png" alt="aa" width="" >
+                <else/>
+                <img src="images/w_19.png" alt="aa" width="" >
+                </eq>
+                </span>
+                <span>学习</span>
+            </li></a>
+        <a href="{:U('Shop/index?type=3')}" <eq name="str" value="Shop"> class="nav_a" </eq>>
+            <li align="center">
+                <span>
+                <eq name="str" value="Shop">
+                <img src="images/w_18.png" alt="aa" width="" >
+                <else/>
+                <img src="images/w_21.png" alt="aa" width="" >
+                </eq>
+                </span>
+                <span>服务</span>
+            </li>
+        </a>
+        <a href="{:U('Contact/index?type=4')}" <eq name="str" value="Contact"> class="nav_a" </eq>>
+            <li align="center">
+                <span>
+                <eq name="str" value="Contact">
+                <img src="images/w_30.png" alt="aa" width="" align="absmiddle">
+                <else/>
+                <img src="images/w_23.png" alt="aa" width="" align="absmiddle">
+                </eq>
+                </span>
+                <span>人脉</span>
+            </li></a>
+        <a href="{:U('User/index?type=5')}" <eq name="str" value="User"> class="nav_a" </eq>>
+            <li align="center">
+                <span>
+                    <eq name="str" value="User">
+                    <img src="images/w_26.png" alt="aa" width="" >
+                    <else/>
+                    <img src="images/w_25.png" alt="aa" width="" >
+                    </eq>
+                </span><span>我的</span>
+            </li>
+        </a>
+    </ul>
+</div>
+</body>
+</html>

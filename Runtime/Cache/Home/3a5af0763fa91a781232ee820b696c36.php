@@ -32,7 +32,7 @@
             </div><?php endforeach; endif; else: echo "" ;endif; ?>
         </div>
         <!--验证选择项-->
- <!--       <script type="text/javascript">
+        <script type="text/javascript">
             $('input[type=checkbox]').click(function() {
                 $("input[name='type[]']").attr('disabled', true);
                 if ($("input[name='type[]']:checked").length >= 2) {
@@ -41,7 +41,8 @@
                     $("input[name='type[]']").attr('disabled', false);
                 }
             });
-        </script>-->
+        </script>
+
     </div>
     
     <!-- <div class="tw_cont">
@@ -53,9 +54,6 @@
 </form>
 <script type="text/javascript">
     $(".tj_btn").click(function(event) {
-        var t1 = $('#form1').serializeArray();
-        console.log(t1);
-        return;
         if($("#title").val() == ""){
             alert('填写提问标题');return false;
         }

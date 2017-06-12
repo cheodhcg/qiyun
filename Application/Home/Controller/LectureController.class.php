@@ -127,12 +127,12 @@ class LectureController extends HomeController
             $userlist         = M('user') -> where($where) -> field('nickname') -> limit(3) -> select();
             $info['likelist'] = implode(',', array_column($userlist, 'nickname'));
         } else {
-            $info['likelist'] = '赞无点赞,赶快点赞吧';
+            $info['likelist'] = '暂无点赞,赶快点赞吧';
         }
-        require_once 'JSSDK.php';
+/*        require_once 'JSSDK.php';
         $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
         $signPackage = $jssdk -> GetSignPackage();
-        $this -> assign('jssdk', $signPackage);
+        $this -> assign('jssdk', $signPackage);*/
         $this -> assign('info', $info);//分类列表
         $this->assign('uid',$_COOKIE['qiyun_user']);
         $this -> display();
@@ -192,7 +192,7 @@ class LectureController extends HomeController
                 $msg = "点赞成功,感谢您的参与";
             } else {
                 $msg = "点赞失败";
-
+                $msg = M('lecture') ->getLastSql();
             }
             $this->ajaxReturn($msg);
 

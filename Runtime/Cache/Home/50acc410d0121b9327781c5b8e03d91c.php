@@ -7,6 +7,13 @@
     <title>微讲座</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
+    <style>
+        .w_info a{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 <div class="wd_title">
@@ -34,23 +41,18 @@
 </div>
 <div class="w_cont container oh" id="listdiv">
     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="w_info underline oh">
-        <div class="w_img_l fl">
-            <img src="/qiyun<?php echo ($v['icon']); ?>" alt=" aa" height="100%" width="100%" >
-        </div>
-        <div class="w_text_r fr">
-            <h3><?php echo (msubstr($v['title'],0,20)); ?></h3>
-            <?php echo ($v['content']); ?>
-            <!--<a href="<?php echo U('lectureinfo?id='.$v['id']);?>"><?php echo ($v['content']); ?></a>-->
-        </div>
-        <div class="w_btn_p fl">
-            <div class="mf fr">
-            <!--<a href="<?php echo U('lectureinfo?id='.$v['id']);?>"><?php if($v['money']): echo ($v['money']); ?>元培训<?php else: ?>免费培训<?php endif; ?></a>-->
-            <a href="<?php echo U('lectureinfo?id='.$v['id']);?>"><?php if($v['money']): ?>前去围观<?php endif; ?></a>
+        <a href="<?php echo U('lectureinfo?id='.$v['id']);?>"><?php if($v['money']): ?><div class="w_img_l fl">
+                <img src="/qiyun<?php echo ($v['icon']); ?>" alt=" aa" height="100%" width="100%" >
             </div>
-        </div>
+            <div class="w_text_r fr">
+                <h3><?php echo (msubstr($v['title'],0,20)); ?></h3>
+                <?php echo ($v['content']); ?>
+                <!--<a href="<?php echo U('lectureinfo?id='.$v['id']);?>"><?php echo ($v['content']); ?></a>-->
+            </div><?php endif; ?></a>
+
     </div><?php endforeach; endif; else: echo "" ;endif; ?>
 
-    
+
 </div>
 
 <!--点击更多显示-->
@@ -60,6 +62,11 @@
 </span><?php endif; ?>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
+    $(function () {
+        $('.w_img_l img').css({
+            height: $('.w_img_l img').width()     
+        })
+    });
     var p = 2;
     $("#gengduo").click(function(event) {
         var id = "<?php echo ($_GET['id']); ?>";

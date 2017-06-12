@@ -13,6 +13,15 @@
             background: url("__ROOT__/images/bg_03.png");
             background-size: 100%;
         }
+        .my_text p:first-child span{
+            position: relative;
+        }
+        .my_text p:first-child .zj{
+            position: absolute;
+            right: 5px;
+            bottom: 2px;
+            border:none;
+        }
     </style>
 </head>
 <body style="">
@@ -26,6 +35,7 @@
 		<else/>
 		<img src="images/timg.jpg" alt="aa" width="100%">
 		</if>
+            <img class="zj" src="__ROOT__/images/zj.png" alt="i" width="15px">
 		</span></p>
         <p><strong>{$info['nickname']}</strong></p>
     </div>

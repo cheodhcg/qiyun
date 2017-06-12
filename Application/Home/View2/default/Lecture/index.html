@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>微讲座</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div class="wd_title">
+    <div class="wd_t_cont fl ">
+        <ul class="wd_ul">
+            <li><a href="{:U('Lecture/index')}" <if condition="$type eq 0"> class="wd_a" </if>>推荐</a></li>
+            <volist name="cate_list" id="v">
+            <li><a href="{:U('Lecture/index',array('id'=>$v['id']))}" <if condition="$type eq $v['id']"> class="wd_a" </if>>{$v['title']}</a></li>
+            </volist>
+        </ul>
+    </div>
+    <!--<span class="fr wd_t_cont_span ">
+            <a href="{:U('lecture_release')}">
+                <img src="images/w_03.png" alt="aa" width="100%">
+            </a>
+
+        </span>-->
+
+        <if condition="member_level() eq 3">
+            <span class="fr wd_t_cont_span ">
+            <a href="{:U('lecture_release')}" class="question-btn2">
+                <!--<img src="images/w_03.png" alt="aa" width="100%">-->
+                <span style="">上传</span>
+            </a>
+                 </span>
+        </if>
+
+
+</div>
+<div class="w_cont container oh" id="listdiv">
+    <volist name="list" id="v">
+    <div class="w_info underline oh">
+        <div class="w_img_l fl">
+            <img src="__ROOT__{$v['icon']}" alt=" aa" height="100%" width="100%" >
+        </div>
+        <div class="w_text_r fr">
+            <h3>{$v['title'],0,20|msubstr}</h3>
+            {$v['content']}
+            <!--<a href="{:U('lectureinfo?id='.$v['id'])}">{$v['content']}</a>-->
+        </div>
+        <div class="w_btn_p fl">
+            <div class="mf fr">
+            <!--<a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">{$v['money']}元培训<else/>免费培训</if></a>-->
+            <a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">前去围观</if></a>
+            </div>
+        </div>
+    </div>
+    </volist>
+
+    
+</div>
+
+<!--点击更多显示-->
+<if condition="$page eq 1">
+<span class="loading">
+   <img class="fl" src="images/load.png" alt="aa" height="100%">
+   <span id="gengduo">点击加载更多</span>
+</span>
+</if>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    var p = 2;
+    $("#gengduo").click(function(event) {
+        var id = "{$_GET['id']}";
+        $.ajax({
+            url: "{:U('Lecture/index')}",
+            type: 'GET',
+            dataType: 'json',
+            data: {id:id,p:p},
+            success: function(data, textStatus, xhr) {
+              var tmp='';
+              if (data.status==0) {
+                 $("#gengduo").text('没有更多信息');
+                 $(".loading").css("background-color","#cccccc");
+                 return false;
+              };
+              $.each(data.info, function(index, v) {
+                if(v.money > 0){
+                   tmp+='<div class="w_info underline oh"><div class="w_img_l fl"><img src="'+v.icon+'" alt=" aa" height="100%" width="100%" ></div><div class="w_text_r fr"><a href="/index.php?s=/Home/Lecture/lectureinfo/id/'+v.id+'">'+v.content+'</a></div><div class="w_btn_p fl"><div class="mf fr"><a href="/index.php?s=/Home/Lecture/lectureinfo/id/'+v.id+'">'+v.money+'元培训</a></div></div></div>';
+                }else{
+                    tmp+='<div class="w_info underline oh"><div class="w_img_l fl"><img src="'+v.icon+'" alt=" aa" height="100%" width="100%" ></div><div class="w_text_r fr"><a href="/index.php?s=/Home/Lecture/lectureinfo/id/'+v.id+'">'+v.content+'</a></div><div class="w_btn_p fl"><div class="mf fr"><a href="/index.php?s=/Home/Lecture/lectureinfo/id/'+v.id+'">免费培训</a></div></div></div>';
+                }
+              });
+              if (tmp) {
+                    $('#listdiv').append(tmp);
+              };
+             p++;
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+            }
+        })
+    });
+</script>
+<include file="Public/footer"/>

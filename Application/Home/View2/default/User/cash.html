@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>提现</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body style="">
+<div class="container oh tx_box" style="height: 100%">
+<form action="" method="post" id="form1">
+        <div class="yue_info">
+            <p>当前余额</p>
+            <p align="center"><img src="images/tx_03.png" alt="aa" width="100%"></p>
+            <p align="center"><span id="user_money">{$user_money}</span>元</p>
+        </div>
+    <div class="yue_input">
+        <input type="text" id="tx_money" name="tx_money" placeholder="请输入您要提现的金额">
+        <p>提示：提现金额到您的微信账户 <span id="qb">全额提现</span></p>
+    </div>
+    <div>
+        <a href="javascript:void(0);" class="yue_btn" id="tx">确认提现</a>
+    </div>
+</form>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$("#qb").click(function(event) {
+    var user_money = $("#user_money").text();
+    $("#tx_money").val(user_money);
+});
+
+$("#tx").click(function(event) {
+    if($("#tx_money").val() < 1){
+        alert('提现金额必须要大于一元');return false;
+    }
+    $("#form1").submit();
+});
+</script>
+<include file="Public/footer"/>
+

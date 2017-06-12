@@ -102,8 +102,17 @@
             width += $(this).width()+42;//42为margin和padding
         });
         $('#overflow .container').css("height",bh);
-        $('#overflow .container').css('width', width + "px");
+
         $('html,body').addClass('ovfHiden');
+
+        var rmqW = $(window).width();
+        $('.rmq_person').css({
+            width:rmqW * 0.7,
+            height:bh*0.6
+        });
+        $('#overflow .container').css({
+            width: ($('.rmq_person').length) * 310
+        });
     })
 
 </script>

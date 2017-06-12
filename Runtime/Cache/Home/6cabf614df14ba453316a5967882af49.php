@@ -12,6 +12,8 @@
             border: none;
         }
     </style>
+    <link rel="stylesheet" href="../style.css">
+
 </head>
 <body style="background: #fff">
 <div class="rmq_title oh">
@@ -21,9 +23,8 @@
         <li><a href="<?php echo U('Contact/release_news');?>" >信息发布</a></li>
         <a href="<?php echo U('Contact/search_user');?>" class="search_r"><img src="images/search.png" alt="aa" width="100%"></a>
     </ul>
-
 </div>
-
+    <div style="width: 100%;height: 47px;"></div>
 <div class="wd_title1 underline">
     <div class="wd_t_cont1 fl  " style="width: 100%">
         <ul class="wd_ul oh">

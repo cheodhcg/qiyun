@@ -64,6 +64,45 @@ class ShopController extends AdminController {
 		$this->meta_title = '新增商品';
         $this->display();
 	}
+
+	public function wareinfo(){
+	    $model = M('member_type');
+	    $list = $model->field(true)->select();
+	    trace($list);
+	    $this->assign('list',$list);
+	    $this->display();
+    }
+    public function addWare(){
+	    if (IS_POST){
+	        $data = $_POST;
+	        $data['create_time'] = time();
+	        $model = M('member_type');
+	        if (I('id')){
+                $where['id'] = I('id');
+                $data['update_time'] = time();
+                $res = $model->where($where)->save($data);
+            }else{
+                $res = $model->add($data);
+            }
+
+
+	        if ($res){
+	            $this->success('操作成功',U('Shop/wareinfo'));
+            }else{
+	            $this->error("操作失败，请稍后重试",U('Shop/wareinfo'));
+            }
+        }else{
+	        $id = I('id')? I('id') : 0;
+            $model = M('member_type');
+            $where['id'] = $id;
+            $data = $model->where($where)->select();
+            $this->meta_title = '新增会员种类';
+            $this->assign('data',$data[0]);
+            $this->assign('id',$id);
+            $this->display();
+        }
+
+    }
 	
 	
 	/**
@@ -83,13 +122,26 @@ class ShopController extends AdminController {
                 $this->forbid('Shop', $map );
                 $this->success('操作成功');
                 break;
+            case 'forbiduser2':
+                $this->forbid('member_type', $map );
+                $this->success('操作成功');
+                break;
             case 'resumeuser':
                 $this->resume('Shop', $map );
+                $this->success('操作成功');
+                break;
+            case 'resumeuser2':
+                $this->resume('member_type', $map );
                 $this->success('操作成功');
                 break;
             case 'deleteuser':
                 //$this->delete('Shop', $map );
 				M('shop')->where($map)->delete();
+                $this->success('操作成功');
+                break;
+            case 'deleteuser2':
+                //$this->delete('Shop', $map );
+                M('member_type')->where($map)->delete();
                 $this->success('操作成功');
                 break;
             default:

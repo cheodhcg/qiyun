@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>商城</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <style>
+        .sb_mc {
+            width: 55%;
+            display: block;
+            color: #000 !important;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+            -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+            -webkit-line-clamp: 1; /** 显示的行数 **/
+            overflow: hidden; /** 隐藏超出的内容 **/
+        }
+
+        .sb_mc2 {
+            width: 45%;
+            display: block;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+            -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+            -webkit-line-clamp: 1; /** 显示的行数 **/
+            overflow: hidden; /** 隐藏超出的内容 **/
+        }
+    </style>
+</head>
+<body>
+<div class="sc_banner">
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <volist name="bannerlist" id="v">
+                <div class="swiper-slide">
+                    <a href="{:U('Shop/info',array('id'=>$v['id']))}">
+                        <img src="{$v['cover_id']|get_cover='path'}" alt="aa" width="100%" height="220">
+                    </a>
+                </div>
+            </volist>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination" style="bottom: 10px;"></div>
+        <!-- Add Arrows -->
+        <!--<div class="swiper-button-next"></div>-->
+        <!--<div class="swiper-button-prev"></div>-->
+    </div>
+</div>
+<div class="sc_list  oh" id="listdiv">
+    <volist name="list" id="vo">
+        <div class="sc_list_info fl oh">
+            <a href="{:U('info?id='.$vo['id'])}">
+                <img src="__ROOT__{$vo.path}" alt="aa" width="140" height="96">
+                <p><span class="sb_mc fl">{$vo.title}</span><span class="fr sb_mc2" style="text-align: right">￥{$vo.money}</span>
+                </p>
+            </a>
+        </div>
+    </volist>
+
+</div>
+<if condition="$page eq 1">
+<span class="loading">
+   <img class="fl" src="images/load.png" alt="aa" height="100%"> 
+   <span id="gengduo">点击加载更多</span>
+</span>
+</if>
+<include file="Public/footer"/>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+
+<script>
+    var p = 2;
+    $("#gengduo").click(function (event) {
+        $.ajax({
+            url: "{:U('Shop/index')}",
+            type: 'GET',
+            dataType: 'json',
+            data: {p: p},
+            success: function (data, textStatus, xhr) {
+                var tmp = '';
+                if (data.status == 0) {
+                    $("#gengduo").text('没有更多信息');
+                    $(".loading").css("background-color", "#cccccc");
+                    return false;
+                }
+                ;
+                $.each(data.info, function (index, v) {
+                    tmp += '<div class="sc_list_info fl oh"><a href="index.php?s=/Home/Shop/info/id/' + v.id + '"><img src="' + v.path + '" alt="aa" width="100%"><p><span class="sb_mc fl">' + v.title + '</span><span class="fr sb_mc2" style="text-align: right">￥' + v.money + '</span></p></a></div>';
+                });
+                if (tmp) {
+                    $('#listdiv').append(tmp);
+                }
+                ;
+                p++;
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            }
+        })
+    });
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+    });
+</script>

@@ -13,6 +13,15 @@
             background: url("/qiyun/images/bg_03.png");
             background-size: 100%;
         }
+        .my_text p:first-child span{
+            position: relative;
+        }
+        .my_text p:first-child .zj{
+            position: absolute;
+            right: 5px;
+            bottom: 2px;
+            border:none;
+        }
     </style>
 </head>
 <body style="">
@@ -24,6 +33,7 @@
 		<?php if($info['face']): ?><img src="<?php echo ($info['face']); ?>" alt="aa" width="100%">
 		<?php else: ?>
 		<img src="images/timg.jpg" alt="aa" width="100%"><?php endif; ?>
+            <img class="zj" src="/qiyun/images/zj.png" alt="i" width="15px">
 		</span></p>
         <p><strong><?php echo ($info['nickname']); ?></strong></p>
     </div>
@@ -140,7 +150,7 @@
         <div class="option_border_box"></div>
     </li>
 </ul>
-<!--<a href="<?php echo U('user/phpinfo');?>">phpinfo</a>-->
+<a href="<?php echo U('user/phpinfo');?>">phpinfo</a>
 
 <div class="nav_h">
 </div>

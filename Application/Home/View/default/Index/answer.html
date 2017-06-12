@@ -36,7 +36,7 @@
                 <div class="yy_btn startRecord mobile_btn" style="display: block">
                 <span>
                     <a href="javascript:void(0);" style="display: block" id="push_answer">
-                        <img src="images/wt1_03.png" alt="aa" width="100%">
+                        <img src="images/01.png" alt="aa" width="100%">
                     </a>
                 </span>
                     <span class="btn_tips">按住说话</span>
@@ -51,7 +51,29 @@
                     <span class="btn_tips">停止录音</span>
                 </div>
             </if>
-
+        </div>
+        <div class="q_a_info1">
+            <if condition="$is_answer">
+                <div class="yy_btn"><span style="width:120px;">您已回答过该问题</span></div>
+                <else/>
+                <div class="yy_btn startRecord mobile_btn" style="display: block">
+                <span>
+                    <a href="javascript:void(0);" style="display: block" id="push_answer">
+                        <img src="images/01.png" alt="aa" width="100%">
+                    </a>
+                </span>
+                    <span class="btn_tips">按住说话</span>
+                </div>
+                <!--停止录音-->
+                <div class="yy_btn stopRecord" style="display: none">
+                <span>
+                    <a href="javascript:void(0);" style="display: block" id="push_answer2">
+                        <img src="images/wt1_03.png" alt="aa" width="100%">
+                    </a>
+                </span>
+                    <span class="btn_tips">停止录音</span>
+                </div>
+            </if>
         </div>
     </div>
     <if condition="!$is_answer">

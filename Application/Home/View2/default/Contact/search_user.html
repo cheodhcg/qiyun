@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>搜索</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        button{
+            background: #fff;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body style="">
+<form action="{:U('Contact/search_user')}" method="post" id="form1">
+<div class="search container oh" style="height: 100%;">
+    <input style="width:235px"; class="fl" type="text" name="title" placeholder="请输入要搜索的关键字">
+    <button style="" class="fl" id="search"><img src="images/search1.png" alt=" " width="" height="35px"></button>
+</div>
+</form>
+<div class="xxjl_info container oh" id="newlist">
+<volist name="list" id="vo">
+    <div class="xxjl_cont underline ">
+        <div class="xxjl_img fl">
+            <img src="{$vo['icon']}" alt="aa" width="100%">
+        </div>
+        <div class="xxjl_text fl">
+            <p><a href="{:U('info?id='.$vo['id'])}">{$vo['title']}</a></p>
+            <p>{:timediff($vo['addtime'])}</p>
+        </div>
+    </div>
+</volist>    
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    $("#search").click(function(event) {
+        $("#form1").submit();
+    });
+</script>
+<include file="Public/footer"/>

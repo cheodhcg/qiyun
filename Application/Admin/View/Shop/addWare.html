@@ -1,0 +1,51 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form action="__SELF__" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">会员名称<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="{$data['title']}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">价格<span class="check-tips">(一年)</span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="money" value="{$data['money']}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">通过形式<span class="check-tips">（成为会员的方式，默认微信支付购买）</span></label>
+            <div class="controls">
+                <select name="type">
+                    <option value="0" checked>微信支付</option>
+                    <option value="1">审核（专业会员适用）</option></select>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">描述<span class="check-tips">（对此类型会员的描述）</span> </label>
+            <div class="controls">
+                <label class="textarea input-large">
+                    <textarea name="description">{$data.description}</textarea>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <input type="hidden" name="id" value="{$id}">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Shop/wareinfo')}');
+    </script>
+</block>

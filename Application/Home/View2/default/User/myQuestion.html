@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>我的提问</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div class="wdtw_box oh" id="listdiv">
+<volist name="list" id="vo">
+    <a href="{:U('Index/questioninfo',array('id'=>$vo['id']))}">
+    <div class="wdtw_info container oh underline">
+       <div>
+           <p>{$vo['title']}</p>
+           <p>{$vo['content'],0,20|msubstr}</p>
+       </div>
+        <div class="my_tw_x fl">
+            <div class="my_tw_x1 abs">
+                <span><img src="images/w_03.png" alt="aa" width="100%" align="absmiddle"></span>
+                <span>{$vo['answer_num']}人</span>
+            </div>
+            <div class="my_tw_x1 abs">
+                <span><img src="images/ej_03.png" alt="aa" width="100%" align="absmiddle"></span>
+                <span>{$vo['number']}人</span>
+
+            </div>
+            <div class="my_tw_time fr abs">
+                {$vo.addtime}
+            </div>
+        </div>
+    </div>
+    </a>
+</volist>
+</div>
+<!-- <div style="height: 65px;">
+</div> -->
+<if condition="$page eq 1">
+<span class="loading">
+   <img class="fl" src="images/load.png" alt="aa" height="100%"> 
+   <span id="gengduo">点击加载更多</span>
+</span>
+</if>
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    var p = 2;
+    $("#gengduo").click(function(event) {
+        $.ajax({
+            url: "{:U('User/myQuestion')}",
+            type: 'GET',
+            dataType: 'json',
+            data: {p:p},
+            success: function(data, textStatus, xhr) {
+              var tmp='';
+              if (data.status==0) {
+                 $("#gengduo").text('没有更多信息');
+                 $(".loading").css("background-color","#cccccc");
+                 return false;
+              };
+              $.each(data.info, function(index, v) {
+                   tmp+='<div class="wdtw_info container oh underline"><div><a href="/index.php?s=/Home/Index/questioninfo/id/'+v.id+'"><p>'+v.content+'</p></a></div><div class="my_tw_x fl"><div class="my_tw_x1 abs"><span><img src="images/w_03.png" alt="aa" width="100%" align="absmiddle"></span><span>'+v.answer_num+'人</span></div><div class="my_tw_x1 abs"><span><img src="images/ej_03.png" alt="aa" width="100%" align="absmiddle"></span><span>'+v.number+'人</span></div><div class="my_tw_time fr abs">'+v.addtime+'</div></div></div>';
+              });
+              if (tmp) {
+                    $('#listdiv').append(tmp);
+              };
+             p++;
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+             
+            }
+        })
+    });
+</script>
+<include file="Public/footer"/>

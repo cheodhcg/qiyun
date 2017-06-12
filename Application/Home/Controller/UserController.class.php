@@ -471,8 +471,22 @@ class UserController extends HomeController {
         }
     }
     public function phpinfo(){
-        echo phpinfo();
+        $filename = "wxupload_14966982989294.amr";
+        $name = "wxupload_14966982989294.mp3";
+//        $from = "D:\\wwwroot\\qiyun\\wwwroot\\weixinrecord\\20170606\\";
+        $from = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\20170606\\";
+//        $str = "D:\\wwwroot\\qiyun\\wwwroot\\ffm\\bin\\ffmpeg.exe -i " . $from . $filename . " " . $from . $name;
+        $str = "ffmpeg -i " . $from . $filename . " " . $from . $name;
+//        exec($str,$callback);
+        exec($str);
+        echo $str;
+//        exec('ipconfig',$callback);
+//        var_dump($callback);
+//        echo phpinfo();
         $this->display();
     }
 
 }
+
+
+

@@ -31,6 +31,18 @@
             -webkit-line-clamp: 1; /** 显示的行数 **/
             overflow: hidden; /** 隐藏超出的内容 **/
         }
+        .sc-nav {
+            overflow: hidden;
+            padding: 15px 0;
+        }
+        .sc-nav ul{
+            width: 100%;
+        }
+        .sc-nav ul li{
+            width: 20%  ;
+            text-align: center;
+            float: left;
+        }
     </style>
 </head>
 <body>
@@ -54,11 +66,20 @@
         <!--<div class="swiper-button-prev"></div>-->
     </div>
 </div>
+<div class="sc-nav">
+    <ul>
+        <li><a href="1#"><img src="images/sc01.png" alt="i" width="80%"> <br>房产</a></li>
+        <li><a href="2#"><img src="images/sc02.png" alt="i" width="80%"> <br>房产</a></li>
+        <li><a href="3#"><img src="images/sc03.png" alt="i" width="80%"> <br>房产</a></li>
+        <li><a href="4#"><img src="images/sc04.png" alt="i" width="80%"> <br>房产</a></li>
+        <li><a href="5#"><img src="images/sc05.png" alt="i" width="80%"> <br>房产</a></li>
+    </ul>
+</div>
 <div class="sc_list  oh" id="listdiv">
     <volist name="list" id="vo">
         <div class="sc_list_info fl oh">
             <a href="{:U('info?id='.$vo['id'])}">
-                <img src="__ROOT__{$vo.path}" alt="aa" width="140" height="96">
+                <img src="__ROOT__{$vo.path}" alt="aa" width="141" height="95">
                 <p><span class="sb_mc fl">{$vo.title}</span><span class="fr sb_mc2" style="text-align: right">￥{$vo.money}</span>
                 </p>
             </a>

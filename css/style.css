@@ -761,8 +761,7 @@
 }
 
 .sp_btn {
-    width: 300px;
-    height: 35px;
+    width: 100%;
     background: #0076c2;
     text-align: center;
     line-height: 35px;

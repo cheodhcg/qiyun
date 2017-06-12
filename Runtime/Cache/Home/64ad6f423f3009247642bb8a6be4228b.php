@@ -17,11 +17,12 @@
     }
 
     .weixinAudio {
-        line-height: 1.5;
+        /*line-height: 1.5;*/
         border-radius: 25px;
         height: 30px;
-        width: 200px;
+        width: 205px;
         margin-left: 10px;
+        line-height: 45px;
         /*background: url("images/w_10.png");*/
     }
 
@@ -41,12 +42,12 @@
 
     .audio_wrp {
         width: 155px;
-        border: 1px solid #ebebeb;
+        /*border: 1px solid #ebebeb;*/
         /*background-color: #fcfcfc;*/
         /*overflow: hidden;*/
         /*padding: 12px 20px 12px 12px;*/
-        background: #ff5854;
-        border-radius: 20px;
+        /*background: #ff5854;*/
+        /*border-radius: 8px;*/
         height: 30px;
         line-height: 30px;
         color: #fff;
@@ -54,32 +55,34 @@
         z-index: 999;
         top:8px;
         left: 5px;
+        background: url('../images/w_101.png') center no-repeat;
+        background-size: 100%;
     }
 
-    .audio_wrp:after {
-        content: "";
-        z-index: -1;
-        border: 0 solid transparent;
-        border-bottom: 20px solid #ff5854;
-        -moz-border-radius: 0 0 0 200px;
-        -webkit-border-radius: 0 0 0 200px;
-        border-radius: 0 0 0 200px;
-        width: 30px;
-        height: 30px;
-        position: relative;
-        /*margin-top: 20px;*/
-        -webkit-transform: rotate(-30deg);
-        -moz-transform: rotate(-30deg);
-        -ms-transform: rotate(-30deg);
-        -o-transform: rotate(-30deg);
-        position: absolute;
-        top: -14px;
-        left:-12px;
-    }
+    /*.audio_wrp:after {*/
+        /*content: "";*/
+        /*z-index: -1;*/
+        /*border: 0 solid transparent;*/
+        /*border-bottom: 20px solid #ff5854;*/
+        /*-moz-border-radius: 0 0 0 200px;*/
+        /*-webkit-border-radius: 0 0 0 200px;*/
+        /*border-radius: 0 0 0 200px;*/
+        /*width: 30px;*/
+        /*height: 30px;*/
+        /*position: relative;*/
+        /*!*margin-top: 20px;*!*/
+        /*-webkit-transform: rotate(-30deg);*/
+        /*-moz-transform: rotate(-30deg);*/
+        /*-ms-transform: rotate(-30deg);*/
+        /*-o-transform: rotate(-30deg);*/
+        /*position: absolute;*/
+        /*top: -13px;*/
+        /*left:-15px;*/
+    /*}*/
 
     .audio_play_area {
         float: left;
-        margin: 0 10px 0 8px;
+        margin: 0 10px 0 10px;
         font-size: 0;
         width: 18px;
         height: 25px;
@@ -112,7 +115,7 @@
         background-size: 40px 18px;
         -webkit-animation: audio_playing 1s infinite;
         background-position: 0px center;
-        margin: 0;
+        margin: 0 0 0 5px;
         display: none;
     }
 
@@ -221,7 +224,7 @@
                 <div class="yy_btn startRecord mobile_btn" style="display: block">
                 <span>
                     <a href="javascript:void(0);" style="display: block" id="push_answer">
-                        <img src="images/wt1_03.png" alt="aa" width="100%">
+                        <img src="images/01.png" alt="aa" width="100%">
                     </a>
                 </span>
                     <span class="btn_tips">按住说话</span>
@@ -235,7 +238,27 @@
                 </span>
                     <span class="btn_tips">停止录音</span>
                 </div><?php endif; ?>
-
+        </div>
+        <div class="q_a_info1">
+            <?php if($is_answer): ?><div class="yy_btn"><span style="width:120px;">您已回答过该问题</span></div>
+                <?php else: ?>
+                <div class="yy_btn startRecord mobile_btn" style="display: block">
+                <span>
+                    <a href="javascript:void(0);" style="display: block" id="push_answer">
+                        <img src="images/01.png" alt="aa" width="100%">
+                    </a>
+                </span>
+                    <span class="btn_tips">按住说话</span>
+                </div>
+                <!--停止录音-->
+                <div class="yy_btn stopRecord" style="display: none">
+                <span>
+                    <a href="javascript:void(0);" style="display: block" id="push_answer2">
+                        <img src="images/wt1_03.png" alt="aa" width="100%">
+                    </a>
+                </span>
+                    <span class="btn_tips">停止录音</span>
+                </div><?php endif; ?>
         </div>
     </div>
     <?php if(!$is_answer): ?><div style="text-align: right">

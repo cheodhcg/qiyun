@@ -49,6 +49,7 @@ class ShopController extends HomeController
         //获取广告
         $bannerlist = $shop -> where("status=1 and is_tj = 1") -> field('id,cover_id') -> select();
         $this -> assign('bannerlist', $bannerlist);
+        $this -> assign('cate_list', $this -> cate_list);//分类列表
         $this -> assign('page', count($list) == 8 ? "1" : "0");
         $this -> display();
     }
@@ -86,6 +87,7 @@ class ShopController extends HomeController
 
             $uid     = $_COOKIE['qiyun_user'];
             //TODO:微信支付
+
             if (1) {//支付成功
                 $res = $this -> addGoodsLog($goodsId, $uid);
                 $info = array(

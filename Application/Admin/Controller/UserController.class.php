@@ -258,6 +258,13 @@ class UserController extends AdminController {
 		$this->meta_title = '会员用户列表';
         $this->display();
 	}
+
+    //专业会员审核
+    public function ProfessionalMembers(){
+
+        $this->assign('meta_title','专业会员审核');
+        $this->display();
+    }
 	
 	public function info(){
 		$uid = I('uid');

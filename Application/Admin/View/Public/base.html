@@ -21,7 +21,7 @@
     <!-- 头部 -->
     <div class="header">
         <!-- Logo -->
-        <span class="logo" style="background:url()"></span>
+        <span class="logo" style="color: #fff;font-size: 22px">企知道</span>
         <!-- /Logo -->
 
         <!-- 主导航 -->

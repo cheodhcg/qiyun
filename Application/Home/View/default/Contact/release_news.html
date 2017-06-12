@@ -50,9 +50,10 @@
     <div class="xxfb_cont" style="width:100%;float:left;">
         <span class="fl r_span2" style="margin-right:5px;">资讯图片</span>
         <span class="">
-            <!-- <img src="images/sc_07.png" alt=" aa" width="100%"><input type="file" class="dn" id="fileTne" name="icon" style=""> -->
+             <!--<img src="images/sc_07.png" alt=" aa" width="100%"><input type="file" class="dn" id="fileTne" name="icon" style=""> -->
             <!--<label for="fileTne"><img style="margin-top: 1px" class="fl"  src="images/sc_07.png" alt="aa" width="70%" ></label>-->
-            <input type="file" class="" id="fileTne" name="icon" style="width:70%">
+            <input type="file" class="" id="fileTne" name="icon" style="width:70%;display: none;">
+            <label for="fileTne"><img src="images/add.jpg" alt=""></label>
         </span>
     </div>
     <div class="xxfb_cont" style="width:100%;float:left; height: 100px;margin-bottom: 50px;">
@@ -82,7 +83,7 @@ $("#tijiao").click(function(event) {
 $(function () {
     var a = $('.rmq_t_ul li').width();
     $('.rmq_t_ul').css({
-        width:a * 3 +40
+        width:a * 3 + 5
     });
 //    $('.rmq_list ul').css({
 //        width:a * 3 +40

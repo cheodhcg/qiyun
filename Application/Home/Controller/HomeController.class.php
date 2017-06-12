@@ -19,8 +19,8 @@ class HomeController extends Controller {
 //	public $AppSecret = 'd0575f7ffc4f4829a4a4c524dcfaf521';
 	public $appid = 'wxe58e0c041bed2598';
 	public $AppSecret = '263a8ddb41435b76bd281d8117cd5efc';
-    public $hosturl = "http://shq6ab.natappfree.cc"; //配置域名
-    public $redirect_uri =  "http://shq6ab.natappfree.cc"; //微信授权回调域名
+    public $hosturl = "http://iztfht.natappfree.cc"; //配置域名
+    public $redirect_uri =  "http://iztfht.natappfree.cc"; //微信授权回调域名
     public $key = "MDAwMDAwMDAwML6IgpuLf3-YwLiMrIbOfpaKurSpe4OicA";//全局key。加密字符串：adadqwe5123_ad1!
 
 
@@ -107,17 +107,20 @@ class HomeController extends Controller {
                     //将微信个人信息也保存
                     $userinfo['uid'] = $uid;
                     $res2 = $wxUserM->add($userinfo);
+                    $info = "感谢您对企知道的关注，您已成为普通会员！快去看看吧~";
+                    sys_notice($info,$uid);
                     //有效期一个月,设置一个cookie
 //                    $validity = 3600*24*30;
                     $validity = 60;
                     cookie('user',$uid,array('expire'=>$validity,'prefix'=>'qiyun_'));
                     $_SESSION['user'] = $uid;
-//                    session('user',$uid);
+//
 
                 }
                 //不为空记录cookie
                 else{
-                    $validity = 3600*24*30;
+//                    $validity = 3600*24*30;
+                    $validity = 60;
                     cookie('user',$res[0][id],array('expire'=>$validity,'prefix'=>'qiyun_'));
 //                    session('user',$res[0][id]);
                     $_SESSION['user'] = $res[0][id];
@@ -135,8 +138,7 @@ class HomeController extends Controller {
 
         }
 
-
-
+        
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');
         }

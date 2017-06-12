@@ -1,0 +1,1025 @@
+[ 2017-06-12T09:20:18+08:00 ] ::1 /qiyun/admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001775s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002266s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000653s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000712s ]
+
+[ 2017-06-12T09:20:18+08:00 ] ::1 /qiyun/admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001983s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002507s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000660s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000068s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000119s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020284s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020347s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000562s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000598s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000762s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000804s ]
+
+[ 2017-06-12T09:20:20+08:00 ] ::1 /qiyun/admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002451s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000638s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000681s ]
+NOTIC: [8] Undefined index: lite F:\xampp\htdocs\qiyun\ThinkPHP\Library\Think\Db.class.php 第 37 行.
+
+[ 2017-06-12T09:20:24+08:00 ] ::1 /qiyun/admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002615s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003129s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000601s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000646s ]
+NOTIC: [8] Undefined index: lite F:\xampp\htdocs\qiyun\ThinkPHP\Library\Think\Db.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `qy_member` [ RunTime:0.0279s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `qy_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_action` [ RunTime:0.0079s ]
+SQL: SELECT * FROM `qy_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `qy_action_log` [ RunTime:0.0410s ]
+SQL: INSERT INTO `qy_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`record_id`,`create_time`,`remark`) VALUES ('1','1','0','member','1','1497230424','admin在2017-06-12 09:20登录了后台') [ RunTime:0.0005s ]
+SQL: SELECT * FROM `qy_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 1 F:\xampp\htdocs\qiyun\Application\Common\Common\function.php 第 688 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given F:\xampp\htdocs\qiyun\Application\Common\Common\function.php 第 688 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_action_log` WHERE `action_id` = 1 AND `user_id` = 1 AND `create_time` > 1497144024 LIMIT 1   [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `qy_member` [ RunTime:0.0062s ]
+SQL: UPDATE `qy_member` SET `score`=score+10 WHERE ( uid=1 AND status>-1 ) [ RunTime:0.0179s ]
+SQL: UPDATE `qy_member` SET `login`=`login`+1,`last_login_time`='1497230424',`last_login_ip`='0' WHERE `uid` = 1 [ RunTime:0.0003s ]
+
+[ 2017-06-12T09:20:25+08:00 ] ::1 /qiyun/admin.php?s=/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001980s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002489s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000642s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000697s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0467s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0006s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Index/index%' ) LIMIT 1   [ RunTime:0.0142s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000124s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000180s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `qy_addons` [ RunTime:0.0206s ]
+SQL: SELECT `config` FROM `qy_addons` WHERE `name` = 'SystemInfo' AND `status` = 1 LIMIT 1   [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000042s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.355700s ]
+SQL: select version() as v; [ RunTime:0.0003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019816s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019869s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000579s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000615s ]
+INFO: Run Addons\SystemInfo\SystemInfoAddon [ RunTime:0.356768s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.356801s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020545s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019869s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000008s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.000106s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000889s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000946s ]
+
+[ 2017-06-12T09:20:29+08:00 ] ::1 /qiyun/admin.php?s=/Question/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002731s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000808s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000925s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0146s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Question/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 126 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 126  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 126 AND `hide` = 0  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '问答管理' AND `pid` = 126 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\QuestionController.class.php 第 33 行.
+SQL: SHOW COLUMNS FROM `qy_question` [ RunTime:0.0064s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_question` LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`uid`,`username`,`type`,`title`,`content`,`is_tj`,`addtime` FROM `qy_question` ORDER BY id desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0409s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000180s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000231s ]
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 130 行.
+NOTIC: [8] Undefined index: number F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 131 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 130 行.
+NOTIC: [8] Undefined index: number F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 131 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.062288s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062336s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000920s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000992s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000984s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001113s ]
+
+[ 2017-06-12T09:20:29+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002590s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000605s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000654s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0067s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0063s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000155s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000201s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.028891s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028939s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000508s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000543s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000869s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000930s ]
+
+[ 2017-06-12T09:20:30+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001991s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002517s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000769s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000822s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0066s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0065s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000188s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000248s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016157s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016214s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000565s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000604s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000881s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000940s ]
+
+[ 2017-06-12T09:20:34+08:00 ] ::1 /qiyun/admin.php?s=/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002018s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002609s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000648s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000695s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%User/index%' ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 16 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 16  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 16 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '用户管理' AND `pid` = 16 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '行为管理' AND `pid` = 16 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '会员审核' AND `pid` = 16 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_member` [ RunTime:0.0065s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_member` WHERE `status` >= 0 AND `nickname` LIKE '%%' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `qy_member` WHERE `status` >= 0 AND `nickname` LIKE '%%' ORDER BY uid desc LIMIT 0,10   [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000163s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000208s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032514s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032607s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000627s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000663s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000928s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000990s ]
+
+[ 2017-06-12T09:20:36+08:00 ] ::1 /qiyun/admin.php?s=/Lecture/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002553s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000635s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0068s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Lecture/index%' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\LectureController.class.php 第 39 行.
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0073s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_lecture` LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT `id`,`uid`,`username`,`type`,`title`,`content`,`money`,`icon`,`content_icon`,`is_tj`,`number`,`addtime`,`likeup`,`rewardnum` FROM `qy_lecture` ORDER BY id desc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0074s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0040')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0040','0041')  [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0039')  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `qy_auth_group_access` [ RunTime:0.0431s ]
+SQL: SELECT `extend_id` FROM qy_auth_group_access g INNER JOIN qy_auth_extend c on g.group_id=c.group_id  WHERE ( g.uid='1' and c.type='1' and !isnull(extend_id) )  [ RunTime:0.0118s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0064s ]
+SQL: SELECT `id`,`title`,`pid`,`allow_publish` FROM `qy_category` WHERE `id` = 1 OR `pid` = 1 ORDER BY pid,sort  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000221s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000267s ]
+NOTIC: [8] Undefined variable: show_draftbox F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 67 行.
+NOTIC: [8] Undefined variable: show_examine F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 68 行.
+NOTIC: [8] Undefined variable: show_recycle F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 105 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.070015s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.070064s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000601s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000637s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000960s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001015s ]
+
+[ 2017-06-12T09:20:39+08:00 ] ::1 /qiyun/admin.php?s=/Question/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002547s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000620s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000668s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Question/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 126 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 126  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 126 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '问答管理' AND `pid` = 126 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\QuestionController.class.php 第 33 行.
+SQL: SHOW COLUMNS FROM `qy_question` [ RunTime:0.0064s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_question` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`uid`,`username`,`type`,`title`,`content`,`is_tj`,`addtime` FROM `qy_question` ORDER BY id desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0065s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000149s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000195s ]
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 130 行.
+NOTIC: [8] Undefined index: number F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 131 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 130 行.
+NOTIC: [8] Undefined index: number F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 131 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013775s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013830s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000531s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000569s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000852s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000924s ]
+
+[ 2017-06-12T09:20:40+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002414s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002950s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000657s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0065s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0071s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000157s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000205s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016052s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016101s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000570s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000606s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000874s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000935s ]
+
+[ 2017-06-12T09:20:45+08:00 ] ::1 /qiyun/admin.php?s=/Config/group.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002004s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002547s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000633s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000686s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0065s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0006s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Config/group%' ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0007s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0073s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `qy_config` WHERE `status` = 1 AND `group` = 1 ORDER BY sort  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000155s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000201s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017175s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017224s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000581s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000674s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001382s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001475s ]
+
+[ 2017-06-12T09:20:46+08:00 ] ::1 /qiyun/admin.php?s=/Menu/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002577s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000606s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000706s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0061s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0007s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Menu/index%' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title` FROM `qy_menu`  [ RunTime:0.0006s ]
+SQL: SELECT `id`,`title`,`pid`,`sort`,`url`,`hide`,`tip`,`group`,`is_dev`,`status` FROM `qy_menu` WHERE `pid` = 0 ORDER BY sort asc,id asc  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000168s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000213s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033483s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033540s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000542s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000578s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000788s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000835s ]
+
+[ 2017-06-12T09:20:57+08:00 ] ::1 /qiyun/admin.php?s=/Menu/index/pid/129.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001926s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002419s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000607s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000653s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0038s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Menu/index%' ) LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`pid`,`sort`,`url`,`hide`,`tip`,`group`,`is_dev`,`status` FROM `qy_menu` WHERE ( id=129 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`title` FROM `qy_menu`  [ RunTime:0.0006s ]
+SQL: SELECT `id`,`title`,`pid`,`sort`,`url`,`hide`,`tip`,`group`,`is_dev`,`status` FROM `qy_menu` WHERE `pid` = 129 ORDER BY sort asc,id asc  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000168s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000207s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013860s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013907s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000513s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000548s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000912s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000994s ]
+
+[ 2017-06-12T09:21:03+08:00 ] ::1 /qiyun/admin.php?s=/Menu/add/pid/129.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002487s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000643s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Menu/add%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 75 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0006s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0006s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`pid`,`sort`,`url`,`hide`,`tip`,`group`,`is_dev`,`status` FROM `qy_menu`  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000154s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000200s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014459s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014516s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000537s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000573s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000832s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000878s ]
+
+[ 2017-06-12T09:22:00+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001987s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002517s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000593s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000639s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0041s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0041s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000203s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000272s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014790s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014838s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000529s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000566s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000873s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000935s ]
+
+[ 2017-06-12T09:22:02+08:00 ] ::1 /qiyun/admin.php?s=/Shop/wareinfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002564s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000814s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000891s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/wareinfo%' ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_member_type` [ RunTime:0.0369s ]
+SQL: SELECT `id`,`title`,`money`,`type`,`description`,`create_time`,`update_time`,`status` FROM `qy_member_type`  [ RunTime:0.0004s ]
+DEBUG: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => 初级会员
+            [money] => 99
+            [type] => 0
+            [description] => 问答畅听，名片发布、资讯查看、活动邀请、成为会员条件，99元/年
+            [create_time] => 1496902807
+            [update_time] => 1496902807
+            [status] => 1
+        )
+
+    [1] => Array
+        (
+            [id] => 3
+            [title] => 高级会员
+            [money] => 299
+            [type] => 0
+            [description] => 问答畅听，名片发布、资讯查看、活动邀请、微讲座免费畅听成为会员条件，299元/年
+            [create_time] => 1496902838
+            [update_time] => 
+            [status] => 1
+        )
+
+    [2] => Array
+        (
+            [id] => 4
+            [title] => 专业会员
+            [money] => 0
+            [type] => 1
+            [description] => 根据某一领域提供自己在这一领域的专业知识证明，提交申请，后台审核认证。认证为某一领域专家后可以回答问题和讲座。认证专家不需要支付费用
+            [create_time] => 1496902858
+            [update_time] => 
+            [status] => 1
+        )
+
+)
+
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000180s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000232s ]
+NOTIC: [8] Undefined variable: meta_title F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 5 行.
+NOTIC: [8] Undefined variable: meta_title F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 90 行.
+NOTIC: [8] Undefined variable: _page F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 149 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026777s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026844s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000513s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000554s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000943s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000992s ]
+
+[ 2017-06-12T09:22:05+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000010s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002495s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000622s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000682s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0475s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0041s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000156s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000201s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014328s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014382s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000650s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000691s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000938s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-06-12T09:22:06+08:00 ] ::1 /qiyun/admin.php?s=/Shop/wareinfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002540s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000621s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000668s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/wareinfo%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_member_type` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`title`,`money`,`type`,`description`,`create_time`,`update_time`,`status` FROM `qy_member_type`  [ RunTime:0.0007s ]
+DEBUG: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => 初级会员
+            [money] => 99
+            [type] => 0
+            [description] => 问答畅听，名片发布、资讯查看、活动邀请、成为会员条件，99元/年
+            [create_time] => 1496902807
+            [update_time] => 1496902807
+            [status] => 1
+        )
+
+    [1] => Array
+        (
+            [id] => 3
+            [title] => 高级会员
+            [money] => 299
+            [type] => 0
+            [description] => 问答畅听，名片发布、资讯查看、活动邀请、微讲座免费畅听成为会员条件，299元/年
+            [create_time] => 1496902838
+            [update_time] => 
+            [status] => 1
+        )
+
+    [2] => Array
+        (
+            [id] => 4
+            [title] => 专业会员
+            [money] => 0
+            [type] => 1
+            [description] => 根据某一领域提供自己在这一领域的专业知识证明，提交申请，后台审核认证。认证为某一领域专家后可以回答问题和讲座。认证专家不需要支付费用
+            [create_time] => 1496902858
+            [update_time] => 
+            [status] => 1
+        )
+
+)
+
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000157s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000198s ]
+NOTIC: [8] Undefined variable: meta_title F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 5 行.
+NOTIC: [8] Undefined variable: meta_title F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 90 行.
+NOTIC: [8] Undefined variable: _page F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 149 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014186s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014231s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000534s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000568s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001202s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001278s ]
+
+[ 2017-06-12T09:22:10+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002518s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000613s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000678s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0041s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000190s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000268s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014557s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014608s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000528s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000565s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000857s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000914s ]
+
+[ 2017-06-12T09:22:16+08:00 ] ::1 /qiyun/admin.php?s=/Shop/wareinfo.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001813s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002277s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000611s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000673s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/wareinfo%' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_member_type` [ RunTime:0.0053s ]
+SQL: SELECT `id`,`title`,`money`,`type`,`description`,`create_time`,`update_time`,`status` FROM `qy_member_type`  [ RunTime:0.0005s ]
+DEBUG: Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => 初级会员
+            [money] => 99
+            [type] => 0
+            [description] => 问答畅听，名片发布、资讯查看、活动邀请、成为会员条件，99元/年
+            [create_time] => 1496902807
+            [update_time] => 1496902807
+            [status] => 1
+        )
+
+    [1] => Array
+        (
+            [id] => 3
+            [title] => 高级会员
+            [money] => 299
+            [type] => 0
+            [description] => 问答畅听，名片发布、资讯查看、活动邀请、微讲座免费畅听成为会员条件，299元/年
+            [create_time] => 1496902838
+            [update_time] => 
+            [status] => 1
+        )
+
+    [2] => Array
+        (
+            [id] => 4
+            [title] => 专业会员
+            [money] => 0
+            [type] => 1
+            [description] => 根据某一领域提供自己在这一领域的专业知识证明，提交申请，后台审核认证。认证为某一领域专家后可以回答问题和讲座。认证专家不需要支付费用
+            [create_time] => 1496902858
+            [update_time] => 
+            [status] => 1
+        )
+
+)
+
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000182s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000233s ]
+NOTIC: [8] Undefined variable: meta_title F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 5 行.
+NOTIC: [8] Undefined variable: meta_title F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 90 行.
+NOTIC: [8] Undefined variable: _page F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\3dc349c80608ca9e29722817538be3da.php 第 149 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017213s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017273s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000474s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000512s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001070s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001140s ]
+
+[ 2017-06-12T09:22:17+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002006s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002541s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000597s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000643s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0088s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0041s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000175s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000225s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014696s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014748s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000517s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000552s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000899s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000966s ]
+
+[ 2017-06-12T09:22:22+08:00 ] ::1 /qiyun/admin.php?s=/Question/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002482s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003035s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000694s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000752s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Question/index%' ) LIMIT 1   [ RunTime:0.0008s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 126 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 126  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 126 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '问答管理' AND `pid` = 126 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\QuestionController.class.php 第 33 行.
+SQL: SHOW COLUMNS FROM `qy_question` [ RunTime:0.0043s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_question` LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`uid`,`username`,`type`,`title`,`content`,`is_tj`,`addtime` FROM `qy_question` ORDER BY id desc LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0043s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0006s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000151s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000196s ]
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 130 行.
+NOTIC: [8] Undefined index: number F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 131 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 130 行.
+NOTIC: [8] Undefined index: number F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\049ad0fbc4579ec0053f845ee20dffd2.php 第 131 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013062s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013111s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000542s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000584s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001316s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001384s ]
+
+[ 2017-06-12T09:22:28+08:00 ] ::1 /qiyun/admin.php?s=/Lecture/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001822s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002327s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000644s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0038s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Lecture/index%' ) LIMIT 1   [ RunTime:0.0009s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\LectureController.class.php 第 39 行.
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0039s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_lecture` LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`uid`,`username`,`type`,`title`,`content`,`money`,`icon`,`content_icon`,`is_tj`,`number`,`addtime`,`likeup`,`rewardnum` FROM `qy_lecture` ORDER BY id desc LIMIT 0,10   [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0042s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0040')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0040','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0041')  [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE `id` IN ('0002','0039')  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `qy_auth_group_access` [ RunTime:0.0039s ]
+SQL: SELECT `extend_id` FROM qy_auth_group_access g INNER JOIN qy_auth_extend c on g.group_id=c.group_id  WHERE ( g.uid='1' and c.type='1' and !isnull(extend_id) )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title`,`pid`,`allow_publish` FROM `qy_category` WHERE `id` = 1 OR `pid` = 1 ORDER BY pid,sort  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000223s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000269s ]
+NOTIC: [8] Undefined variable: show_draftbox F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 67 行.
+NOTIC: [8] Undefined variable: show_examine F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 68 行.
+NOTIC: [8] Undefined variable: show_recycle F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 105 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+NOTIC: [8] Undefined index: adtime F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 192 行.
+NOTIC: [8] Undefined index: cate_id F:\xampp\htdocs\qiyun\Runtime\Cache\Admin\42d5029372485e5eba3cae0a9071476c.php 第 198 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023771s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023817s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000546s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000583s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000771s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000824s ]
+
+[ 2017-06-12T09:22:32+08:00 ] ::1 /qiyun/admin.php?s=/Contact/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001981s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002491s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000629s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000675s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0063s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Contact/index%' ) LIMIT 1   [ RunTime:0.0011s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 132 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 132  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 132 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '信息交流' AND `pid` = 132 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_news` [ RunTime:0.0323s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_news` LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`uid`,`title`,`cid`,`icon`,`content`,`addtime`,`is_tj` FROM `qy_news` ORDER BY id desc LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0064s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `title` FROM `qy_category` WHERE ( id=2 ) LIMIT 1   [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined index: value F:\xampp\htdocs\qiyun\ThinkPHP\Library\Think\Template\TagLib\Cx.class.php 第 251 行.
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000147s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000190s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.043920s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043983s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000546s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000582s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000905s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000966s ]
+
+[ 2017-06-12T09:22:34+08:00 ] ::1 /qiyun/admin.php?s=/Shop/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002274s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002807s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000611s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000662s ]
+SQL: SHOW COLUMNS FROM `qy_menu` [ RunTime:0.0334s ]
+SQL: SELECT `id`,`title`,`url` FROM `qy_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0006s ]
+SQL: SELECT `pid` FROM `qy_menu` WHERE ( pid !=0 AND url like '%Shop/index%' ) LIMIT 1   [ RunTime:0.0009s ]
+SQL: SELECT * FROM `qy_menu` WHERE `id` = 129 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT DISTINCT  `group` FROM `qy_menu` WHERE `group` <> '' AND `pid` = 129  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`url` FROM `qy_menu` WHERE `pid` = 129 AND `hide` = 0  [ RunTime:0.0003s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `qy_menu` WHERE `group` = '商品管理' AND `pid` = 129 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0004s ]
+NOTIC: [8] Undefined variable: map F:\xampp\htdocs\qiyun\Application\Admin\Controller\ShopController.class.php 第 29 行.
+SQL: SHOW COLUMNS FROM `qy_shop` [ RunTime:0.0063s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_shop` WHERE `status` >= 0 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`cover_id`,`money`,`number`,`content`,`addtime`,`status`,`paynum`,`is_tj` FROM `qy_shop` WHERE `status` >= 0 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000159s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000209s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015118s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015170s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000558s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000597s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000872s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000929s ]
+
