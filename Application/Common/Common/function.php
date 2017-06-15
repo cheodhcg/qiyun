@@ -1051,5 +1051,89 @@ function _upload($files,$path) {
 * 获取用户基本信息
 */
 function userinfo($uid){
-   return  M('user')->where("uid={$uid}")->field('nickname,username,face')->find();
+   return  M('user')->where("id={$uid}")->field('nickname,username,face,level')->find();
+}
+
+/**
+ * 微信支付
+ * @param  string   $openId     openid
+ * @param  string   $goods      商品名称
+ * @param  string   $attach     附加参数,我们可以选择传递一个参数,比如订单ID
+ * @param  string   $order_sn   订单号
+ * @param  string   $total_fee  金额
+ */
+function wxpay($openId,$goods,$order_sn,$total_fee,$attach){
+    require_once APP_ROOT."/Api/Wxpay/lib/WxPay.Api.php";
+    require_once APP_ROOT."/Wxpay/payment/WxPay.JsApiPay.php";
+    require_once APP_ROOT.'/Wxpay/payment/log.php';
+
+    //初始化日志
+    $logHandler= new CLogFileHandler(APP_ROOT."/Api/wxpay/logs/".date('Y-m-d').'.log');
+    $log = Log::Init($logHandler, 15);
+
+    $tools = new JsApiPay();
+    if(empty($openId)) $openId = $tools->GetOpenid();
+
+    $input = new WxPayUnifiedOrder();
+    $input->SetBody($goods);                 //商品名称
+    $input->SetAttach($attach);                  //附加参数,可填可不填,填写的话,里边字符串不能出现空格
+    $input->SetOut_trade_no($order_sn);          //订单号
+    $input->SetTotal_fee($total_fee);            //支付金额,单位:分
+    $input->SetTime_start(date("YmdHis"));       //支付发起时间
+    $input->SetTime_expire(date("YmdHis", time() + 600));//支付超时
+    $input->SetGoods_tag("test3");
+    //$input->SetNotify_url("http://".$_SERVER['HTTP_HOST']."/payment.php");  //支付回调验证地址
+    $input->SetNotify_url("http://".$_SERVER['HTTP_HOST']."/payment.php/WexinApi/WeixinPay/notify");
+    $input->SetTrade_type("JSAPI");              //支付类型
+    $input->SetOpenid($openId);                  //用户openID
+    $order = WxPayApi::unifiedOrder($input);    //统一下单
+
+    $jsApiParameters = $tools->GetJsApiParameters($order);
+
+    return $jsApiParameters;
+}
+
+/**
+ * 使用curl获取远程数据
+ * @param  string $url url连接
+ * @return string      获取到的数据
+ */
+function curl_get_contents($url){
+    $ch=curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);                //设置访问的url地址
+    // curl_setopt($ch,CURLOPT_HEADER,1);               //是否显示头部信息
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);               //设置超时
+    curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);   //用户访问代理 User-Agent
+    curl_setopt($ch, CURLOPT_REFERER,$_SERVER['HTTP_HOST']);        //设置 referer
+    curl_setopt($ch,CURLOPT_FOLLOWLOCATION,1);          //跟踪301
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);        //返回结果
+    $r=curl_exec($ch);
+    curl_close($ch);
+    return $r;
+}
+
+/*
+ * 获取所属职位
+ * @param 职位ID
+ * */
+function get_dep($id){
+    if (!is_numeric($id)){
+        return false;
+    }
+    $model = M('category');
+    $where['id'] = $id;
+    $data =$model->where($where)->getField('title');
+    return $data;
+}
+
+/*
+ * 会员级别
+ * @param $level 等级
+ * return 返回具体等级的名字
+ * */
+function get_member($level){
+    $model = M('member_type');
+    $where['id'] = $level;
+    $data =$model->where($where)->getField('title');
+    return $data;
 }

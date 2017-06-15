@@ -494,7 +494,7 @@ function sys_notice($info, $uid)
     if (empty($info) || is_numeric($uid)) {
         return false;
     }
-    $model               = M('sys_notice');
+    $model               = M('sms_log');
     $data['uid']         = $uid;
     $data['content']     = $info;
     $data['create_time'] = time();

@@ -74,7 +74,9 @@ function get_nav_url($url){
 * 获取用户信息
 */
 function get_user_info($uid){
-    $user = M('user')->where("uid={$uid}")->find();
+    $user = M('user')
+        ->where("id={$uid}")
+        ->find();
     return $user;
 }
 

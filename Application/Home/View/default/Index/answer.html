@@ -2,7 +2,28 @@
 <html lang="en">
 <head>
     <include file="Public/head"/>
-
+    <style>
+        .q_a{
+            position: relative;
+        }
+        .q_a_info2{
+            position: absolute;
+            top: 30px;
+            width: 96%;
+            left: 2%;
+            background: #fff;
+            z-index: 999;
+        }
+        .answer-zz{
+            background: rgba(0,0,0,0.5);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 998;
+        }
+    </style>
 </head>
 <body>
 <div class="wt_info ">
@@ -31,7 +52,7 @@
         </div>
         <div class="q_a_info1">
             <if condition="$is_answer">
-                <div class="yy_btn"><span style="width:120px;">您已回答过该问题</span></div>
+                <div class="yy_btn" style="width: 200px;text-align: center"><span style="  width:100%">您已回答过该问题</span></div>
                 <else/>
                 <div class="yy_btn startRecord mobile_btn" style="display: block">
                 <span>
@@ -41,6 +62,8 @@
                 </span>
                     <span class="btn_tips">按住说话</span>
                 </div>
+
+
                 <!--停止录音-->
                 <div class="yy_btn stopRecord" style="display: none">
                 <span>
@@ -52,11 +75,12 @@
                 </div>
             </if>
         </div>
-        <div class="q_a_info1">
+        <div class="q_a_info1 q_a_info2">
             <if condition="$is_answer">
-                <div class="yy_btn"><span style="width:120px;">您已回答过该问题</span></div>
+                <div class="yy_btn" style="width: 200px;text-align: center"><span style="  width:100%">您已回答过该问题</span></div>
                 <else/>
-                <div class="yy_btn startRecord mobile_btn" style="display: block">
+
+                <div class="yy_btn yy_btn3 startRecord mobile_btn" style="display: block">
                 <span>
                     <a href="javascript:void(0);" style="display: block" id="push_answer">
                         <img src="images/01.png" alt="aa" width="100%">
@@ -64,6 +88,7 @@
                 </span>
                     <span class="btn_tips">按住说话</span>
                 </div>
+
                 <!--停止录音-->
                 <div class="yy_btn stopRecord" style="display: none">
                 <span>
@@ -75,6 +100,7 @@
                 </div>
             </if>
         </div>
+
     </div>
     <if condition="!$is_answer">
         <div style="text-align: right">
@@ -132,7 +158,9 @@
         </div>
     </div>
 </div>
+<div class="answer-zz">
 
+</div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="__STATIC__/jquery-2.0.3.min.js"></script>
 

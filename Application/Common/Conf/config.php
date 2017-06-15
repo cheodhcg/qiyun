@@ -55,4 +55,13 @@ return array(
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(2 => '主题', 1 => '目录', 3 => '段落'),
+
+    /*微信*/
+    'WEIXINPAY_CONFIG'       => array(
+        'APPID'              => 'wxf973bd018fd47e2b', // 微信支付APPID
+        'MCHID'              => '1480322582', // 微信支付MCHID 商户收款账号
+        'KEY'                => 'EF8AFDACC98B270CA78150359C3474CB', // 微信支付KEY
+        'APPSECRET'          => 'd0575f7ffc4f4829a4a4c524dcfaf521', // 公众帐号secert (公众号支付专用)
+        'NOTIFY_URL'         => 'http://qiyun.mmqo.com//Api/Weixinpay/notify', // 接收支付状态的连接
+    ),
 );

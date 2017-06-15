@@ -60,6 +60,31 @@ class LectureController extends HomeController
     public function lecture_release()
     {
         if (IS_POST) {
+            /*if ($_FILES['icon']['error']){
+                echo $_FILES['icon']['error'];
+            }else{
+
+                $date    = date("Ymd", time());
+                $count = count($_FILES['file']['name']);
+                for ($i = 0; $i < $count; $i++) {
+                    $tmpfile = $_FILES['file']['tmp_name'][$i];  //tmp文件
+                    $filefix = array_pop(explode(".", $_FILES['file']['name'][$i]));//文件名后缀
+                    if ($filefix == "mp4")
+                    $path    = "./Upload/Jiangzuo" . $date;   //讲座保存路径，相对当前文件的路径
+                    if (!is_dir($path)) {
+                        //检查是否为目录，如果没有目录则创建一个目录
+                        mkdir($path);
+                    }
+                    $fileName = 1;
+//                    $icon = _upload($_FILES['icon'], $savePath);
+                    if (move_uploaded_file($tmpfile, $path)) {
+                        echo "<script>alert('succeed!');window.location.href='index_uploads.php';</script>";
+                    } else {
+                        echo "<script>alert('fail!');window.location.href='index_uploads.php';</script>";
+                    }
+                }
+
+            }*/
             if ($_FILES['icon']) {
                 $icon = _upload($_FILES['icon'], 'Jiangzuo/');
             } else {

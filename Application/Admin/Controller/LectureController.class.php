@@ -156,4 +156,16 @@ class LectureController extends AdminController {
         }
         $this->assign('nodes',      $cate);
     }
+
+    public function add(){
+        if (IS_POST){
+            var_dump($_POST);
+        }else{
+            $list = M('category')->where("pid=1")->field('id,title')->select();
+            $this -> assign('cate_list', $list);//分类列表
+            $this->assign('meta_title','添加讲座');
+            $this->display();
+        }
+
+    }
 }

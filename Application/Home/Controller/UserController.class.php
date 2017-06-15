@@ -63,6 +63,12 @@ class UserController extends HomeController {
 	    $this->assign('page',count($list) == 10 ? "1" : "0");
 		$this->display();
 	}
+	//删除我的提问
+    public function delMyQuestion(){
+        $p = I('id');
+        $Question = M('Question');
+
+    }
 
 	//我的回答
 	public function myAnswer(){
@@ -135,13 +141,13 @@ class UserController extends HomeController {
 		$p = I('p');
 		$Lecture = M('Lecture');
 		$lecture_partake = M('lecture_partake');
-		$where['uid'] = session('uid');
+		$where['uid'] = $_COOKIE['qiyun_user'];
 		$newlist = $lecture_partake->where($where)->field('pid')->select();
 		if($newlist){
 			$pid = array_column($newlist,'pid');
 			$map['id'] = ['in',$pid];
 		}
-		$map['uid'] = session('uid');
+		$map['uid'] = $_COOKIE['qiyun_user'];
 		$map['_logic'] = "OR";
 		$count = $Lecture->where($map)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数(25)
@@ -230,16 +236,20 @@ class UserController extends HomeController {
 	    $uid = $_COOKIE['qiyun_user'];
 		$info = get_user_info($uid);
 		$level = $info['level'];
-		$this->assign('level',$level ? $level : 3);
+		$this->assign('level',$level);
 		$this->display();
 	}
 
 	//申请成为专家会员
 	public function apply(){
 		if(IS_POST){
-			$uid = session('uid');
+			$uid = $_COOKIE['qiyun_user'];
 			$_POST['status'] = 1;
-			$re = M('user')->where("uid={$uid}")->save($_POST);
+			$where['id'] = $uid;
+            $data['uid'] = $uid;
+            $data['create_time'] = time();
+			$re = M('user')->where($where)->save($_POST);
+			$re = M('apply_expert_info')->add($data);
 			if($re !==false){
 				$this->success('申请成功,等待后台处理');
 			}else{
@@ -255,7 +265,7 @@ class UserController extends HomeController {
 	//我的通知
 	public function mySms(){
 		$sms = M('sms_log');
-		$map['uid'] = session('uid');
+		$map['uid'] = $_COOKIE['qiyun_user'];
 		$count = $sms->where($map)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 	    $show = $Page->show();// 分页显示输出
@@ -470,6 +480,65 @@ class UserController extends HomeController {
             $this->display();
         }
     }
+
+    //输入邀请码
+    public function invitation(){
+        if (IS_POST){
+            $invitation = I('invitation');
+            $model = M('invitation_list');
+            $userM = M('user');
+            $where['code'] = $invitation;
+            $res = $model->where($where)->select();
+            if ($res[0]['use'] != 0){
+                $this->error("您输入的邀请码已被使用");
+            }else{
+
+                $userinfo = userinfo($_COOKIE['qiyun_user']);
+                if ($userinfo['level'] >= $res[0]['level']){
+                    $this->error("您已是更高级的会员，无需使用该邀请码");
+                    exit();
+                }
+
+                //此邀请码改为已使用状态
+                $data['useid'] = $_COOKIE['qiyun_user'];
+                $data['use'] = 1;
+                $model->where($where)->save($data);
+
+
+                //将该用户的会员等级修改
+                $data2['level'] = $res[0]['level'];
+                $where2['id'] = $_COOKIE['qiyun_user'];
+                $userM->where($where2)->save($data2);
+                $a = ($data2['level'])? "普通会员":"高级会员";
+//                $info = "您已成为".$a."！快去看看吧~";
+//                sys_notice($info,$_COOKIE['qiyun_user']);
+                $this->success("您已成为".$a."！快去看看吧~");
+            }
+
+        }else{
+            $this->assign('_title','输入邀请码');
+            $this->display();
+        }
+
+    }
+
+    //邀请券列表
+    public function invitationList(){
+        $model = M('invitation_list');
+        $where['qy_invitation_list.uid'] = $_COOKIE['qiyun_user'];
+        $data = $model
+            ->join('qy_user on qy_invitation_list.uid = qy_user.id')
+            ->where($where)
+            ->field('*')
+            ->select();
+        $this->assign('list',$data);
+        $this->display();
+    }
+
+
+
+
+    //test
     public function phpinfo(){
         $filename = "wxupload_14966982989294.amr";
         $name = "wxupload_14966982989294.mp3";

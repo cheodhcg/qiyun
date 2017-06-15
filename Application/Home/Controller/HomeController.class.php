@@ -19,8 +19,8 @@ class HomeController extends Controller {
 //	public $AppSecret = 'd0575f7ffc4f4829a4a4c524dcfaf521';
 	public $appid = 'wxe58e0c041bed2598';
 	public $AppSecret = '263a8ddb41435b76bd281d8117cd5efc';
-    public $hosturl = "http://iztfht.natappfree.cc"; //配置域名
-    public $redirect_uri =  "http://iztfht.natappfree.cc"; //微信授权回调域名
+    public $hosturl = "http://pvkduh.natappfree.cc"; //配置域名
+    public $redirect_uri =  "http://pvkduh.natappfree.cc"; //微信授权回调域名
     public $key = "MDAwMDAwMDAwML6IgpuLf3-YwLiMrIbOfpaKurSpe4OicA";//全局key。加密字符串：adadqwe5123_ad1!
 
 
@@ -111,7 +111,7 @@ class HomeController extends Controller {
                     sys_notice($info,$uid);
                     //有效期一个月,设置一个cookie
 //                    $validity = 3600*24*30;
-                    $validity = 60;
+                    $validity = 60*10;
                     cookie('user',$uid,array('expire'=>$validity,'prefix'=>'qiyun_'));
                     $_SESSION['user'] = $uid;
 //
@@ -120,7 +120,7 @@ class HomeController extends Controller {
                 //不为空记录cookie
                 else{
 //                    $validity = 3600*24*30;
-                    $validity = 60;
+                    $validity = 60*10;
                     cookie('user',$res[0][id],array('expire'=>$validity,'prefix'=>'qiyun_'));
 //                    session('user',$res[0][id]);
                     $_SESSION['user'] = $res[0][id];

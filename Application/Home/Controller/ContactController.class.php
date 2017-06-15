@@ -61,6 +61,7 @@ class ContactController extends HomeController {
     			$icon = _upload($_FILES['icon'],'New/');
     		}
     		$data['title'] = $_POST['title'];
+    		$data['uid'] = $_COOKIE['qiyun_user'];
     		$data['icon'] = $icon;
     		$data['cid'] = $_POST['cid'];
     		$data['content'] = $_POST['content'];
@@ -80,12 +81,12 @@ class ContactController extends HomeController {
 	//新闻列表
 	public function news(){
 		$new = M('news');
-		$cate_id = I('cate_id');
+		$cate_id = empty(I('cate_id')) ? 1 : I('cate_id');
 		$p = I('p');
 		if($cate_id){
-			$where = "qy_news.cid = {$cate_id}";
+			$where['qy_news.cid'] = $cate_id;
 		}else{
-			$where = "qy_news.is_tj = 1";
+			$where['qy_news.is_tj'] =  1;
 		}
 		$count = $new->where($where)->count();// 查询满足要求的总记录数
 	    $Page = new \Think\Page($count,5);

@@ -10,7 +10,7 @@
 </head>
 <body style="">
 <div class="vip_zy container oh">
-<form method="post" action="">
+<form method="post" action="__SELF__" id="form">
     <div class="vip_input">
         <p><span>姓名</span><input type="text" name="username" id="username" placeholder="请输入您的真实姓名"></p>
         <p><span>电话</span><input type="text" name="phone" id="phone" placeholder="请输入您的联系方式"></p>
@@ -36,14 +36,12 @@
 
     <div class="my_info">
         <span class="fl">个人简介</span>
-        <textarea name="content" id="content" placeholder="请填写您的个人简介">
-
-        </textarea>
-        <input type="checkbox" id="my_card_c" style="margin-left: 70px;margin-top: 10px;">        
+        <textarea name="content" id="content" placeholder="请填写您的个人简介"></textarea>
+        <input type="checkbox" name="my_card_c" id="my_card_c" value="1" style="margin-left: 70px;margin-top: 10px;">
         <label for="my_card_c">我已同意并阅读洪湖协议</label>
     </div>
     <div>
-        <a href="##" class="vip_btn">提交</a>
+        <a href="##" class="vip_btn" >提交</a>
     </div>
 </form>
 </div>
@@ -75,11 +73,11 @@
         if($("#content").val() == ""){
             alert('请填写您的个人简介');return false;
         }
-        if($("#my_card_c").is(":checked")){
+        if(!$("input[name='my_card_c']").is(":checked")){
             alert('请阅读协议');return false;
         }
 
-        $(this).submit();
+        $("#form").submit();
 
     });
 </script>

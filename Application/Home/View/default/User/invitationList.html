@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>会员申请</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+
+</head>
+<body style="">
+<div class="container" style="height: 100%">
+    <ul>
+        <volist name="list" id="vo">
+            <li>
+                <p>邀请码：{$vo.code}</p>
+                <p>状态：<eq name="vo.status" value="0">未使用<else/>已使用</eq></p>
+            </li>
+        </volist>
+
+    </ul>
+</div>
+
+<include file="Public/footer"/>
+

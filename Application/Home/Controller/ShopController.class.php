@@ -64,6 +64,10 @@ class ShopController extends HomeController
 //        echo think_encrypt("adadqwe5123_ad1!");
         $shop = M('shop');
         $info = $shop -> where("id={$id}") -> find();
+        require_once 'JSSDK.php';
+        $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
+        $signPackage = $jssdk -> GetSignPackage();
+        $this -> assign('jssdk', $signPackage);
         $this -> assign('info', $info);
         $this -> assign('_title', '商品详情');
         $this -> display();
@@ -74,7 +78,7 @@ class ShopController extends HomeController
     {
         if (IS_POST) {
             $key     = I('money');
-            $goodsId = I('gid');
+            $goodsId = I('gid'); //商品ID
             $key = I('key');
             //比对key
             if($key != $this->key){
@@ -86,13 +90,28 @@ class ShopController extends HomeController
             }
 
             $uid     = $_COOKIE['qiyun_user'];
-            //TODO:微信支付
+            //根据商品ID查询该商品的信息作为支付的商品信息
+            $shop = M('shop');
+            $w_shop['id'] = $goodsId;
+            $goods = $shop->where($w_shop)->find();
+            $num = $goods['number'];
+            //TODO:支付
+            /*写入邀请码*/
+            $invitation = M('invitation_list');
+            for ($i = 0;$i < $num; $i++){
+                $str = md5(time().rand(1111, 9999));
+                $data['uid'] = $_COOKIE['qiyun_user'];
+                $data['code'] = $str;
+                $data['create_time'] = time();
+                $invitation->add($data);
+            }
+
 
             if (1) {//支付成功
                 $res = $this -> addGoodsLog($goodsId, $uid);
                 $info = array(
                     'code'=>1,
-                    'msg'=>'交易成功'
+                    'msg'=>'购买成功，请在我的信息-我的账户-邀请券中查看',
                 );
             } else {
                 $info = array(
@@ -113,6 +132,17 @@ class ShopController extends HomeController
         $data['create_time'] = time();
         $res                 = $model -> add($data);
         return true;
+    }
+
+    //购买页面
+    public function pay(){
+        $order_sn = 1;
+        $openId = '';
+        $jsApiParameters = wxpay($openId,'会员礼包',$order_sn,1);
+        $this->assign(array(
+            'data' => $jsApiParameters
+        ));
+        $this->display();
     }
 
 }

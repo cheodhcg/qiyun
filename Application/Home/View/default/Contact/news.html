@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
     <style>
-        .xxjl_info div:last-child{
+        .xxjl_info xxjl_cont:last-child{
             border: none;
         }
     </style>
@@ -40,15 +40,17 @@
 
 <div class="xxjl_info container oh" id="newlist">
 <volist name="list" id="vo">
+    <a href="{:U('info?id='.$vo['id'])}">
     <div class="xxjl_cont underline ">
         <div class="xxjl_img fl">
-            <img src="{$vo['icon']}" alt="aa" width="100%">
+            <img src="__ROOT__{$vo['icon']}" alt="aa" width="100%" height="68">
         </div>
         <div class="xxjl_text fl">
-            <p><a href="{:U('info?id='.$vo['id'])}">{$vo['title']}</a></p>
+            <p>{$vo['title']}</p>
             <p>{$vo['addtime']}</p>
         </div>
     </div>
+    </a>
 </volist>    
 </div>
 <if condition="$page eq 1">

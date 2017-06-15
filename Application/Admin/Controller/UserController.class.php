@@ -261,8 +261,12 @@ class UserController extends AdminController {
 
     //专业会员审核
     public function ProfessionalMembers(){
-
+	    $model = M('apply_expert_info');
+	    $data = $model
+            ->join('qy_user on qy_apply_expert_info.uid = qy_user.id')
+            ->select();
         $this->assign('meta_title','专业会员审核');
+        $this->assign('list',$data);
         $this->display();
     }
 	
@@ -290,10 +294,40 @@ class UserController extends AdminController {
 				$this->error('操作失败');
 			}
 		}
-		$info = $user->where("uid={$uid}")->find();
+		$info = $user
+            ->join('qy_apply_expert_info on qy_user.id = qy_apply_expert_info.uid')
+            ->where("qy_user.id={$uid}")
+            ->field('qy_user.*,qy_apply_expert_info.is_pass')
+            ->find();
 		$this->assign('info',$info);
 		$this->meta_title = '专家会员申请详情信息';
         $this->display();
 	}
+
+    //专业会员审核
+    public function memberChecked(){
+	    $model = M('apply_expert_info');
+        $type = I('type');//操作方式
+        $id = I('id');
+        $where['uid'] = $id;
+        switch ($type){
+            case "del": //删除
+
+            $rs = $model->where($where)->delete();
+                break;
+            case "checked"://审核
+                $status = I('status');
+            $data['is_pass'] = $status;
+//                $data['status'] = $status;
+                $rs = $model->where($where)->save($data);
+                break;
+            default:
+                $this->error("请求错误！");
+        }
+        if ($rs)
+            $this->success('操作成功！',U('User/ProfessionalMembers'));
+        else
+            $this->error('操作失败！');
+    }
 
 }

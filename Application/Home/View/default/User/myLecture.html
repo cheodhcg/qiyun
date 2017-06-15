@@ -10,29 +10,40 @@
 </head>
 <body>
 <div class="wdtw_box oh" id="listdiv">
-<volist name="list" id="vo">
-    <div class="wdtw_info container oh underline">
-       <div>
-           <a href="{:U('Lecture/lectureinfo',array('id'=>$vo['id']))}"><p>{$vo['title']}</p></a>
-       </div>
-        <div class="my_tw_x fl">
-            <div class="my_hd_btn fl abs">
-            <if condition="$vo['is_my']">
-                <span class="my_cy dn">已参与</span>
-                <span class="my_fq ">已发起</span>
-            <else/>
-                <span class="my_cy">已参与</span>
-                <span class="my_fq dn">已发起</span>
-            </if>
-                <!-- <span>未开始</span> -->
+    <notEmpty name="list">
+        <volist name="list" id="vo">
+            <div class="wdtw_info container oh underline">
+                <div>
+                    <a href="{:U('Lecture/lectureinfo',array('id'=>$vo['id']))}"><p>{$vo['title']}</p></a>
+                </div>
+                <div class="my_tw_x fl">
+                    <div class="my_hd_btn fl abs">
+                        <if condition="$vo['is_my']">
+                            <span class="my_cy dn">已参与</span>
+                            <span class="my_fq ">已发起</span>
+                            <else/>
+                            <span class="my_cy">已参与</span>
+                            <span class="my_fq dn">已发起</span>
+                        </if>
+                        <!-- <span>未开始</span> -->
+                    </div>
+                    <div class="my_tw_time fr abs my_hd">
+                        发布时间
+                        <span>{$vo.addtime} </span>
+                    </div>
+                </div>
             </div>
-            <div class="my_tw_time fr abs my_hd">
-                发布时间
-                <span>{$vo.addtime} </span>
-            </div>
+        </volist>
+        <else/>
+        <div style="text-align: center;margin-top: 15%">
+            <img src="__ROOT__/images/暂无消息.png" alt="暂无消息">
+            <p>暂时还没有内容哦~</p>
         </div>
-    </div>
-</volist>    
+        <div>
+            <a href="{:U('Lecture/lecture_release')}" class="vip_btn">发起讲座</a>
+        </div>
+    </notEmpty>
+
 </div>
 <if condition="$page eq 1">
 <span class="loading">

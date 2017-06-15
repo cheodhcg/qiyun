@@ -1,81 +1,104 @@
 <extend name="Public/base"/>
-
 <block name="body">
     <div class="main-title">
         <h2>{$meta_title}</h2>
     </div>
-    <form action="{:U()}" method="post" class="form-horizontal">
-        <div class="form-item">
-            <label class="item-label">微信昵称<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="nickname" value="{$info['nickname']}">
+    <div class="tab-wrap">
+        <ul class="tab-nav nav">
+            <li data-tab="tab1" class="current"><a href="javascript:void(0);">申报表</a></li>
+            <li data-tab="tab2" ><a href="javascript:void(0);">申请材料</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="form_data">
+                <div id="tab1" class="tab-pane in tab1">
+                        <div class="form-item">
+                            <label class="item-label">微信昵称<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="nickname" value="{$info['nickname']}">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">微信头像<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <img src="{$info['face']}" width="200px;" height="200px;">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">真实姓名<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="username" value="{$info['username']}">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">联系电话<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="nickname" value="{$info['phone']}">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">公司名称<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="nickname" value="{$info['company']}">
+                            </div>
+                        </div><div class="form-item">
+                        <label class="item-label">职位<span class="check-tips"></span></label>
+                        <div class="controls">
+                            <input type="text" class="text input-large" name="nickname" value="{$info['position']}">
+                        </div>
+                    </div>
+                        <div class="form-item">
+                            <label class="item-label">所在地区<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="nickname" value="{$info['area']}">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">擅长类型<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="nickname" value="{$info['excelled']}">
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">个人简介<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="nickname" value="{$info['content']}">
+                            </div>
+                        </div>
+                </div>
+                <div id="tab2" class="tab-pane tab2">
+                    <p>暂时还没有内容哦</p>
+                </div>
             </div>
         </div>
-        <div class="form-item">
-            <label class="item-label">微信头像<span class="check-tips"></span></label>
-            <div class="controls">
-                <img src="" width="200px;" height="200px;">
-            </div>
+        <div class="form-item cf text-center" style="margin-top: 50px">
+            <input type="hidden" name="id" value="{$info.id}">
+            <eq name="info.is_pass" value="0">
+                <a href="{:U('User/memberChecked?type=checked&id='.$info[id].'&status=1')}" class="btn submit-btn confirm ajax-get " id="button1"  >通过</a>
+                <a href="{:U('User/memberChecked?type=checked&id='.$info[id].'&status=-1')}" class="btn submit-btn confirm ajax-get" id="button2"  >不通过</a>
+                <else/>
+                <a href="javascript:return false;" onclick="return false;" class="btn submit-btn disabled">通过</a>
+                <a href="javascript:return false;" onclick="return false;" class="btn submit-btn disabled">不通过</a>
+            </eq>
+
+            <a class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</a>
         </div>
-		<div class="form-item">
-            <label class="item-label">真实姓名<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="username" value="{$info['username']}">
-            </div>
-        </div>
-		<div class="form-item">
-            <label class="item-label">联系电话<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="nickname" value="{$info['phone']}">
-            </div>
-        </div>
-		<div class="form-item">
-            <label class="item-label">公司名称<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="nickname" value="{$info['nickname']}">
-            </div>
-        </div><div class="form-item">
-            <label class="item-label">职位<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="nickname" value="{$info['nickname']}">
-            </div>
-        </div>
-		<div class="form-item">
-            <label class="item-label">所在地区<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="nickname" value="{$info['nickname']}">
-            </div>
-        </div>
-		<div class="form-item">
-            <label class="item-label">擅长类型<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="nickname" value="{$info['nickname']}">
-            </div>
-        </div>
-		<div class="form-item">
-            <label class="item-label">个人简介<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="nickname" value="{$info['nickname']}">
-            </div>
-        </div>
-		<div class="form-item">
-            <label class="item-label">是否通过<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="radio" class="text" name="is_apply" value="2">通过
-				<input type="radio" class="text" name="is_apply" value="3">驳回
-            </div>
-        </div>
-        <div class="form-item">
-			<input type="hidden" name="uid" value="{$info['uid']}">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
-            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-        </div>
-    </form>
+    </div>
+
 </block>
 
 <block name="script">
+    <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript">
         //导航高亮
-        highlight_subnav('{:U('User/user')}');
+        highlight_subnav('{:U('User/ProfessionalMembers')}');
+        var list = $('.tab-nav').children();
+        var box = $('#form_data').children();
+        list.click(function () {
+            list.removeClass('current');
+            box.removeClass('in');
+            $(this).addClass('current');
+            var tab = $(this).attr('data-tab');
+            $('#'+tab).addClass('in');
+        })
     </script>
 </block>

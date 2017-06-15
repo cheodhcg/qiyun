@@ -27,7 +27,7 @@
             <thead>
             <tr>
                 <th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
-                <th class="">UID</th>
+                <th class="">-</th>
                 <th class="">昵称</th>
                 <th class="">会员级别</th>
                 <th class="">真实姓名</th>
@@ -35,31 +35,47 @@
                 <th class="">企业名称</th>
                 <th class="">所属职位</th>
                 <th class="">注册日期</th>
+                <th class="">审核状态</th>
                 <th class="">操作</th>
             </tr>
             </thead>
             <tbody>
-            <notempty name="_list">
-                <volist name="_list" id="vo">
+            <notempty name="list">
+                <volist name="list" id="vo">
                     <tr>
                         <td><input class="ids" type="checkbox" name="id[]" value="{$vo.uid}" /></td>
-                        <td>{$vo.uid} </td>
+                        <td>{$i} </td>
                         <td>{$vo.nickname}</td>
-                        <td>{$vo.level}</td>
+                        <td>{$vo.level|get_member}</td>
                         <td>{$vo.username}</td>
                         <td>{$vo.phone}</td>
                         <td>{$vo.company}</td>
-                        <td>{$vo.position}</td>
+                        <td>{$vo.position|get_dep}</td>
                         <td><span>{$vo.addtime|time_format}</span></td>
                         <td>
-                            <eq name="vo['is_apply']" value="1">
-                                <a href="{:U('User/info?uid='.$vo['uid'])}" class="authorize">审核</a>
-                            </eq>
+                            <switch name="vo.is_pass">
+                                <case value="1">
+                                    已通过
+                                </case>
+                                <case value="-1">
+                                    未通过
+                                </case>
+                                <case value="0">
+                                    审核中
+                                </case>
+                                <default>
+                                    -
+                                </default>
+                            </switch>
+                        </td>
+                        <td>
+                                <a href="{:U('User/info?uid='.$vo['id'])}" class="authorize">查看</a>
+                                <a href="{:U('User/memberChecked?type=del&id='.$vo['id'])}" class="confirm ajax-get">删除</a>
                         </td>
                     </tr>
                 </volist>
                 <else/>
-                <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+                <td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
             </notempty>
             </tbody>
         </table>

@@ -144,6 +144,7 @@ wx.ready(function () {
 
 
 
+
     function decryptCode(code, callback) {
         $.getJSON('/jssdk/decrypt_code.php?code=' + encodeURI(code), function (res) {
             if (res.errcode == 0) {

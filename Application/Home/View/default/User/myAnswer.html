@@ -8,11 +8,17 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/common.css">
 </head>
+<style>
+
+</style>
 <body>
 <div class="wdtw_box oh" id="listdiv">
 <volist name="list" id="vo">
     <a href="{:U('Index/questioninfo',array('id'=>$vo['id']))}">
     <div class="wdtw_info container oh underline">
+        <div class="gb">
+            <a href="##" class="gb_btn" style="color: #e71f19;font-size: 16px;"> x </a>
+        </div>
        <div>
            <h4>{$vo.title}</h4>
            <p>{$vo['content'],0,20|msubstr}</p>
@@ -32,6 +38,13 @@
     </a>
 </volist>
 </div>
+<div class="gb-ts" style="display: none">
+    <span>确认删除回答！</span>
+    <a href="##">确认</a><a href="##">取消</a>
+</div>
+<div class="gb-zz" style="display: none">
+
+</div>
 <if condition="$page eq 1">
 <span class="loading">
    <img class="fl" src="images/load.png" alt="aa" height="100%"> 
@@ -41,6 +54,16 @@
 
 <script src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
+    $(function () {
+        $('.gb_btn').click(function () {
+            $('.gb-ts').show();
+            $('.gb-zz').show();
+        });
+        $('.gb-ts a').click(function () {
+            $('.gb-ts').hide();
+            $('.gb-zz').hide();
+        })
+    });
     var p = 2;
     $("#gengduo").click(function(event) {
         $.ajax({
