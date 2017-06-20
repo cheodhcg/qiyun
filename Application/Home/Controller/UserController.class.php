@@ -534,6 +534,15 @@ class UserController extends HomeController {
         $this->assign('list',$data);
         $this->display();
     }
+    //myFollow 我的关注列表
+    public function myFollow(){
+        $model = M('user_follow');
+        $uid = $_COOKIE['qiyun_user'];
+        $where['uid'] = $uid;
+        $data = $model->where($where)->select();
+        $this->assign('list',$data);
+        $this->display();
+    }
 
 
 
@@ -544,15 +553,15 @@ class UserController extends HomeController {
         $name = "wxupload_14966982989294.mp3";
 //        $from = "D:\\wwwroot\\qiyun\\wwwroot\\weixinrecord\\20170606\\";
         $from = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\20170606\\";
-//        $str = "D:\\wwwroot\\qiyun\\wwwroot\\ffm\\bin\\ffmpeg.exe -i " . $from . $filename . " " . $from . $name;
-        $str = "ffmpeg -i " . $from . $filename . " " . $from . $name;
+//        $str = "D:\\wwwroot\\qiyun\\wwwroot\\ffm\\bin\\ffmpeg.exe -i " . $from . $filename . " " . $from . $name." 2>&1";
+        $str = "ffmpeg -i " . $from . $filename . " " . $from . $name." 2>&1";
 //        exec($str,$callback);
-        exec($str);
-        echo $str;
-//        exec('ipconfig',$callback);
-//        var_dump($callback);
-//        echo phpinfo();
-        $this->display();
+
+        exec($str,$output,$retuen_val);
+//        exec('cmd 2>&1',$output,$retuen_val);
+        var_dump($output);
+
+        $this->display('User:phpinfo');
     }
 
 }

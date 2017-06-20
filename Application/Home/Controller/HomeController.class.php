@@ -19,11 +19,11 @@ class HomeController extends Controller {
 //	public $AppSecret = 'd0575f7ffc4f4829a4a4c524dcfaf521';
 	public $appid = 'wxe58e0c041bed2598';
 	public $AppSecret = '263a8ddb41435b76bd281d8117cd5efc';
-    public $hosturl = "http://pvkduh.natappfree.cc"; //配置域名
-    public $redirect_uri =  "http://pvkduh.natappfree.cc"; //微信授权回调域名
+    public $hosturl = "http://ac7mvb.natappfree.cc"; //配置域名
+//    public $hosturl = "http://qiyun.mmqo.com"; //配置域名
+    public $redirect_uri =  "http://ac7mvb.natappfree.cc"; //微信授权回调域名
+//    public $redirect_uri =  "http://qiyun.mmqo.com"; //微信授权回调域名
     public $key = "MDAwMDAwMDAwML6IgpuLf3-YwLiMrIbOfpaKurSpe4OicA";//全局key。加密字符串：adadqwe5123_ad1!
-
-
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
@@ -48,7 +48,8 @@ class HomeController extends Controller {
 //	    weixin_login($this->appid,$this->redirect_uri);
         //微信登陆获取用户信息
         //存取用户的信息，当用户访问
-        if(empty($_COOKIE['qiyun_user'])){//如果为空则是第一次访问，获取用户信息
+        if(empty($_COOKIE['qiyun_user'])){
+            //如果为空则是第一次访问，获取用户信息
             $appid = $this->appid;
             $type = I('type');
             $type = empty($type)? 1 : $type;
@@ -107,20 +108,18 @@ class HomeController extends Controller {
                     //将微信个人信息也保存
                     $userinfo['uid'] = $uid;
                     $res2 = $wxUserM->add($userinfo);
-                    $info = "感谢您对企知道的关注，您已成为普通会员！快去看看吧~";
-                    sys_notice($info,$uid);
+                   /* $info = "感谢您对企知道的关注，您已成为普通会员！快去看看吧~";
+                    sys_notice($info,$uid);*/
                     //有效期一个月,设置一个cookie
 //                    $validity = 3600*24*30;
-                    $validity = 60*10;
+                    $validity = 3600*24;
                     cookie('user',$uid,array('expire'=>$validity,'prefix'=>'qiyun_'));
                     $_SESSION['user'] = $uid;
-//
-
                 }
                 //不为空记录cookie
                 else{
 //                    $validity = 3600*24*30;
-                    $validity = 60*10;
+                    $validity = 3600*24;
                     cookie('user',$res[0][id],array('expire'=>$validity,'prefix'=>'qiyun_'));
 //                    session('user',$res[0][id]);
                     $_SESSION['user'] = $res[0][id];

@@ -68,17 +68,23 @@
 </div>
 <div class="sc-nav">
     <ul>
-        <li><a href="1#"><img src="images/sc01.png" alt="i" width="80%"> <br>房产</a></li>
-        <li><a href="2#"><img src="images/sc02.png" alt="i" width="80%"> <br>房产</a></li>
-        <li><a href="3#"><img src="images/sc03.png" alt="i" width="80%"> <br>房产</a></li>
-        <li><a href="4#"><img src="images/sc04.png" alt="i" width="80%"> <br>房产</a></li>
-        <li><a href="5#"><img src="images/sc05.png" alt="i" width="80%"> <br>房产</a></li>
+        <li><a href="{:U('Shop/index')}"><img src="images/sc01.png" alt="i" width="80%"> <br>服务</a></li>
+        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc02.png" alt="i" width="80%"> <br>房产</a></li>
+        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc03.png" alt="i" width="80%"> <br>律师</a></li>
+        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc04.png" alt="i" width="80%"> <br>咨询</a></li>
+        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc05.png" alt="i" width="80%"> <br>商务</a></li>
     </ul>
 </div>
+<script>
+    function alert1() {
+        alert("敬请期待");
+    }
+</script>
 <div class="sc_list  oh" id="listdiv">
     <volist name="list" id="vo">
         <div class="sc_list_info fl oh">
-            <a href="{:U('info?id='.$vo['id'])}">
+            <!--<a href="{:U('info?id='.$vo['id'])}">-->
+            <a href="{:U('WxJsApi/buyMember?id='.$vo['id'])}">
                 <img src="__ROOT__{$vo.path}" alt="aa" width="100%" height="96">
                 <p><span class="sb_mc fl">{$vo.title}</span><span class="fr sb_mc2" style="text-align: right">￥{$vo.money}</span>
                 </p>
@@ -137,4 +143,5 @@
         autoplay: 2500,
         autoplayDisableOnInteraction: false
     });
+
 </script>

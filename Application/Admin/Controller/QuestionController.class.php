@@ -50,4 +50,16 @@ class QuestionController extends AdminController {
 		$this->meta_title = '问题详情';
         $this->display();
 	}
+	public function setTj(){
+	    $id= I('id');
+	    $status = I('status');
+        $model = M('question');
+        $data['is_tj'] = $status;
+        $res = $model->where('id='.$id)->save($data);
+        if($res){
+            $this->success("操作成功！");
+        }else{
+            $this->error('操作失败！');
+        }
+    }
 }

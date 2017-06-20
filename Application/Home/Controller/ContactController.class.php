@@ -32,6 +32,7 @@ class ContactController extends HomeController {
 	    // 进行分页数据查询
 		$field = "qy_user.id,qy_user.username,qy_user.face,qy_user.company,qy_category.title,qy_user.content,qy_user_follow.status";
 	    $list = $user->where($where)->order('qy_user.id')
+            ->where('is_zs=1')
 //	    		->join("JOIN qy_category ON qy_category.id = qy_user.position")
 //	    		->join("JOIN qy_user_follow ON qy_user.uid = qy_user_follow.fuid")
 //	    		->limit($Page->firstRow.','.$Page->listRows)
@@ -46,8 +47,8 @@ class ContactController extends HomeController {
 				$this->error('没有更多的信息');exit;
 			}
 		}
-	    $this->assign('list',$list);// 赋值数据集 
-        $this->assign('page',$page);
+	    $this->assign('list',$list);// 赋值数据集
+        $this->assign('page',$Page);
         $this->assign('catelist',$catelist);
         $this->assign('cate_id',$cate_id?$cate_id:0);
         $this->assign('page',count($list) == 10 ? "1" : "0");
@@ -136,4 +137,32 @@ class ContactController extends HomeController {
 		$this->assign('list',$list);
 		$this->display();
 	}
+
+	//关注
+    public function follow(){
+	    $id = I('id');//被关注人ID
+        $uid = $_COOKIE['qiyun_user'];//关注人ID
+        $model = M('user_follow');
+        $data['uid'] = $uid;
+        $data['fuid'] = $id;
+        $data['fuid'] = $id;
+        $data['create_time'] = time();
+
+        $where['uid'] = $uid;
+        $where['fuid'] = $id;
+        $res = $model->where($where)->select();
+        $a = $model->getLastSql();
+        if ($res){
+            $msg['status'] = 1;
+            $msg['code'] = "您已关注，请勿重复关注";
+            $msg['a'] = $a;
+            $this->ajaxReturn($msg);
+        }else{
+            $model->add($data);
+            $msg['status'] = 0;
+            $msg['code'] = "关注成功！";
+            $msg['a'] = $a;
+            $this->ajaxReturn($msg);
+        }
+    }
 }

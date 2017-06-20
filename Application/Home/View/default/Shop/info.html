@@ -22,7 +22,7 @@
         <span>商品描述:</span>
         <p>{$info['content']}</p>
     </div>
-    <a href="{:U('WxJsApi/WxPay')}" id="buy-vip"  class="sp_btn" >购买服务</a>
+    <a href="{:U('WxJsApi/buyMember?id='.$info['id'])}" id="buy-vip"  class="sp_btn" >购买服务</a>
 </div>
 <script src="__STATIC__/jquery-2.0.3.min.js"></script>
 <script>

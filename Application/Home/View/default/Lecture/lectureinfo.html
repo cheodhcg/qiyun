@@ -244,6 +244,7 @@
         var url = "{:U('Lecture/like')}";
         $.post(url,{pid:pid,uid:uid},function (data) {
             alert(data);
+            location.reload();
             console.log(data);
         })
     }

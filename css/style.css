@@ -461,7 +461,7 @@
     float: left;
     height: 100px;
     padding: 2px;
-    margin-top: 6px;
+    margin-top: 0px;
 }
 
 .tw_fl {
@@ -489,12 +489,13 @@
     width: 70%;
     float: left;
     overflow: hidden;
-    margin-top: 1px;
+    /*margin-top: 5px;*/
 }
 
 .tw_fl .fl_btn {
     float: left;
     margin-right: 5px;
+    margin-top: 5px;
     width: 30%;
 }
 
@@ -583,7 +584,7 @@
 }
 
 .jz_fm img {
-    width: 75%;
+
     border: 1px solid #ccc;
 }
 
@@ -903,6 +904,7 @@
     height: 280px;
     text-align: center;
     background: url("../images/名片.png") #fff;
+    background-size: 100% ;
     border-radius: 5px;
     box-shadow: 5px 2px 6px rgba(0, 0, 0, 0.5);
     border-right: 2px solid rgba(255, 255, 255, 0.6);
@@ -1998,7 +2000,7 @@
 .card_img {
     width: 50px;
     height: 50px;
-    border-radius: 25px;
+    border-radius: 50px;
     border: 2px solid #fff;
     position: absolute;
     top: 40px;
@@ -2034,7 +2036,7 @@
     height: 40px;
     float: left;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 6px;
 }
 .option_border_box{
     width: 90%;

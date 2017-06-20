@@ -1137,3 +1137,35 @@ function get_member($level){
     $data =$model->where($where)->getField('title');
     return $data;
 }
+//curl实现post请求
+function curl_post($url, $data = null)
+{
+    //创建一个新cURL资源
+    $curl = curl_init();
+    //设置URL和相应的选项
+    curl_setopt($curl, CURLOPT_URL, $url);
+    if (!empty($data)){
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    }
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    //执行curl，抓取URL并把它传递给浏览器
+    $output = curl_exec($curl);
+    //关闭cURL资源，并且释放系统资源
+    curl_close($curl);
+    return $output;
+}
+//是否关注
+function is_follow($id){
+    $uid = $_COOKIE['qiyun_user'];
+    $model = M('user_follow');
+    $where['uid'] = $uid;
+    $where['fuid'] = $id;
+    $res = $model->where($where)->find();
+    if ($res){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+

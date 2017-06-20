@@ -14,15 +14,16 @@
 <body>
 <div class="wdtw_box oh" id="listdiv">
 <volist name="list" id="vo">
-    <a href="{:U('Index/questioninfo',array('id'=>$vo['id']))}">
     <div class="wdtw_info container oh underline">
         <div class="gb">
             <a href="##" class="gb_btn" style="color: #e71f19;font-size: 16px;"> x </a>
         </div>
+        <a href="{:U('Index/questioninfo',array('id'=>$vo['id']))}" class="db">
        <div>
            <h4>{$vo.title}</h4>
            <p>{$vo['content'],0,20|msubstr}</p>
        </div>
+        </a>
         <div class="my_tw_x fl">
 
             <div class="my_tw_x1 abs">
@@ -35,7 +36,7 @@
             </div>
         </div>
     </div>
-    </a>
+
 </volist>
 </div>
 <div class="gb-ts" style="display: none">

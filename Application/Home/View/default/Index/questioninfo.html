@@ -7,7 +7,6 @@
 <div class="wt_info ">
     <div class="question_info container  oh underline">
             <h3>{$info['title']}</h3>
-
             <p>{$info['content']}</p>
         <if condition="$info['userinfo']['face']">
             <p>
@@ -48,9 +47,9 @@
                 </div>-->
                 <div class="weixinAudio fl">
                     <!--http://wbcfzk.natappfree.cc/qiyun/Public/static/webchataudio/sound/2.mp3-->
-                    <audio src="__ROOT__{$v.content}" id="media" width="1" height="1" preload></audio>
+                    <!--<audio src="__ROOT__{$v.content}" id="media" width="1" height="1" preload></audio>-->
                     <span id="audio_area" class="db audio_area">
-                                <span class="audio_wrp db">
+                                <span class="audio_wrp db" data-id="{$info['questionlist'][0][id]}" onclick="playRecord(this)">
                                 <span class="audio_play_area">
                                     <i class="db icon_audio_default"></i>
                                     <i class="db icon_audio_playing"></i>
@@ -170,13 +169,36 @@
             });
         }
     });
+    function playRecord(obj) {
+        var $id = $(obj).attr('data-id');
+        $.post("{:U('Index/recordVoice')}",{id:$id},function (data) {
+            if (data.status){
+                console.log(data);
+//                alert(data.data);
+                wx.downloadVoice({
+                    serverId: data.data, // 需要下载的音频的服务器端ID，由uploadVoice接口获得
+                    isShowProgressTips: 1, // 默认为1，显示进度提示
+                    success: function (res) {
+                        var localId = res.localId; // 返回音频的本地ID
 
+                        wx.playVoice({
+                            localId: localId
+                        });
+                    }
+                });
+
+            }else{
+                alert(data.data);
+            }
+        })
+    }
 </script>
 <script src="__STATIC__/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
     $('.weixinAudio').weixinAudio({
-        autoplay:true,
+        autoplay:false,
 
     });
 </script>
+<script src="__ROOT__/wx/wx_jssdk.js"></script>
 <include file="Public/footer"/>

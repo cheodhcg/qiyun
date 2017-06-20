@@ -110,9 +110,8 @@ wx.ready(function () {
                     success: function (res) {
                         // alert('下载语音成功，localId 为' + res.localId);
                         var pid = $('#submit_answer').attr('data-pid');
-                        // var url = "http://qiyun.mmqo.com/index.php?s=/Home/Index/uploadAnswer.html";
-                        // var url = "/qiyun/index.php?s=/Home/Index/uploadAnswer"+"/pid/"+pid+".html";
-                        var url = "/qiyun/index.php?s=/Home/Index/uploadAnswer.html";
+                        var url = "http://qiyun.mmqo.com/index.php?s=/Home/Index/uploadAnswer.html";
+                        // var url = "/qiyun/index.php?s=/Home/Index/uploadAnswer.html";
 
                         $.post(url,{serverId:voice.serverId,pid:pid},function(data){
                             // data = $.parseJSON(data);
@@ -157,5 +156,3 @@ wx.ready(function () {
 wx.error(function (res) {
     alert(res.errMsg);
 });
-
-

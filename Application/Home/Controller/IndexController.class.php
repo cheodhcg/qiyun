@@ -60,6 +60,11 @@ class IndexController extends HomeController
             }
         }
 
+        require_once 'JSSDK.php';
+        $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
+        $signPackage = $jssdk -> GetSignPackage();
+        $this -> assign('jssdk', $signPackage);
+
         $this -> assign('list', $list);// 赋值数据集
         $this -> assign('cate_list', $this -> cate_list);//分类列表
         $this -> assign('type', $id ? $id : 0);
@@ -75,7 +80,7 @@ class IndexController extends HomeController
     {
         $question_answer = M('question_answer');
         $list            = $question_answer
-            -> field('qy_user.uid,qy_user.face,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content')
+            -> field('qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content')
             -> where("pid={$question_id}")
             -> JOIN("JOIN qy_user ON qy_user.id = qy_question_answer.uid")
             -> select();
@@ -146,9 +151,14 @@ class IndexController extends HomeController
             $xglist[$key]['questionlist'] = $this -> get_question_over($value['id']);
             $xglist[$key]['userinfo']     = $this -> userinfo($value['uid']); //提问者的基本信息
         }
+        require_once 'JSSDK.php';
+        $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
+        $signPackage = $jssdk -> GetSignPackage();
+        $this -> assign('jssdk', $signPackage);
         $this -> assign('xglist', $xglist); //相关问答
         $this -> assign('info', $info);//提问详情
         $this -> assign('flag', $flag);
+        $this -> assign('id', $id);
         $this -> assign('_title', '问题详情');
         $this -> display();
     }
@@ -250,12 +260,13 @@ class IndexController extends HomeController
         $this -> downAndSaveFile($url, $path . "/" . $filename);
 
         //存储的amr文件通过ffmpeg转换为mp3
-        $name = substr($filename, 0, -4) . ".mp3";
+//        $name = substr($filename, 0, -4) . ".mp3";
+        $name = substr($filename, 0, -4) . ".amr";
         //本地调试
-        $from = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
-        $to   = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
-        $str = "ffmpeg -i " . $from . $filename . " " . $to . $name;
-        $r = system($str);//或者 exec($str);
+//        $from = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
+//        $to   = "F:\\xampp\\htdocs\\qiyun\\weixinrecord\\" . $date . "\\";
+//        $str = "ffmpeg -i " . $from . $filename . " " . $to . $name;
+//        $r = system($str);//或者 exec($str);
         //删除之前的amr文件
 //        unlink($from . $filename);
 
@@ -264,16 +275,20 @@ class IndexController extends HomeController
 //        $cmd      = "ffmpeg -i " . $savePath . $filename . " " . $savePath . $name;
 //        system($cmd);
 //        unlink($savePath . $filename);
+        //TODO:由于微信在服务器上转码有问题所以换为上传媒体素材在动过mediaID调用SDK播放语音
+
 
         //插入数据库
-        $model            = M('question_answer');
-        $model2           = M('answer_file');
-        $path2            = "/weixinrecord/" . $date;
-        $data1['pid']     = $pid;
-        $data1['uid']     = $_COOKIE['qiyun_user'];
-        $data1['content'] = $path2 . "/" . $name;
-        $data1['addtime'] = time();
-        $res              = $model -> add($data1);
+        $model              = M('question_answer');
+        $model2             = M('answer_file');
+        $path2              = "/weixinrecord/" . $date;
+        $data1['pid']       = $pid;
+        $data1['uid']       = $_COOKIE['qiyun_user'];
+        $data1['content']   = $path2 . "/" . $name;
+        $data1['addtime']   = time();
+        $data1['media_id']  = $media_id;
+        $data1['dead_time'] = time() + 60 * 60 * 60 * 48;
+        $res                = $model -> add($data1);
         if ($res) {
             $data["code"] = 1;
             $data["msg"]  = "已提交";
@@ -288,6 +303,82 @@ class IndexController extends HomeController
 //        echo json_encode($data);
         $this -> ajaxReturn($data);
     }
+
+    //播放语音
+    public function recordVoice()
+    {
+        if (IS_POST) {
+            $id = I('id');
+            require_once 'JSSDK.php';
+            $jssdk        = new \JSSDK($this -> appid, $this -> AppSecret);
+            $access_token = $jssdk -> getAccessToken();
+
+            $model       = M('question_answer');
+            $where['id'] = $id;
+            $res         = $model -> where($where) -> find();
+            $imgUrl      = "." . $res['content'];
+            if (time() < $res['dead_time']) {
+                $msg['status'] = 1;
+                $msg['data']   = $res['media_id'];
+                $msg['id']     = $id;
+            } else {
+                $URL  = 'http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=' . $access_token . '&type=voice';
+                $file = realpath($imgUrl); //要上传的文件
+//            $fields['media'] = '@'.$file;
+                $fields['media'] = new \CURLFile($file);
+                $ch              = curl_init($URL);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $result = curl_exec($ch);
+                if (curl_errno($ch)) {
+                    return curl_error($ch);
+                }
+                curl_close($ch);
+                $data          = @json_decode($result, true);
+                $msg['status'] = 1;
+                $msg['data']   = $data['media_id'];
+                $msg['id']     = $id;
+                //更新media_id 和过期时间
+                $model          = M('question_answer');
+                $where['id']    = $id;
+                $d['media_id']  = $data['media_id'];
+                $d['dead_time'] = time() + 60 * 60 * 60 * 48;
+                $model -> where($where) -> save($d);
+                //$msg['url'] = $URL;
+//            $msg['ac'] = $access_token;
+//            $msg['a'] = $imgUrl;
+//            $msg['b'] = $file;
+            }
+            $this -> ajaxReturn($msg);
+        } else {
+            $msg['status'] = 0;
+            $msg['data']   = "请求方式错误";
+            $this -> ajaxReturn($msg);
+        }
+
+    }
+
+    public function curl_post($url, $data = null)
+    {
+        //创建一个新cURL资源
+        $curl = curl_init();
+        //设置URL和相应的选项
+        curl_setopt($curl, CURLOPT_URL, $url);
+        if (!empty($data)) {
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        }
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //执行curl，抓取URL并把它传递给浏览器
+        $output = curl_exec($curl);
+        //关闭cURL资源，并且释放系统资源
+        curl_close($curl);
+        return $output;
+    }
+
 
     //根据URL地址，下载文件
     public function downAndSaveFile($url, $savePath)

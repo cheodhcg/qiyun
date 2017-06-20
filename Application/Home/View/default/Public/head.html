@@ -39,12 +39,12 @@
 
     .audio_wrp {
         width: 155px;
-        /*border: 1px solid #ebebeb;*/
+        border: 1px solid #ebebeb;
         /*background-color: #fcfcfc;*/
-        /*overflow: hidden;*/
+        overflow: hidden;
         /*padding: 12px 20px 12px 12px;*/
-        /*background: #ff5854;*/
-        /*border-radius: 8px;*/
+        background: #ff5854;
+        border-radius: 8px;
         height: 30px;
         line-height: 30px;
         color: #fff;
@@ -52,8 +52,10 @@
         z-index: 999;
         top:8px;
         left: 5px;
-        background: url('../images/w_101.png') center no-repeat;
-        background-size: 100%;
+        -webkit-user-select: none;/*禁用手机浏览器的用户选择功能 */
+        -moz-user-select: none;
+        /*background: url('../images/w_101.png') center no-repeat;*/
+        /*background-size: 100%;*/
     }
 
     /*.audio_wrp:after {*/

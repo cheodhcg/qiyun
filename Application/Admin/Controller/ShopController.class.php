@@ -61,6 +61,9 @@ class ShopController extends AdminController {
 			$info = $shop->where("id={$id}")->find();
 			$this->assign('info',$info);
 		}
+		$levelM = M('member_type');
+		$level = $levelM->where('status=1')->field('id,title')->select();
+		$this->assign('level',$level);
 		$this->meta_title = '新增商品';
         $this->display();
 	}

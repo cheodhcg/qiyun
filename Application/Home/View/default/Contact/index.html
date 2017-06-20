@@ -58,8 +58,16 @@
                     <volist name="list" id="vo">
 
                         <div class="rmq_person oh ">
+                            <eq name="vo['id']|is_follow" value="0">
+                                <a href="javascript:void(0);" data-id="{$vo['id']}" class="rmq_follow" id="rmq_follow">
+                                    关注
+                                </a>
+                                <else/>
+                                <span class="rmq_follow">已关注</span>
+                            </eq>
+
                             <div class="card_img">
-                                <img src="{$vo['face']}" alt="企知道头像" width="50" style="border-radius: 25px">
+                                <img src="{$vo['face']}" alt="企知道用户头像" width="50" style="border-radius: 25px">
                             </div>
                             <div class="card-userinfo">
                                 <h3 style="color: #ff827e;">
@@ -114,7 +122,16 @@
             width: ($('.rmq_person').length) * 310
         });
     })
-
+    $("#rmq_follow").click(function () {
+        var $id = $(this).attr('data-id');
+        $.post("{:U('Contact/follow')}",{id:$id},function(data){
+            if(!data.status){
+                $('#rmq_follow').html("已关注");
+                $('#rmq_follow').attr('href',"#");
+            }
+            alert(data.code);
+        })
+    })
 </script>
 
 <include file="Public/footer"/>

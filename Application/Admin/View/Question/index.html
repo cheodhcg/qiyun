@@ -46,7 +46,15 @@
 			<td>{$vo.username}</td>
 			<td>{$vo.adtime|date='Y-m-d H:i',###}</td>
 			<td>{$vo.number}</td>
-			<td><a href="{:U('info?id='.$vo['id'])}">详情</a></td>
+			<td>
+				<a href="{:U('info?id='.$vo['id'])}">详情</a>
+				<eq name="vo['is_tj']" value="0">
+					<a href="{:U('setTj?id='.$vo['id'].'&status=1')}" class="ajax-get">推荐</a>
+					<else/>
+					<a href="{:U('setTj?id='.$vo['id'].'&status=0')}" class="ajax-get">取消推荐</a>
+				</eq>
+
+			</td>
 			
 		</tr>
 		</volist>

@@ -64,10 +64,10 @@ class ShopController extends HomeController
 //        echo think_encrypt("adadqwe5123_ad1!");
         $shop = M('shop');
         $info = $shop -> where("id={$id}") -> find();
-        require_once 'JSSDK.php';
-        $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
-        $signPackage = $jssdk -> GetSignPackage();
-        $this -> assign('jssdk', $signPackage);
+//        require_once 'JSSDK.php';
+//        $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
+//        $signPackage = $jssdk -> GetSignPackage();
+//        $this -> assign('jssdk', $signPackage);
         $this -> assign('info', $info);
         $this -> assign('_title', '商品详情');
         $this -> display();
