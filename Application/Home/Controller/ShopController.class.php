@@ -89,7 +89,7 @@ class ShopController extends HomeController
                 $this->ajaxReturn($info);
             }
 
-            $uid     = $_COOKIE['qiyun_user'];
+            $uid     = $_COOKIE['qy_user'];
             //根据商品ID查询该商品的信息作为支付的商品信息
             $shop = M('shop');
             $w_shop['id'] = $goodsId;
@@ -100,7 +100,7 @@ class ShopController extends HomeController
             $invitation = M('invitation_list');
             for ($i = 0;$i < $num; $i++){
                 $str = md5(time().rand(1111, 9999));
-                $data['uid'] = $_COOKIE['qiyun_user'];
+                $data['uid'] = $_COOKIE['qy_user'];
                 $data['code'] = $str;
                 $data['create_time'] = time();
                 $invitation->add($data);

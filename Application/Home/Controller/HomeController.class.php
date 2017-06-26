@@ -19,9 +19,9 @@ class HomeController extends Controller {
 //	public $AppSecret = 'd0575f7ffc4f4829a4a4c524dcfaf521';
 	public $appid = 'wxe58e0c041bed2598';
 	public $AppSecret = '263a8ddb41435b76bd281d8117cd5efc';
-    public $hosturl = "http://ac7mvb.natappfree.cc"; //配置域名
+    public $hosturl = "http://w8k2s4.natappfree.cc"; //配置域名
 //    public $hosturl = "http://qiyun.mmqo.com"; //配置域名
-    public $redirect_uri =  "http://ac7mvb.natappfree.cc"; //微信授权回调域名
+    public $redirect_uri =  "http://w8k2s4.natappfree.cc"; //微信授权回调域名
 //    public $redirect_uri =  "http://qiyun.mmqo.com"; //微信授权回调域名
     public $key = "MDAwMDAwMDAwML6IgpuLf3-YwLiMrIbOfpaKurSpe4OicA";//全局key。加密字符串：adadqwe5123_ad1!
 
@@ -48,7 +48,7 @@ class HomeController extends Controller {
 //	    weixin_login($this->appid,$this->redirect_uri);
         //微信登陆获取用户信息
         //存取用户的信息，当用户访问
-        if(empty($_COOKIE['qiyun_user'])){
+        if(empty($_COOKIE['qy_user'])){
             //如果为空则是第一次访问，获取用户信息
             $appid = $this->appid;
             $type = I('type');
@@ -113,14 +113,14 @@ class HomeController extends Controller {
                     //有效期一个月,设置一个cookie
 //                    $validity = 3600*24*30;
                     $validity = 3600*24;
-                    cookie('user',$uid,array('expire'=>$validity,'prefix'=>'qiyun_'));
+                    cookie('user',$uid,array('expire'=>$validity,'prefix'=>'qy_'));
                     $_SESSION['user'] = $uid;
                 }
                 //不为空记录cookie
                 else{
 //                    $validity = 3600*24*30;
                     $validity = 3600*24;
-                    cookie('user',$res[0][id],array('expire'=>$validity,'prefix'=>'qiyun_'));
+                    cookie('user',$res[0][id],array('expire'=>$validity,'prefix'=>'qy_'));
 //                    session('user',$res[0][id]);
                     $_SESSION['user'] = $res[0][id];
                 }
@@ -133,7 +133,7 @@ class HomeController extends Controller {
             }
 
         }else{
-            session('user',cookie('qiyun_user'));
+            session('user',cookie('qy_user'));
 
         }
 

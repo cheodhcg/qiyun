@@ -65,26 +65,37 @@
 </style>
 <body style="background: #fff">
 <div class="follow">
-    <div class="follow-list">
-        <div class="follow-info">
-            <div class="header-img fl">
-                <img src="images/sc01.png" alt="i" width="100%">
-            </div>
-            <div class="introduce fl">
-                <p>
-                    张山
-                </p>
-                <p>
-                    <span>四川成都</span><span>xx公司</span><span>项目经理</span>
-                </p>
-            </div>
-            <div class="cancel fr">
-                <a href="##">取消关注</a>
-            </div>
+    <notEmpty name="list">
+        <div class="follow-list">
+            <volist name="list" id="f">
+                <div class="follow-info">
+                    <div class="header-img fl">
+                        <img src="{$f.face}" alt="i" width="100%">
+                    </div>
+                    <div class="introduce fl">
+                        <p style="padding-left:5px ">
+                            {$f.username}
+                        </p>
+                        <p>
+                            <span>{$f.company}</span><span>{$f.position}</span>
+                        </p>
+                    </div>
+                    <div class="cancel fr">
+                        <a href="javascript:void(0);" data-id="{$f.id}" id="rmq_follow">取消关注</a>
+                    </div>
+                </div>
+            </volist>
+
         </div>
-    </div>
+        <else/>
+        <div style="text-align: center;margin-top: 15%">
+            <img src="__ROOT__/images/暂无消息.png" alt="暂无消息">
+            <p>暂时还没有内容哦~</p>
+        </div>
+    </notEmpty>
+
 </div>
-<script src="../jquery-1.9.1.min.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
 <script>
     $(function () {
         var w = $(window).width();
@@ -93,6 +104,14 @@
         });
         $('.introduce p:last-child span').css({
             width:$('.introduce').width() / 3 -3
+        })
+    })
+    $("#rmq_follow").click(function () {
+        var $id = $(this).attr('data-id');
+        $.post("{:U('Contact/follow')}",{id:$id,type:0},function(data){
+
+            alert(data.code);
+            location.reload();
         })
     })
 </script>

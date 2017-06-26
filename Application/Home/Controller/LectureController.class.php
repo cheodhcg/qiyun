@@ -98,7 +98,7 @@ class LectureController extends HomeController
                 $type[$key] = sprintf('%04d', $value);
             }
             $data['title']        = I('title');
-            $data['uid']          = $_COOKIE['qiyun_user'];
+            $data['uid']          = $_COOKIE['qy_user'];
             $data['content']      = I('content');
             $data['type']         = implode(',', $type);
             $data['money']        = I('money');
@@ -159,7 +159,7 @@ class LectureController extends HomeController
         $signPackage = $jssdk -> GetSignPackage();
         $this -> assign('jssdk', $signPackage);*/
         $this -> assign('info', $info);//分类列表
-        $this->assign('uid',$_COOKIE['qiyun_user']);
+        $this->assign('uid',$_COOKIE['qy_user']);
         $this -> display();
     }
 

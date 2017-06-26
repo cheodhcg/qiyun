@@ -35,7 +35,7 @@
         <if condition="$info['questionlist']">
         <volist name="info['questionlist']" id="v">
             <!--<div class="yy_btn yy_btn2 ">-->
-            <div style="min-height: 48px">
+            <div class="answer_list" style="min-height: 48px;border-bottom: 1px solid #ccc;padding: 3px">
                 <div class="wd_img_t fl">
                     <img src="{$v['face']}" alt="aa" width="45" style="border-radius: 23px">
                 </div>
@@ -61,10 +61,11 @@
                                 <span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
                                 </span>
                                 </span>
-                    <span id="audio_length" class="audio_length tips_global" style="float: right;">00:00"</span>
+                    <span id="audio_length" class="audio_length tips_global" style="float: right;"></span>
                 </div>
-                <!--<div class="wd_t fr"><span>{$v['num']}</span>人听过</div>-->
+                <div class="wd_t fl"><span>{$v['num']}</span>人听过</div>
             </div>
+            <div style="clear: both"></div>
         </volist>
         <else/>
         <div class="yy_btn"><span style="width:65px;">暂无回答</span></div>

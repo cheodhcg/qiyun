@@ -63,7 +63,7 @@
                                     关注
                                 </a>
                                 <else/>
-                                <span class="rmq_follow">已关注</span>
+                                <span class="rmq_follow" style="color: #fff">已关注</span>
                             </eq>
 
                             <div class="card_img">
@@ -124,7 +124,7 @@
     })
     $("#rmq_follow").click(function () {
         var $id = $(this).attr('data-id');
-        $.post("{:U('Contact/follow')}",{id:$id},function(data){
+        $.post("{:U('Contact/follow')}",{id:$id,type:1},function(data){
             if(!data.status){
                 $('#rmq_follow').html("已关注");
                 $('#rmq_follow').attr('href',"#");

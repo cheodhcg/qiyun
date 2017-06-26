@@ -31,7 +31,7 @@ function is_login(){
 }
 
 function member_level(){
-    $uid = $_COOKIE['qiyun_user'];
+    $uid = $_COOKIE['qy_user'];
     $model = M('user');
     $where['id'] = $uid;
     $res = $model->where($where)->field('level')->select();
@@ -1157,15 +1157,44 @@ function curl_post($url, $data = null)
 }
 //是否关注
 function is_follow($id){
-    $uid = $_COOKIE['qiyun_user'];
+    $uid = $_COOKIE['qy_user'];
     $model = M('user_follow');
     $where['uid'] = $uid;
     $where['fuid'] = $id;
     $res = $model->where($where)->find();
-    if ($res){
+    if ($res['status']){
         return 1;
     }else{
         return 0;
+    }
+}
+
+//微信支付日志
+function  log_result($file,$word)
+{
+    $fp = fopen($file,"a");
+    flock($fp, LOCK_EX) ;
+    $str = "pay-date:".strftime("%Y-%m-%d-%H：%M：%S",time());
+    $str = iconv('utf-8','gbk',$str);
+    //$fileName = iconv('UTF-8', 'GBK', $fileName);
+    fwrite($fp,$str.$word."\r\n");
+    flock($fp, LOCK_UN);
+    fclose($fp);
+}
+
+//写入邀请码
+function write_inv($goodsId){
+    $shop = M('shop');
+    $w_shop['id'] = $goodsId;
+    $goods = $shop->where($w_shop)->find();
+    $num = $goods['number'];
+    $invitation = M('invitation_list');
+    for ($i = 0;$i < $num; $i++){
+        $str = md5(time().rand(1111, 9999));
+        $data['uid'] = $_COOKIE['qy_user'];
+        $data['code'] = $str;
+        $data['create_time'] = time();
+        $invitation->add($data);
     }
 }
 

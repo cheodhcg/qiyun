@@ -6,66 +6,100 @@
     <div class="main-title">
         <h2>{$meta_title}</h2>
     </div>
-    <form action="{:U()}" method="post" class="form-horizontal">
-		<div class="form-item">
-            <label class="item-label">提问类型</label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="repassword" value="{$info['type_txt']}" readonly>
+    <div class="tab-wrap">
+        <ul class="tab-nav nav">
+            <li data-tab="tab1" class="current"><a href="javascript:void(0);">问题详情</a></li>
+            <li data-tab="tab2" ><a href="javascript:void(0);">回答列表</a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="form_data">
+                <div id="tab1" class="tab-pane in tab1">
+                    <form action="{:U()}" method="post" class="form-horizontal">
+                        <div class="form-item">
+                            <label class="item-label">提问类型</label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="repassword" value="{$info['type_txt']}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">讲座标题<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="username" value="{$info['title']}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">提问内容</label>
+                            <div class="controls">
+                                <textarea cols="100" rows="5">{$info['content']}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label class="item-label">发布人/发布时间<span class="check-tips"></span></label>
+                            <div class="controls">
+                                <input type="text" class="text input-large" name="email" value="{$info['username']} / {$info['addtime']|date='Y-m-d H:i',###}" readonly>
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-item">
+                                    <input type="hidden" name="id" value="{$info['id']}">
+                            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+                            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+                        </div> -->
+                    </form>
+                </div>
+                <div id="tab2" class="tab-pane tab2">
+                    <div class="fr">
+                        <a class="btn" href="{:U('addAnswer?id='.$pid)}" style="margin-bottom: 10px">添加回答</a>
+                    </div>
+                    <!-- 数据列表 -->
+                    <div class="data-table table-striped">
+                        <table class="">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="">回答人</th>
+                                <th class="">回答时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <notempty name="list">
+                                <volist name="list" id="vo">
+                                    <tr>
+                                        <td>{$i}</td>
+                                        <td>{$vo.username}</td>
+                                        <td>{$vo.addtime|date='Y-m-d H:i',###}</td>
+                                    </tr>
+                                </volist>
+                                <else/>
+                                <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+                            </notempty>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="form-item">
-            <label class="item-label">讲座标题<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="username" value="{$info['title']}" readonly>
-            </div>
-        </div>
-        <div class="form-item">
-            <label class="item-label">提问内容</label>
-            <div class="controls">
-                <textarea cols="100" rows="5">{$info['content']}</textarea>
-            </div>
-        </div>
-		<div class="form-item">
-            <label class="item-label">发布人/发布时间<span class="check-tips"></span></label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="email" value="{$info['username']} / {$info['addtime']|date='Y-m-d H:i',###}" readonly>
-            </div>
-        </div>
-		<!-- 数据列表 -->
-    <div class="data-table table-striped">
-    <table class="">
-    <thead>
-        <tr>
-        <th class="">回答人</th>
-        <th class="">回答时间</th>
-        </tr>
-    </thead>
-    <tbody>
-        <notempty name="$info['list']">
-        <volist name="$info['list']" id="vo">
-        <tr>
-            <td>{$vo.username}</td>
-            <td>{$vo.addtime|date='Y-m-d H:i',###}</td>
-            
-        </tr>
-        </volist>
-        <else/>
-        <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
-        </notempty>
-    </tbody>
-    </table>
+
     </div>
-        <!-- <div class="form-item">
-                    <input type="hidden" name="id" value="{$info['id']}">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
-            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
-        </div> -->
-    </form>
+
 </block>
 
 <block name="script">
     <script type="text/javascript">
         //导航高亮
         highlight_subnav('{:U('Question/index')}');
+    </script>
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('User/ProfessionalMembers')}');
+        var list = $('.tab-nav').children();
+        var box = $('#form_data').children();
+        list.click(function () {
+            list.removeClass('current');
+            box.removeClass('in');
+            $(this).addClass('current');
+            var tab = $(this).attr('data-tab');
+            $('#'+tab).addClass('in');
+        })
     </script>
 </block>

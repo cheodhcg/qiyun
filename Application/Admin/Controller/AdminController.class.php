@@ -15,6 +15,15 @@ use Admin\Model\AuthGroupModel;
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
 class AdminController extends Controller {
+//    	public $appid = 'wxf973bd018fd47e2b';
+//	public $AppSecret = 'd0575f7ffc4f4829a4a4c524dcfaf521';
+    public $appid = 'wxe58e0c041bed2598';
+    public $AppSecret = '263a8ddb41435b76bd281d8117cd5efc';
+    public $hosturl = "http://w8k2s4.natappfree.cc"; //配置域名
+//    public $hosturl = "http://qiyun.mmqo.com"; //配置域名
+    public $redirect_uri =  "http://w8k2s4.natappfree.cc"; //微信授权回调域名
+//    public $redirect_uri =  "http://qiyun.mmqo.com"; //微信授权回调域名
+    public $key = "MDAwMDAwMDAwML6IgpuLf3-YwLiMrIbOfpaKurSpe4OicA";//全局key。加密字符串：adadqwe5123_ad1!
 
     /**
      * 后台控制器初始化

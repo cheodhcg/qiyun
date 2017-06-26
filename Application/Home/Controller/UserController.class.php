@@ -21,7 +21,7 @@ class UserController extends HomeController {
 	public function index(){
 //		$info = get_user_info($session['uid']);
         $model = M('user');
-        $where['id'] = $_COOKIE['qiyun_user'];
+        $where['id'] = $_COOKIE['qy_user'];
         $rs = $model->where($where)->field(true)->select();
 		$this->assign('info',$rs[0]);
 		$this->display();
@@ -33,7 +33,7 @@ class UserController extends HomeController {
 		$Question = M('Question');
 		//获取推荐的问答培训
         $field = "id,title,content,addtime";
-        $uid = $_COOKIE['qiyun_user'];
+        $uid = $_COOKIE['qy_user'];
 	    $count = $Question->where('uid='.$uid)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 	    //$show = $Page->show();// 分页显示输出
@@ -75,12 +75,12 @@ class UserController extends HomeController {
 		$p = I('p');
 		//$question = M('question');
 		$question_answer = M('question_answer');
-		$where['uid'] = $_COOKIE['qiyun_user'];
+		$where['uid'] = $_COOKIE['qy_user'];
 	    $count = $question_answer->where($where)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 	    $show = $Page->show();// 分页显示输出
 	    // 进行分页数据查询
-	    $where1['qy_question_answer.uid'] = $_COOKIE['qiyun_user'];
+	    $where1['qy_question_answer.uid'] = $_COOKIE['qy_user'];
 	    $list = $question_answer->where($where1)
 	    		->join("join qy_question ON  qy_question_answer.pid = qy_question.id")
 	    		->field("qy_question.id,qy_question.title,qy_question.content,qy_question_answer.addtime,qy_question_answer.num")
@@ -141,13 +141,13 @@ class UserController extends HomeController {
 		$p = I('p');
 		$Lecture = M('Lecture');
 		$lecture_partake = M('lecture_partake');
-		$where['uid'] = $_COOKIE['qiyun_user'];
+		$where['uid'] = $_COOKIE['qy_user'];
 		$newlist = $lecture_partake->where($where)->field('pid')->select();
 		if($newlist){
 			$pid = array_column($newlist,'pid');
 			$map['id'] = ['in',$pid];
 		}
-		$map['uid'] = $_COOKIE['qiyun_user'];
+		$map['uid'] = $_COOKIE['qy_user'];
 		$map['_logic'] = "OR";
 		$count = $Lecture->where($map)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数(25)
@@ -233,7 +233,7 @@ class UserController extends HomeController {
 
 	//我的认证
 	public function myAuthentication(){
-	    $uid = $_COOKIE['qiyun_user'];
+	    $uid = $_COOKIE['qy_user'];
 		$info = get_user_info($uid);
 		$level = $info['level'];
 		$this->assign('level',$level);
@@ -243,7 +243,7 @@ class UserController extends HomeController {
 	//申请成为专家会员
 	public function apply(){
 		if(IS_POST){
-			$uid = $_COOKIE['qiyun_user'];
+			$uid = $_COOKIE['qy_user'];
 			$_POST['status'] = 1;
 			$where['id'] = $uid;
             $data['uid'] = $uid;
@@ -265,7 +265,7 @@ class UserController extends HomeController {
 	//我的通知
 	public function mySms(){
 		$sms = M('sms_log');
-		$map['uid'] = $_COOKIE['qiyun_user'];
+		$map['uid'] = $_COOKIE['qy_user'];
 		$count = $sms->where($map)->count();// 查询满足要求的总记录数 $map表示查询条件
 	    $Page = new \Think\Page($count,5);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 	    $show = $Page->show();// 分页显示输出
@@ -281,8 +281,9 @@ class UserController extends HomeController {
 
 	//我的信息
 	public function myinfo(){
-		$map['id'] = $_COOKIE['qiyun_user'];
+		$map['id'] = $_COOKIE['qy_user'];
 		if(IS_POST){
+		    $_POST['is_zs'] = isset($_POST['is_zs']) ? $_POST['is_zs']:0;
 			$re = M('user')->where($map)->save($_POST);
 			if($re !== false){
 				$this->success('更新成功');
@@ -493,25 +494,25 @@ class UserController extends HomeController {
                 $this->error("您输入的邀请码已被使用");
             }else{
 
-                $userinfo = userinfo($_COOKIE['qiyun_user']);
+                $userinfo = userinfo($_COOKIE['qy_user']);
                 if ($userinfo['level'] >= $res[0]['level']){
                     $this->error("您已是更高级的会员，无需使用该邀请码");
                     exit();
                 }
 
                 //此邀请码改为已使用状态
-                $data['useid'] = $_COOKIE['qiyun_user'];
+                $data['useid'] = $_COOKIE['qy_user'];
                 $data['use'] = 1;
                 $model->where($where)->save($data);
 
 
                 //将该用户的会员等级修改
                 $data2['level'] = $res[0]['level'];
-                $where2['id'] = $_COOKIE['qiyun_user'];
+                $where2['id'] = $_COOKIE['qy_user'];
                 $userM->where($where2)->save($data2);
                 $a = ($data2['level'])? "普通会员":"高级会员";
 //                $info = "您已成为".$a."！快去看看吧~";
-//                sys_notice($info,$_COOKIE['qiyun_user']);
+//                sys_notice($info,$_COOKIE['qy_user']);
                 $this->success("您已成为".$a."！快去看看吧~");
             }
 
@@ -525,7 +526,7 @@ class UserController extends HomeController {
     //邀请券列表
     public function invitationList(){
         $model = M('invitation_list');
-        $where['qy_invitation_list.uid'] = $_COOKIE['qiyun_user'];
+        $where['qy_invitation_list.uid'] = $_COOKIE['qy_user'];
         $data = $model
             ->join('qy_user on qy_invitation_list.uid = qy_user.id')
             ->where($where)
@@ -537,9 +538,13 @@ class UserController extends HomeController {
     //myFollow 我的关注列表
     public function myFollow(){
         $model = M('user_follow');
-        $uid = $_COOKIE['qiyun_user'];
-        $where['uid'] = $uid;
-        $data = $model->where($where)->select();
+        $uid = $_COOKIE['qy_user'];
+        $where['qy_user_follow.uid'] = $uid;
+        $where['qy_user_follow.status'] = 1;
+        $data = $model
+            ->join('qy_user on qy_user_follow.fuid = qy_user.id')
+            ->where($where)
+            ->select();
         $this->assign('list',$data);
         $this->display();
     }

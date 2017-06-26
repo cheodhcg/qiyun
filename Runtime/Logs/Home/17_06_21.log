@@ -1,0 +1,45 @@
+[ 2017-06-21T09:36:49+08:00 ] 127.0.0.1 /qiyun/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+SQL: SHOW COLUMNS FROM `qy_hooks` [ RunTime:0.0067s ]
+SQL: SELECT `name`,`addons` FROM `qy_hooks`  [ RunTime:0.0024s ]
+SQL: SHOW COLUMNS FROM `qy_addons` [ RunTime:0.0153s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('ReturnTop')  [ RunTime:0.0024s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('Attachment')  [ RunTime:0.0113s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('Attachment','SocialComment')  [ RunTime:0.0034s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('Attachment')  [ RunTime:0.0041s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('Editor')  [ RunTime:0.0021s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('EditorForAdmin')  [ RunTime:0.0031s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('SiteStat','SystemInfo','DevTeam')  [ RunTime:0.0017s ]
+SQL: SELECT `id`,`name` FROM `qy_addons` WHERE `status` = 1 AND `name` IN ('Editor')  [ RunTime:0.0017s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.286358s ]
+INFO: [ app_init ] --END-- [ RunTime:0.321492s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.014596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.014662s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0052s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0037s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0048s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0019s ]
+SQL: SHOW COLUMNS FROM `qy_question` [ RunTime:0.0045s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_question` WHERE qy_question.is_tj = 1 LIMIT 1   [ RunTime:0.0041s ]
+SQL: SELECT qy_question.id,qy_question.title,qy_question.content,qy_user.nickname,qy_user.company,qy_user.area,qy_user.position FROM `qy_question` JOIN qy_user ON qy_user.id = qy_question.uid  WHERE qy_question.is_tj = 1 ORDER BY id DESC LIMIT 0,10   [ RunTime:0.0091s ]
+SQL: SHOW COLUMNS FROM `qy_question_answer` [ RunTime:0.0051s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=31 )  [ RunTime:0.0030s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=30 )  [ RunTime:0.0033s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000109s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000152s ]
+NOTIC: [8] Undefined variable: a F:\xampp\htdocs\qiyun\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 58 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 67 行.
+NOTIC: [8] Undefined offset: 2 F:\xampp\htdocs\qiyun\Runtime\Cache\Home\769e70f2e46f34ceb60619bbda5e4691.php 第 206 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.147536s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.147599s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.011211s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.011270s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001137s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001197s ]
+

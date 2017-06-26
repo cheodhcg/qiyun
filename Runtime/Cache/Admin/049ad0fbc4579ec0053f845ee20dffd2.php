@@ -90,12 +90,12 @@
 		<h2><?php echo ($meta_title); ?></h2>
 	</div>
 	<div class="cf">
-		<!-- <div class="fl">
+		 <div class="fl">
 		            <a class="btn" href="<?php echo U('add');?>">新 增</a>
-		            <button class="btn ajax-post" url="<?php echo U('changeStatus?method=resumeUser');?>" target-form="ids">启 用</button>
-		            <button class="btn ajax-post" url="<?php echo U('changeStatus?method=forbidUser');?>" target-form="ids">禁 用</button>
-		            <button class="btn ajax-post confirm" url="<?php echo U('changeStatus?method=deleteUser');?>" target-form="ids">删 除</button>
-		        </div> -->
+		            <!--<button class="btn ajax-post" url="<?php echo U('changeStatus?method=resumeUser');?>" target-form="ids">启 用</button>-->
+		            <!--<button class="btn ajax-post" url="<?php echo U('changeStatus?method=forbidUser');?>" target-form="ids">禁 用</button>-->
+		            <!--<button class="btn ajax-post confirm" url="<?php echo U('changeStatus?method=deleteUser');?>" target-form="ids">删 除</button>-->
+		        </div>
 
         <!-- 高级搜索 -->
 		<div class="search-form fr cf">

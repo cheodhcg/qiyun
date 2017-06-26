@@ -152,12 +152,13 @@
 }
 
 .wd_t {
-    height: 58px;
-    line-height: 90px;
+    height: 48px;
+    line-height: 48px;
+    color: #ccc;
 }
 
 .wd_t span {
-    color: #0084d2;
+    /*color: #0084d2;*/
 }
 
 .wd_ad {
@@ -336,9 +337,11 @@
 /*05*/
 .q_a_info1 {
     width: 100%;
-    padding: 10px 0;
     border: 1px solid #e5e5e5;
     margin-top: 10px;
+}
+.q_a_info1:last-child{
+    border-bottom: none;
 }
 
 .q_a_info1 .yy_btn {
@@ -947,7 +950,12 @@
     font-size: 12px;
     color: #ccc;
 }
-
+.rmq_follow{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #fff
+}
 /*信息交流*/
 .xxjl_nav {
     position: relative;
@@ -2043,4 +2051,13 @@
     height: 1px;
     background-color: #CCCCCC;
     margin:-1px auto 0;
+}
+.option_border_box{
+    width: 90%;
+    height: 1px;
+    background-color: #CCCCCC;
+    margin:-1px auto 0;
+}
+.introduce span{
+    padding: 0 5px;
 }

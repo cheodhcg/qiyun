@@ -1,0 +1,47 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <div class="main-title">
+        <h2>{$meta_title}</h2>
+    </div>
+    <form action="__SELF__" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">提问标题<span class="check-tips"></span></label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="" placeholder="请填写问题标题" required>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">问题详细说明<span class="check-tips"></span></label>
+            <div class="controls">
+                <label class="textarea input-large">
+                    <textarea name="content" placeholder="详细介绍" required></textarea>
+                </label>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">提问类型<span class="check-tips"></span></label>
+            <div class="controls">
+                <volist name="cate_list" id="v">
+                    <label class="checkbox" for="oCheck{$i}">
+                        <input class="auth_rules " type="checkbox" name="type[]" id="oCheck{$i}" value="{$v['id']}">{$v.title}
+                    </label>
+                </volist>
+
+            </div>
+        </div>
+
+        <div class="form-item">
+            <button class="btn submit-btn" id="submit" type="submit" target-form="form-horizontal">提 交</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Contact/index')}');
+    </script>
+</block>

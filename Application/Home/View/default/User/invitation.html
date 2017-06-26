@@ -46,8 +46,16 @@
     <div class="invitation-box">
         <form action="__SELF__" method="post">
             <h4>请输入您的邀请码：</h4>
-            <input type="text" name="invitation" class="invitation-input" required>
-            <input type="submit" value="提 交" class="invitation-sub">
+            <div class="invitation-box">
+                <input type="text" name="invitation" class="invitation-input" required>
+                <input type="text" name="invitation" class="invitation-input" required>
+                <input type="text" name="invitation" class="invitation-input" required>
+                <input type="text" name="invitation" class="invitation-input" required>
+                <input type="text" name="invitation" class="invitation-input" required>
+                <input type="text" name="invitation" class="invitation-input" required>
+            </div>
+
+            <input type="submit" value="提 交" class="invitation-sub" style="">
         </form>
     </div>
     <div class="border-line"></div>
@@ -57,6 +65,13 @@
         <p>2、提交你输入的邀请码即可成为会员</p>
     </div>
 </div>
-
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function () {
+        $('.invitation-input').css({
+            width: $('.invitation-box').width() / 7
+        })
+    })
+</script>
 <include file="Public/footer"/>
 

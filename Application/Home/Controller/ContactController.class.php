@@ -62,7 +62,7 @@ class ContactController extends HomeController {
     			$icon = _upload($_FILES['icon'],'New/');
     		}
     		$data['title'] = $_POST['title'];
-    		$data['uid'] = $_COOKIE['qiyun_user'];
+    		$data['uid'] = $_COOKIE['qy_user'];
     		$data['icon'] = $icon;
     		$data['cid'] = $_POST['cid'];
     		$data['content'] = $_POST['content'];
@@ -141,28 +141,43 @@ class ContactController extends HomeController {
 	//关注
     public function follow(){
 	    $id = I('id');//被关注人ID
-        $uid = $_COOKIE['qiyun_user'];//关注人ID
+        $type=I('type');
+        $uid = $_COOKIE['qy_user'];//关注人ID
         $model = M('user_follow');
         $data['uid'] = $uid;
         $data['fuid'] = $id;
-        $data['fuid'] = $id;
         $data['create_time'] = time();
-
+        $data['status'] = $type;
         $where['uid'] = $uid;
         $where['fuid'] = $id;
-        $res = $model->where($where)->select();
-        $a = $model->getLastSql();
-        if ($res){
-            $msg['status'] = 1;
-            $msg['code'] = "您已关注，请勿重复关注";
-            $msg['a'] = $a;
-            $this->ajaxReturn($msg);
+        if ($type){
+
+            $res = $model->where($where)->select();
+
+            if ($res['status']){
+                $msg['status'] = 1;
+                $msg['code'] = "您已关注，请勿重复关注";
+
+                $this->ajaxReturn($msg);
+            }else{
+                $model->add($data);
+                $msg['status'] = 0;
+                $msg['code'] = "关注成功！";
+
+                $this->ajaxReturn($msg);
+            }
         }else{
-            $model->add($data);
-            $msg['status'] = 0;
-            $msg['code'] = "关注成功！";
-            $msg['a'] = $a;
+            $data1['status'] = $type;
+            $res = $model->where($where)->save($data1);
+            if ($res){
+                $msg['status'] = 1;
+                $msg['code'] = "取消关注成功";
+            }else{
+                $msg['status'] = 0;
+                $msg['code'] = "取消失败，请稍后再试";
+            }
             $this->ajaxReturn($msg);
         }
+
     }
 }

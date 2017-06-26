@@ -101,7 +101,7 @@ class IndexController extends HomeController
             $data['title']   = I('title');
             $data['content'] = I('content');
             $data['type']    = implode(',', $type);
-            $data['uid']     = $_COOKIE['qiyun_user'];
+            $data['uid']     = $_COOKIE['qy_user'];
             $data['addtime'] = time();
             $id              = M('question') -> add($data);
             if ($id) {
@@ -175,7 +175,7 @@ class IndexController extends HomeController
         $info['number']   = $question_answer -> where("pid={$id}") -> count();
         //验证该问题该用户是否已回答过
 //        $uid = session('user');
-        $uid          = $_COOKIE['qiyun_user'];
+        $uid          = $_COOKIE['qy_user'];
         $where['uid'] = $uid;
         $where['pid'] = $id;
         $re           = $question_answer -> where($where) -> find();
@@ -283,7 +283,7 @@ class IndexController extends HomeController
         $model2             = M('answer_file');
         $path2              = "/weixinrecord/" . $date;
         $data1['pid']       = $pid;
-        $data1['uid']       = $_COOKIE['qiyun_user'];
+        $data1['uid']       = $_COOKIE['qy_user'];
         $data1['content']   = $path2 . "/" . $name;
         $data1['addtime']   = time();
         $data1['media_id']  = $media_id;
@@ -316,6 +316,7 @@ class IndexController extends HomeController
             $model       = M('question_answer');
             $where['id'] = $id;
             $res         = $model -> where($where) -> find();
+            $model -> where($where) -> setInc('num');
             $imgUrl      = "." . $res['content'];
             if (time() < $res['dead_time']) {
                 $msg['status'] = 1;
