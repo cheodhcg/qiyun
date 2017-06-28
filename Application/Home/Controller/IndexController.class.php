@@ -59,16 +59,20 @@ class IndexController extends HomeController
                 exit;
             }
         }
-
+        $list2 = M('category')->where("pid=1")->field('id,title')->select();
+//        var_dump($list);
         require_once 'JSSDK.php';
         $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
         $signPackage = $jssdk -> GetSignPackage();
         $this -> assign('jssdk', $signPackage);
 
         $this -> assign('list', $list);// 赋值数据集
-        $this -> assign('cate_list', $this -> cate_list);//分类列表
+//        var_dump($list);
+        $this -> assign('cate_list', $list2);//分类列表
         $this -> assign('type', $id ? $id : 0);
         $this -> assign('page', count($list) == 10 ? "1" : "0");
+        $this->assign('_title','问答');
+        $this->assign('class',I('type'));
         $this -> display();
     }
 
@@ -127,6 +131,7 @@ class IndexController extends HomeController
         $flag            = false;
         //获取专业会员回答列表
         $info                 = $question
+//            ->join('qy_user on qy_question_answer.uid = qy_user.id')
             -> where("id={$id}")
             -> field("id,uid,title,content,type")
             -> find();
@@ -138,6 +143,8 @@ class IndexController extends HomeController
         if (in_array(session('uid'), $uids)) {
             $flag = true;
         }
+        $quesUser = M('user')->where('id='.$info['uid'])->find();
+
         //相关问题
         $where['qy_question.type']  = ['like', '%' . sprintf('%04d', $info['type']) . '%'];
         $where['qy_question.id']    = ['neq', $id];
@@ -157,6 +164,8 @@ class IndexController extends HomeController
         $this -> assign('jssdk', $signPackage);
         $this -> assign('xglist', $xglist); //相关问答
         $this -> assign('info', $info);//提问详情
+        $this -> assign('quesUser', $quesUser);//提问详情
+
         $this -> assign('flag', $flag);
         $this -> assign('id', $id);
         $this -> assign('_title', '问题详情');
@@ -209,22 +218,6 @@ class IndexController extends HomeController
         $this -> display();
     }
 
-    //用户信息
-    public function userinfo()
-    {
-        /*$uid = I('uid');
-        if ($uid) {
-            //用户基本信息
-            $info = M('user') -> where("id={$uid}") -> field('username,nickname,company,position,area,face') -> find();
-            if (empty($info['username'])) {
-                $info['username'] = $info['nickname'];
-            }
-            $this -> assign('_title', '用户信息');
-            $this -> display();
-        } else {
-            echo "<script>alert('访问的用户不存在');history.back()</script>";
-        }*/
-    }
 
     //提交回答
     public function uploadAnswer()
@@ -360,6 +353,22 @@ class IndexController extends HomeController
             $this -> ajaxReturn($msg);
         }
 
+    }
+    public function userinfo()
+    {
+        $uid = I('uid');
+        if ($uid) {
+            //用户基本信息
+            $info = M('user') -> where("id={$uid}") -> field('username,nickname,company,position,area,face') -> find();
+            if (empty($info['username'])) {
+                $info['username'] = $info['nickname'];
+            }
+            $this->assign('info',$info);
+            $this -> assign('_title', '用户信息');
+            $this -> display();
+        } else {
+//            echo "<script>alert('访问的用户不存在');history.back()</script>";
+        }
     }
 
     public function curl_post($url, $data = null)

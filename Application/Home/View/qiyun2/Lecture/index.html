@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head"/>
+</head>
+<body>
+<div class=" qa-header ">
+    <div class="container-fluid qa-box">
+        <div class="col-xs-2 qa-nav text-center">
+            <a href="{:U('Lecture/index')}" <if condition="$type eq 0"> class="qa-a" </if>>推荐</a>
+            <i <if condition="$type eq 0"> class="qa-i" </if>></i>
+        </div>
+        <volist name="cate_list" id="v">
+            <div class="col-xs-2 qa-nav text-center">
+                <a href="{:U('Lecture/index',array('id'=>$v['id']))}" <if condition="$type eq $v['id']"> class="qa-a" </if>>{$v['title']}</a>
+                <i <if condition="$type eq $v['id']"> class="qa-i" </if>></i>
+            </div>
+        </volist>
+    </div>
+    <img src="__IMG__/mi_02.png" alt="i" width="100%">
+</div>
+
+<div class="mi-list ">
+    <volist name="list" id="v">
+        <div class="mi-info container-fluid underline-c">
+            <div class="col-xs-2  mi-header">
+                <img src="__IMG__/qa_13.png" alt="i" width="60">
+            </div>
+            <div class="col-xs-10  mi-txt">
+                <p>
+                    <img src="__IMG__/mi_05.png" alt="i" width="20" height="">
+                    {$v['title'],0,15|msubstr}
+                </p>
+                <p>
+                    {$v['content'],0,50|msubstr}
+                </p>
+            </div>
+        </div>
+    </volist>
+
+</div>
+<include file="Public/footer"/>
+<script>
+    $(function () {
+        $('.qa-nav a').click(function () {
+            $('.qa-nav a').removeClass('qa-a');
+            $(this).addClass('qa-a');
+            $('.qa-nav i ').removeClass('qa-i');
+            $(this).parent('.qa-nav').children('i').addClass('qa-i')
+        })
+    })
+</script>
+</body>
+</html>

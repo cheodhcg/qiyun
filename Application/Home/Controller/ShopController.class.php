@@ -46,11 +46,17 @@ class ShopController extends HomeController
         }
         $this -> assign('list', $list);// 赋值数据集
 //        var_dump($list);
+//        var_dump($list);
         //获取广告
         $bannerlist = $shop -> where("status=1 and is_tj = 1") -> field('id,cover_id') -> select();
+        $list2 = M('category')
+            ->join('qy_picture on qy_category.icon = qy_picture.id')
+            ->where("pid=1")->field('qy_category.id,qy_category.title,qy_picture.path')->select();
         $this -> assign('bannerlist', $bannerlist);
-        $this -> assign('cate_list', $this -> cate_list);//分类列表
+        $this -> assign('cate_list', $list2);//分类列表
         $this -> assign('page', count($list) == 8 ? "1" : "0");
+        $this->assign('_title','商城');
+        $this->assign('class',I('type'));
         $this -> display();
     }
 

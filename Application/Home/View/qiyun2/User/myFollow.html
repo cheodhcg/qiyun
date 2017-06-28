@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>我的关注</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<style>
+
+    .header-img{
+        width: 40px;
+        border-radius: 50px;
+    }
+    .header-img img{
+        border-radius: 50px;
+    }
+    .follow-list{
+
+    }
+    .introduce {
+        margin-left: 5px;
+    }
+    .introduce p:first-child{
+        color: #e71f19;
+    }
+    .introduce p:last-child span{
+        display: block;
+        float: left;
+        border-left:1px solid #999;
+        color: #999;
+        font-size: 12px;
+        text-align: center;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp:1;
+        -webkit-box-orient: vertical;
+    }
+    .introduce p:last-child span:first-child{
+        border:none;
+        text-align: left;
+    }
+    .cancel {
+        width: 55px;
+        text-align: center;
+        line-height: 20px;
+        border: 1px solid #0076c2;
+
+        border-radius: 5px;
+        font-size: 12px;
+        margin-top: 15px;
+    }
+    .cancel a{
+        color: #0076c2;
+    }
+    .follow-info{
+        width: 94%;
+        padding: 5px 3%;
+        border-bottom:1px solid #ccc;
+        height: 50px;
+
+    }
+</style>
+<body style="background: #fff">
+<div class="follow">
+    <notEmpty name="list">
+        <div class="follow-list">
+            <volist name="list" id="f">
+                <div class="follow-info">
+                    <div class="header-img fl">
+                        <img src="{$f.face}" alt="i" width="100%">
+                    </div>
+                    <div class="introduce fl">
+                        <p style="padding-left:5px ">
+                            {$f.username}
+                        </p>
+                        <p>
+                            <span>{$f.company}</span><span>{$f.position}</span>
+                        </p>
+                    </div>
+                    <div class="cancel fr">
+                        <a href="javascript:void(0);" data-id="{$f.id}" id="rmq_follow">取消关注</a>
+                    </div>
+                </div>
+            </volist>
+
+        </div>
+        <else/>
+        <div style="text-align: center;margin-top: 15%">
+            <img src="__ROOT__/images/暂无消息.png" alt="暂无消息">
+            <p>暂时还没有内容哦~</p>
+        </div>
+    </notEmpty>
+
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function () {
+        var w = $(window).width();
+        $('.introduce').css({
+            width:w - ($('.header-img').width()) - ($('.cancel').width()) - 30
+        });
+        $('.introduce p:last-child span').css({
+            width:$('.introduce').width() / 3 -3
+        })
+    })
+    $("#rmq_follow").click(function () {
+        var $id = $(this).attr('data-id');
+        $.post("{:U('Contact/follow')}",{id:$id,type:0},function(data){
+
+            alert(data.code);
+            location.reload();
+        })
+    })
+</script>
+<include file="Public/footer"/>

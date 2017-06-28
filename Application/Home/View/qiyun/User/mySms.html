@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>我的通知</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body style="">
+<div class="my_tz  oh" style="height: 100%;">
+    <notEmpty name="list">
+        <volist name="list" id="vo">
+            <p class="my_tz_p underline container oh">
+                <span class="fl"><img src="images/laba_03.png" alt="aa" width="100%"></span>
+                <span class="fl">{$vo['content']}</span>
+                <span class="fr">{$vo['addtime']|date='Y-m-d H:i',###}</span>
+            </p>
+        </volist>
+        <else/>
+        <div style="text-align: center;margin-top: 15%">
+            <img src="__ROOT__/images/暂无消息.png" alt="暂无消息">
+            <p>暂时还没有内容哦~</p>
+        </div>
+    </notEmpty>
+
+
+</div>
+<include file="Public/footer"/>

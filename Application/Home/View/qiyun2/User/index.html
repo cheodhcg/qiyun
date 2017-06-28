@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head"/>
+</head>
+<body style="background: #eef3f9">
+<div class="mine-header">
+    <div class="mine-h-box container">
+        <div class="apply-vip fr text-center">
+            <a href="##">申请会员</a>
+        </div>
+        <div class="mine-h-img text-center">
+            <div class="mine-t">
+                <img class="mine-head" src="{$info['face']}" alt="i" width="60" height="60">
+
+                <!--会员标志-->
+                <img class="mine-v" src="__IMG__/m2_03.png" alt="1" width="18">
+            </div>
+
+        </div>
+        <div class="text-center mine-name">
+            <a href="##">{$info['nickname']}</a>
+        </div>
+    </div>
+</div>
+<div class="one">
+    <ul>
+        <li>
+            <a href="{:U('User/myQuestion')}">
+                <img src="__IMG__/my_07.png" alt="i" width="50">
+                <br>
+                <span>  我的提问</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myAnswer')}">
+                <img src="__IMG__/my_09.png" alt="i" width="50">
+                <br>
+                <span>  我的回答</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myheard')}">
+                <img src="__IMG__/my_11.png" alt="i" width="50">
+                <br>
+                <span>  我听过的</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myLecture')}">
+                <img src="__IMG__/my_16.png" alt="i" width="50">
+                <br>
+                <span>  我的讲座</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myMoney')}">
+                <img src="__IMG__/my_17.png" alt="i" width="50">
+                <br>
+                <span> 我的账户</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/apply')}">
+                <img src="__IMG__/my_19.png" alt="i" width="50">
+                <br>
+                <span>  专家认证</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="mine-info container">
+    <div class="mine-list">
+        <div class="m-icon m-icon1  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="{:U('User/mySms')}">我的通知</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon2  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="{:U('User/about')}">关于企业知道</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon3  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="##">系统动态</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon4  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="{:U('User/myinfo')}">我的信息</a></div>
+    </div>
+</div>
+<include file="Public/footer"/>
+
+</body>
+</html>

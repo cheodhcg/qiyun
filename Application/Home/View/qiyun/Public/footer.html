@@ -1,0 +1,65 @@
+<div class="nav oh">
+    <ul class="nav_ul">
+        <a href="{:U('Index/index?type=1')}">
+            <li align="center" <if condition="$class eq 1">class="nav_a"</if>>
+            <span>
+                <if condition="$class eq 1">
+                    <img src="__IMG__/w_31_1.png" alt="aa" width="" >
+                    <else/>
+                    <img src="__IMG__/w_31.png" alt="aa" width="" >
+                </if>
+
+                </span>
+            <span>问答</span>
+            </li></a>
+        <a href="{:U('Lecture/index?type=2')}" >
+            <li align="center" <if condition="$class eq 2">class="nav_a"</if>>
+            <span>
+                    <if condition="$class eq 2">
+                        <img src="__IMG__/w_19_1.png" alt="aa" width="" >
+                        <else/>
+                        <img src="__IMG__/w_19.png" alt="aa" width="" >
+                    </if>
+                </span>
+            <span>微讲座</span>
+            </li></a>
+        <a href="{:U('Shop/index?type=3')}">
+            <li align="center" <if condition="$class eq 3">class="nav_a"</if>>
+            <span>
+                    <if condition="$class eq 3">
+                        <img src="__IMG__/w_21_1.png" alt="aa" width="" >
+                        <else/>
+                        <img src="__IMG__/w_21.png" alt="aa" width="" >
+                    </if>
+                </span>
+            <span>商城</span>
+            </li>
+        </a>
+        <a href="{:U('Contact/index?type=4')}" >
+            <li align="center" <if condition="$class eq 4">class="nav_a"</if>>
+            <span>
+                    <if condition="$class eq 4">
+                        <img src="__IMG__/w_23_1.png" alt="aa" width="" align="absmiddle">
+                        <else/>
+                        <img src="__IMG__/w_23.png" alt="aa" width="" align="absmiddle">
+                    </if>
+
+                </span>
+            <span>人脉圈</span>
+            </li></a>
+        <a href="{:U('User/index?type=5')}" >
+            <li align="center" <if condition="$class eq 5">class="nav_a"</if>>
+            <span>
+                    <if condition="$class eq 5">
+                        <img src="__IMG__/w_25_1.png" alt="aa" width="" >
+                        <else/>
+                        <img src="__IMG__/w_25.png" alt="aa" width="" >
+                    </if>
+
+                </span><span>我的</span>
+            </li>
+        </a>
+    </ul>
+</div>
+<script src="__JS__/jquery-1.9.1.min.js"></script>
+<script src="__JS__/bootstrap.min.js"></script>

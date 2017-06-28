@@ -24,8 +24,27 @@ class UserController extends HomeController {
         $where['id'] = $_COOKIE['qy_user'];
         $rs = $model->where($where)->field(true)->select();
 		$this->assign('info',$rs[0]);
+        $this->assign('class',I('type'));
+		$this->assign('_title','我的信息');
 		$this->display();
 	}
+    //用户信息
+    public function userinfo()
+    {
+        $uid = I('uid');
+        if ($uid) {
+            //用户基本信息
+            $info = M('user') -> where("id={$uid}") -> field('username,nickname,company,position,area,face') -> find();
+            if (empty($info['username'])) {
+                $info['username'] = $info['nickname'];
+            }
+            $this->assign('info',$info);
+            $this -> assign('_title', '用户信息');
+            $this -> display();
+        } else {
+            echo "<script>alert('访问的用户不存在');history.back()</script>";
+        }
+    }
 
 	//我的提问
 	public function myQuestion(){

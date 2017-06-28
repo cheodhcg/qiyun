@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>邀请码</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .invitation-img{
+            margin-top: 20px;
+            margin-left: 40px;
+        }
+        .invitation-img{
+            width: 40px;
+        }
+        .invitation-code-list{
+            width: 92%;
+            margin: 10px auto;
+        }
+        .invitation-code-info{
+            overflow: hidden;
+            width: 95%;
+            height: 80px;
+            background: url("../images/yqm_11.png") no-repeat center;
+            background-size: 100%;
+            position: relative;
+            /*box-shadow: 2px 2px 2px #d6d5d5;*/
+            border-top: 1px solid #f1f1f1;
+        }
+        .invitation-use{
+            position:absolute;
+            right: 0;
+            top: 0;
+        }
+        .yqm{
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+        .yqm p{
+            font-size: 16px;
+            margin-top: 2px;
+        }
+        .yqm p:first-child{
+            color: #0076c2;
+        }
+        .invitation-code{
+            width: 100% ;
+            height: 40px;
+            padding: 20px 0 10px 0;
+        }
+        .invitation-code ul{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .invitation-code ul li{
+            width: 49%;
+            float: left;
+            border: 1px solid #e71f19;
+            color: #e71f19;
+            text-align: center;
+            line-height: 35px;
+
+        }
+        .invitation-code ul li:first-child{
+            border-radius: 5px 0 0 5px;
+            border-right:none;
+        }
+        .invitation-code ul li:last-child{
+            border-radius: 0 5px 5px 0;
+        }
+        .use-no{
+            background: #e71f19 !important;
+            color: #fff !important;
+        }
+    </style>
+</head>
+<body style="background: #fff">
+<div class="invitation-code" style="">
+    <ul>
+        <li class="use-no used-btn">已使用</li>
+        <li class="not-used-btn">未使用</li>
+    </ul>
+</div>
+<div class="invitation-code-list used">
+    <div class="invitation-code-info">
+        
+        <div class="fl invitation-img">
+            <img src="images/yqm_06.png" alt="a" width="40">
+        </div>
+        <div class="fl yqm">
+            <p>邀请码</p>
+            <p>123456</p>
+        </div>
+
+        <img class="invitation-use" src="images/yqm_03.png" alt="a" width="50">
+    </div>
+</div>
+<div class="invitation-code-list not-used " style="display: none;">
+    <div class="invitation-code-info">
+
+        <div class="fl invitation-img">
+            <img src="images/yqm_06.png" alt="a" width="40">
+        </div>
+        <div class="fl yqm">
+            <p>邀请码</p>
+            <p>123456</p>
+        </div>
+
+    </div>
+</div>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function () {
+        $('.used-btn').click(function () {
+            $('.invitation-code ul li').removeClass('use-no');
+            $(this).addClass('use-no');
+            $('.used').show();
+            $('.not-used').hide();
+        });
+        $('.not-used-btn').click(function () {
+            $('.invitation-code ul li').removeClass('use-no');
+            $(this).addClass('use-no');
+            $('.used').hide();
+            $('.not-used').show();
+        })
+    })
+</script>
+<include file="Public/footer"/>
+

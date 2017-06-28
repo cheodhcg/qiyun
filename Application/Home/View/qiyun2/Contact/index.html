@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head"/>
+</head>
+<body style="background: #eef3f9">
+<div class="rmq-tit oh">
+    <div class="col-xs-4 text-center ra">人脉圈</div>   <!-- 类名 ra -->
+    <div class="col-xs-4 text-center">信息交流</div>    <!-- 类名 ra2 -->
+    <div class="col-xs-4 text-center">信息发布</div>    <!-- 类名 ra3 -->
+</div>
+<div class=" qa-header ">
+    <div class="container-fluid qa-box rmq-box">
+        <div class="col-xs-2 qa-nav text-center rmq-nav"><a class="" href="##">推荐</a> <i class="rv-i"></i></div>
+        <volist name="cate_list" id="v">
+            <div class="col-xs-2 qa-nav text-center rmq-nav"><a href="##">{$v.title}</a> <i></i></div>
+        </volist>
+        <div class="col-xs-2 qa-nav text-center rmq-nav1">
+            <a href="##"> <img src="__IMG__/rmq_03.png" alt="i" width="20"></a>
+        </div>
+    </div>
+
+</div>
+<div class="rmq-list container">
+    <volist name="list" id="vo">
+        <div class="rmq-info col-xs-12">
+            <a href="{:U('User/userinfo?uid='.$vo[id])}">
+                <div class="col-xs-3 r-head">
+                    <img src="{$vo.face}" alt="i" width="100%" height="100%">
+                </div>
+                <div class="col-xs-7 r-introduce">
+                    <p>
+                        <span>{$vo.username}</span>
+                        <i>{$vo.position}</i>
+                    </p>
+                    <p>
+                        <img src="__IMG__/rmq_10.png" alt="i" width="15">
+                        Tel:{$vo.phone}
+                    </p>
+                    <p>
+                        <img src="__IMG__/rmq_15.png" alt="i" width="15">
+                        {$vo.company}
+                    </p>
+                </div>
+                <div class="col-xs-2  r-collection fr">
+
+                    <a href="##" class="not-concern rmq-c">
+                        <img src="__IMG__/rmq_07.png" alt="w" width="35">
+                        <br>
+                        <span>加关注</span>
+                    </a>
+                    <a href="##" class="dn concern rmq-c">
+                        <img src="__IMG__/rmq_19.png" alt="w" width="35">
+                        <br>
+                        <span>已关注</span>
+                    </a>
+                </div>
+            </a>
+
+        </div>
+    </volist>
+</div>
+
+<include file="Public/footer"/>
+<script>
+    $(function () {
+        $('.qa-nav a').click(function () {
+
+            $('.qa-nav i ').removeClass('rv-i');
+            $(this).parent('.qa-nav').children('i').addClass('rv-i')
+        });
+
+    });
+    window.onload = function () {
+        $('.r-head img').css({
+            height: $('.r-head').width()
+        });
+    }
+</script>
+</body>
+</html>

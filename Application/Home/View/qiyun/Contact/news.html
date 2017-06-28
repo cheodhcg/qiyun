@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>信息交流</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .xxjl_info xxjl_cont:last-child{
+            border: none;
+        }
+    </style>
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+<body style="background: #fff">
+<div class="rmq_title oh">
+    <ul class="rmq_t_ul">
+        <li><a href="{:U('Contact/index')}">人脉</a></li>
+        <li><a href="{:U('Contact/news')}" class="rmq_a">商机</a></li>
+        <li><a href="{:U('Contact/release_news')}" >信息发布</a></li>
+        <a href="{:U('Contact/search_user')}" class="search_r"><img src="images/search.png" alt="aa" width="100%"></a>
+    </ul>
+</div>
+    <div style="width: 100%;height: 47px;"></div>
+<div class="wd_title1 underline">
+    <div class="wd_t_cont1 fl  " style="width: 100%">
+        <ul class="wd_ul oh">
+            <li><a href="{:U('news')}" <eq name="cate_id" value="0"> class="wd_a" </eq>>推荐</a></li>
+            <volist name="cate_list" id="c">
+            <li><a href="{:U('Contact/news?cate_id='.$c['id'])}" <eq name="c['id']" value="$cate_id"> class="wd_a" </eq>>{$c['title']}</a></li>
+            </volist>
+        </ul>
+    </div>
+
+</div>
+
+
+<div class="xxjl_info container oh" id="newlist">
+<volist name="list" id="vo">
+    <a href="{:U('info?id='.$vo['id'])}">
+    <div class="xxjl_cont underline ">
+        <div class="xxjl_img fl">
+            <img src="__ROOT__{$vo['icon']}" alt="aa" width="100%" height="68">
+        </div>
+        <div class="xxjl_text fl">
+            <p>{$vo['title']}</p>
+            <p>{$vo['addtime']}</p>
+        </div>
+    </div>
+    </a>
+</volist>    
+</div>
+<if condition="$page eq 1">
+<span class="loading">
+   <img class="fl" src="images/load.png" alt="aa" height="100%"> 
+   <span id="gengduo">点击加载更多</span>
+</span>
+</if>
+<include file="Public/footer"/>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+
+//加载更多信息
+var p=2;
+$("#gengduo").click(function(event) {
+    var cate_id = "{$_GET['cate_id']}";
+    $.ajax({
+        url: "{:U('Contact/news')}",
+        type: 'GET',
+        dataType: 'json',
+        data: {cate_id: cate_id,p:p},
+        success: function(data, textStatus, xhr) {
+          var tmp='';
+          if (data.status==0) {
+             $("#gengduo").text('没有更多信息');
+             $(".loading").css("background-color","#cccccc");
+             return false;
+          };
+          $.each(data.info, function(index, v) {
+               tmp+='<div class="xxjl_cont underline "><div class="xxjl_img fl"><img src="'+v.icon+'" alt="aa" width="100%"></div><div class="xxjl_text fl"><p><a href="index.php?s=/Home/Contact/info/id/'+v.id+'">'+v.title+'</a></p><p>'+v.addtime+'</p></div></div>';
+          });
+          if (tmp) {
+                $('#newlist').append(tmp);
+          };
+         p++;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+         
+        }
+    })
+});
+
+
+$(function () {
+    var a = $('.rmq_t_ul li').width();
+    $('.rmq_t_ul').css({
+        width:a * 3 +40
+    });
+    $('.rmq_list ul').css({
+        width:a * 3 +40
+    });
+});
+    $(function () {
+        moveNav()
+    });
+    function moveNav() {
+        var navW   = $('.wd_ul li').width();
+        var navL = $('.wd_ul li').length;
+        $('.wd_ul').css({
+            width: navW * navL
+        })
+    }
+</script>

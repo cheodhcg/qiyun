@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head"/>
+    <link rel="stylesheet" href="css/swiper.min.css">
+</head>
+<body style="background: #eef3f9;position: relative">
+<div class="sm-banner">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <volist name="bannerlist" id="v">
+                <div class="swiper-slide">
+                    <a href="{:U('Shop/info',array('id'=>$v['id']))}">
+                        <img src="{$v['cover_id']|get_cover='path'}" alt="banner" width="100%" height="220">
+                    </a>
+                </div>
+            </volist>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<div class="sm-nav ">
+    <volist name="cate_list" id="v">
+        <div class="col-xs-2">
+            <a href="##">
+                <img src="__ROOT__{$v.path}" alt="i" width="100%">
+                <br>
+                <span>{$v.title}</span>
+            </a>
+        </div>
+    </volist>
+</div>
+
+<div class="sm-list container">
+    <ul class=" sm-list-ul">
+        <volist name="list" id="vo">
+            <li class="span6 col-xs-5 sm-list-info">
+                <a href="{:U('WxJsApi/buyMember?id='.$vo['id'])}" class="">
+                    <img src="__ROOT__{$vo.path}" alt="i" width="100%" height="95">
+
+                    <p>{$vo.title}</p>
+                    <p>￥{$vo.money}</p>
+                </a>
+            </li>
+        </volist>
+    </ul>
+
+</div>
+
+<include file="Public/footer"/>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 30,
+        autoplay:2000
+    });
+    window.onload =  function () {
+        $('.sm-nav').css({
+            top:$('.swiper-slide img').height() - 15
+        });
+        $('.sm-list').css({
+            "margin-top": $('.sm-nav').height() +20
+        });
+        $('.sm-list-info:odd').css({
+            "margin-left":"4%"
+        })
+    }
+</script>
+</body>
+</html>

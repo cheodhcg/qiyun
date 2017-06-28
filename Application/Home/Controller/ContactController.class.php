@@ -47,13 +47,18 @@ class ContactController extends HomeController {
 				$this->error('没有更多的信息');exit;
 			}
 		}
+        $list2 = M('category')->where("pid=1")->field('id,title')->select();
+        $this -> assign('cate_list', $list2);//分类列表
 	    $this->assign('list',$list);// 赋值数据集
         $this->assign('page',$Page);
         $this->assign('catelist',$catelist);
         $this->assign('cate_id',$cate_id?$cate_id:0);
         $this->assign('page',count($list) == 10 ? "1" : "0");
+        $this->assign('class',I('type'));
+        $this->assign('_title','人脉圈');
         $this->display();
 	}
+
 
 	//发布信息
 	public function release_news(){

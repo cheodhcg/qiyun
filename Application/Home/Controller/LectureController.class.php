@@ -36,7 +36,9 @@ class LectureController extends HomeController
         $Page  = new \Think\Page($count, 5);// 实例化分页类 传入总记录数和每页显示的记录数(25)
         $show  = $Page -> show();// 分页显示输出
         // 进行分页数据查询
-        $list = $Lecture -> where($where) -> order('id DESC')
+        $list = $Lecture
+            -> where($where)
+            -> order('id DESC')
             -> limit($Page -> firstRow . ',' . $Page -> listRows)
             -> field($field)
             -> select(); // $Page->firstRow 起始条数 $Page->listRows 获取多少条
@@ -49,10 +51,13 @@ class LectureController extends HomeController
                 exit;
             }
         }
+        $list2 = M('category')->where("pid=1")->field('id,title')->select();
         $this -> assign('list', $list);// 赋值数据集
-        $this -> assign('cate_list', $this -> cate_list);//分类列表
+        $this -> assign('cate_list', $list2);//分类列表
         $this -> assign('type', $id ? $id : 0);
+        $this->assign('class',I('type'));
         $this -> assign('page', count($list) == 5 ? "1" : "0");
+        $this->assign('_title','微讲座');
         $this -> display();
     }
 

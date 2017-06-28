@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>我的名片</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body style="background: #fff">
+<div class="my_card container" style="height: 110%">
+    <div class="user_text ">
+        <div class="user_t_p">
+        <div class="card_one">
+            <img src="{$info['face']}" alt="aa" width="100%" style="border-radius: 25px">
+        </div>
+        <div   class="card_two">
+            <p>{$info['username']}</p>
+            <p>{$info['position']}</p>
+        </div>
+        <div class="card_three">
+            <p>TEL <span>{$info['phone']}</span></p>
+            <p>{$info['company']}</p>
+        </div>
+        </div>
+        <p><img src="images/yh_05.png" alt="aa" width="100%"></p>
+    </div>
+	<form action="" method="post" enctype="multipart/form-data" id="form1">
+    <div class="my_card_input">
+        <p><span>姓名</span><input type="text" name="username" value="{$info['username']}"></p>
+        <p><span>公司</span><input type="text" name="company" value="{$info['company']}"></p>
+        <p><span>职业</span><input type="text" name="position" value="{$info['position']}"></p>
+        <p><span>电话</span><input type="text" name="phone" value="{$info['phone']}"></p>
+        <p><input type="checkbox" id="my_card_c" name="is_zs" value="1" <eq name="info['is_zs']" value="1"> checked </eq>>        <label for="my_card_c">是否展示名片</label>
+        </p>
+    </div>
+    <div style="">
+        <a href="##" class="yue_btn">提交</a>
+    </div>
+	</form>
+</div>
+<!--     <div style="width: 100%;height: 20px;">
+        
+    </div> -->
+<include file="Public/footer"/>
+
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+	$(".yue_btn").click(function(event){
+		$('#form1').submit();
+	});
+    $(function () {
+        w()
+    });
+    function w() {
+        var w = $(window).width();
+        if(w > 768){
+            $('.user_t_p').css({
+                height:w * 0.3
+            })
+        }else{
+            $('.user_t_p').css({
+                height:w * 0.57
+            })
+        }
+    }
+    $(window).resize(function(){
+        w ()
+    });
+</script>
