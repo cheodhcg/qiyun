@@ -32,7 +32,8 @@
 </div>
 
 <div class="mi-list ">
-    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="mi-info container-fluid underline-c">
+    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><a href="<?php echo U('lectureinfo?id='.$v['id']);?>">
+        <div class="mi-info container-fluid underline-c">
             <div class="col-xs-2  mi-header">
                 <img src="/qiyun/Public/Home/images/qa_13.png" alt="i" width="60">
             </div>
@@ -45,7 +46,8 @@
                     <?php echo (msubstr($v['content'],0,50)); ?>
                 </p>
             </div>
-        </div><?php endforeach; endif; else: echo "" ;endif; ?>
+        </div>
+        </a><?php endforeach; endif; else: echo "" ;endif; ?>
 </div>
 <div class="f">
 

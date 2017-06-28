@@ -45,21 +45,21 @@
 </div>
 <div class="w_cont container oh" id="listdiv">
     <volist name="list" id="v">
-    <div class="w_info underline oh">
-        <a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">
+        <div class="w_info underline oh">
+            <a href="{:U('lectureinfo?id='.$v['id'])}"><if condition="$v['money']">
 
-            <div class="w_img_l fl">
-                <img src="__ROOT__{$v['icon']}" alt=" aa" height="100%" width="100%" >
-            </div>
-            <div class="w_text_r fr">
-                <h3>{$v['title'],0,20|msubstr}</h3>
-                {$v['content']}
-                <!--<a href="{:U('lectureinfo?id='.$v['id'])}">{$v['content']}</a>-->
-            </div>
+                <div class="w_img_l fl">
+                    <img src="__ROOT__{$v['icon']}" alt=" aa" height="100%" width="100%" >
+                </div>
+                <div class="w_text_r fr">
+                    <h3>{$v['title'],0,20|msubstr}</h3>
+                    {$v['content']}
+                    <!--<a href="{:U('lectureinfo?id='.$v['id'])}">{$v['content']}</a>-->
+                </div>
 
-        </if></a>
+            </if></a>
 
-    </div>
+        </div>
     </volist>
 
 

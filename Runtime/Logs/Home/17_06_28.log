@@ -15744,3 +15744,558 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001272s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001366s ]
 
+[ 2017-06-28T22:29:14+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/index/type/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002850s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003413s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000697s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000765s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0042s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0046s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_lecture` WHERE `is_tj` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`content`,`money`,`icon`,`number` FROM `qy_lecture` WHERE `is_tj` = 1 ORDER BY id DESC LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000102s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000154s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013184s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013240s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000628s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000679s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000691s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000734s ]
+
+[ 2017-06-28T22:32:33+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/index/type/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000018s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002872s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003459s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000724s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000781s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0053s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0064s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0041s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_lecture` WHERE `is_tj` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT `id`,`title`,`content`,`money`,`icon`,`number` FROM `qy_lecture` WHERE `is_tj` = 1 ORDER BY id DESC LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000103s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000158s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015069s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015136s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000593s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000626s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000668s ]
+
+[ 2017-06-28T22:32:53+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/index/type/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003523s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004203s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000987s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001075s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0235s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0054s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0014s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0058s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_lecture` WHERE `is_tj` = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `id`,`title`,`content`,`money`,`icon`,`number` FROM `qy_lecture` WHERE `is_tj` = 1 ORDER BY id DESC LIMIT 0,5   [ RunTime:0.0007s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000107s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000190s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018055s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018142s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001068s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001156s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001327s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001391s ]
+
+[ 2017-06-28T22:33:41+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/index/type/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002662s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003211s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000746s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000806s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0041s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0042s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0045s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_lecture` WHERE `is_tj` = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title`,`content`,`money`,`icon`,`number` FROM `qy_lecture` WHERE `is_tj` = 1 ORDER BY id DESC LIMIT 0,5   [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000098s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000146s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013092s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013171s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000549s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000585s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000654s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000690s ]
+
+[ 2017-06-28T22:33:48+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/lectureinfo/id/49.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002777s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003387s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000729s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000785s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0042s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0040s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0046s ]
+SQL: SHOW COLUMNS FROM `qy_lecture_like` [ RunTime:0.0420s ]
+SQL: SELECT qy_lecture.id,qy_lecture.title,qy_lecture.content,qy_lecture.money,qy_lecture.icon,qy_lecture.rewardnum,qy_lecture.content_icon,qy_lecture.likeup,qy_user.username,qy_user.face,qy_user.company,qy_user.position FROM `qy_lecture` INNER JOIN qy_user on qy_lecture.uid = qy_user.id  WHERE ( qy_lecture.id=49 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `uid` FROM `qy_lecture_like` WHERE ( pid=49 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_user` [ RunTime:0.0043s ]
+SQL: SELECT `nickname` FROM `qy_user` WHERE `uid` IN ('3') LIMIT 3   [ RunTime:0.0008s ]
+NOTIC: [2] array_column() expects parameter 1 to be array, null given F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+NOTIC: [2] implode(): Invalid arguments passed F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000134s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000188s ]
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 66 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 67 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 68 行.
+NOTIC: [8] Undefined index: icon F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 89 行.
+NOTIC: [8] Undefined index: likeup F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 100 行.
+NOTIC: [8] Undefined index: likeup F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 102 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 107 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 108 行.
+NOTIC: [8] Undefined index: rewardnum F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 113 行.
+NOTIC: [8] Undefined index: money F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 118 行.
+NOTIC: [8] Undefined index: title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 119 行.
+NOTIC: [8] Undefined index: content F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 120 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 121 行.
+NOTIC: [8] Undefined index: nickname F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: position F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: area F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: company F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 124 行.
+NOTIC: [8] Undefined index: face F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 125 行.
+NOTIC: [8] Undefined index: money F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 131 行.
+NOTIC: [8] Undefined index: title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 132 行.
+NOTIC: [8] Undefined index: content F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 133 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 134 行.
+NOTIC: [8] Undefined index: nickname F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: position F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: area F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: company F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 137 行.
+NOTIC: [8] Undefined index: face F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 138 行.
+NOTIC: [8] Undefined index: content_icon F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 166 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 240 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 255 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 257 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 265 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 267 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 274 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 276 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 284 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 286 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 294 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 296 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016227s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016332s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000895s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000975s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001092s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001184s ]
+
+[ 2017-06-28T22:33:48+08:00 ] 127.0.0.1 /qiyun/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003131s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003904s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000634s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000685s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0054s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_question` [ RunTime:0.0058s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_question` WHERE qy_question.is_tj = 1 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT qy_question.id,qy_question.title,qy_question.content,qy_user.nickname,qy_user.company,qy_user.area,qy_user.position FROM `qy_question` JOIN qy_user ON qy_user.id = qy_question.uid  WHERE qy_question.is_tj = 1 ORDER BY id DESC LIMIT 0,10   [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_question_answer` [ RunTime:0.0047s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=31 )  [ RunTime:0.0005s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=30 )  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000098s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000146s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014642s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014700s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000570s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000603s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000672s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000708s ]
+
+[ 2017-06-28T22:33:54+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/lectureinfo/id/49.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002583s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003202s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000661s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000710s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0043s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0044s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0044s ]
+SQL: SHOW COLUMNS FROM `qy_lecture_like` [ RunTime:0.0037s ]
+SQL: SELECT qy_lecture.id,qy_lecture.title,qy_lecture.content,qy_lecture.money,qy_lecture.icon,qy_lecture.rewardnum,qy_lecture.content_icon,qy_lecture.likeup,qy_user.username,qy_user.face,qy_user.company,qy_user.position FROM `qy_lecture` INNER JOIN qy_user on qy_lecture.uid = qy_user.id  WHERE ( qy_lecture.id=49 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `uid` FROM `qy_lecture_like` WHERE ( pid=49 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `qy_user` [ RunTime:0.0041s ]
+SQL: SELECT `nickname` FROM `qy_user` WHERE `uid` IN ('3') LIMIT 3   [ RunTime:0.0003s ]
+NOTIC: [2] array_column() expects parameter 1 to be array, null given F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+NOTIC: [2] implode(): Invalid arguments passed F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000119s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000164s ]
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 66 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 67 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 68 行.
+NOTIC: [8] Undefined index: icon F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 89 行.
+NOTIC: [8] Undefined index: likeup F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 100 行.
+NOTIC: [8] Undefined index: likeup F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 102 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 107 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 108 行.
+NOTIC: [8] Undefined index: rewardnum F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 113 行.
+NOTIC: [8] Undefined index: money F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 118 行.
+NOTIC: [8] Undefined index: title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 119 行.
+NOTIC: [8] Undefined index: content F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 120 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 121 行.
+NOTIC: [8] Undefined index: nickname F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: position F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: area F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: company F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 124 行.
+NOTIC: [8] Undefined index: face F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 125 行.
+NOTIC: [8] Undefined index: money F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 131 行.
+NOTIC: [8] Undefined index: title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 132 行.
+NOTIC: [8] Undefined index: content F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 133 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 134 行.
+NOTIC: [8] Undefined index: nickname F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: position F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: area F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: company F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 137 行.
+NOTIC: [8] Undefined index: face F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 138 行.
+NOTIC: [8] Undefined index: content_icon F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 166 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 240 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 255 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 257 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 265 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 267 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 274 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 276 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 284 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 286 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 294 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 296 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013181s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013247s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000541s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000577s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001008s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001079s ]
+
+[ 2017-06-28T22:33:54+08:00 ] 127.0.0.1 /qiyun/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002579s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003091s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000647s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000701s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0038s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0039s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_question` [ RunTime:0.0038s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_question` WHERE qy_question.is_tj = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT qy_question.id,qy_question.title,qy_question.content,qy_user.nickname,qy_user.company,qy_user.area,qy_user.position FROM `qy_question` JOIN qy_user ON qy_user.id = qy_question.uid  WHERE qy_question.is_tj = 1 ORDER BY id DESC LIMIT 0,10   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `qy_question_answer` [ RunTime:0.0037s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=31 )  [ RunTime:0.0005s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=30 )  [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000105s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000150s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012099s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012170s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000846s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000899s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000747s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000793s ]
+
+[ 2017-06-28T22:33:57+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/lectureinfo/id/49.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002632s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003181s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000639s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000687s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0044s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0051s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0043s ]
+SQL: SHOW COLUMNS FROM `qy_lecture_like` [ RunTime:0.0037s ]
+SQL: SELECT qy_lecture.id,qy_lecture.title,qy_lecture.content,qy_lecture.money,qy_lecture.icon,qy_lecture.rewardnum,qy_lecture.content_icon,qy_lecture.likeup,qy_user.username,qy_user.face,qy_user.company,qy_user.position FROM `qy_lecture` INNER JOIN qy_user on qy_lecture.uid = qy_user.id  WHERE ( qy_lecture.id=49 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `uid` FROM `qy_lecture_like` WHERE ( pid=49 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `qy_user` [ RunTime:0.0041s ]
+SQL: SELECT `nickname` FROM `qy_user` WHERE `uid` IN ('3') LIMIT 3   [ RunTime:0.0004s ]
+NOTIC: [2] array_column() expects parameter 1 to be array, null given F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+NOTIC: [2] implode(): Invalid arguments passed F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000118s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000164s ]
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 66 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 67 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 68 行.
+NOTIC: [8] Undefined index: icon F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 89 行.
+NOTIC: [8] Undefined index: likeup F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 100 行.
+NOTIC: [8] Undefined index: likeup F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 102 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 107 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 108 行.
+NOTIC: [8] Undefined index: rewardnum F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 113 行.
+NOTIC: [8] Undefined index: money F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 118 行.
+NOTIC: [8] Undefined index: title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 119 行.
+NOTIC: [8] Undefined index: content F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 120 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 121 行.
+NOTIC: [8] Undefined index: nickname F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: position F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: area F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined index: company F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 123 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 124 行.
+NOTIC: [8] Undefined index: face F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 125 行.
+NOTIC: [8] Undefined index: money F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 131 行.
+NOTIC: [8] Undefined index: title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 132 行.
+NOTIC: [8] Undefined index: content F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 133 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 134 行.
+NOTIC: [8] Undefined index: nickname F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: position F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: area F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined index: company F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 136 行.
+NOTIC: [8] Undefined variable: v F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 137 行.
+NOTIC: [8] Undefined index: face F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 138 行.
+NOTIC: [8] Undefined index: content_icon F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 166 行.
+NOTIC: [8] Undefined index: id F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 240 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 255 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 257 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 265 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 267 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 274 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 276 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 284 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 286 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 294 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 296 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012673s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012736s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000568s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000603s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000789s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000844s ]
+
+[ 2017-06-28T22:33:58+08:00 ] 127.0.0.1 /qiyun/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.005230s ]
+INFO: [ app_init ] --END-- [ RunTime:0.006082s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000788s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0053s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0069s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `qy_question` [ RunTime:0.0055s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `qy_question` WHERE qy_question.is_tj = 1 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT qy_question.id,qy_question.title,qy_question.content,qy_user.nickname,qy_user.company,qy_user.area,qy_user.position FROM `qy_question` JOIN qy_user ON qy_user.id = qy_question.uid  WHERE qy_question.is_tj = 1 ORDER BY id DESC LIMIT 0,10   [ RunTime:0.0011s ]
+SQL: SHOW COLUMNS FROM `qy_question_answer` [ RunTime:0.0051s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=31 )  [ RunTime:0.0006s ]
+SQL: SELECT qy_user.uid,qy_user.face,qy_question_answer.id,qy_question_answer.money,qy_question_answer.num,qy_question_answer.content FROM `qy_question_answer` JOIN qy_user ON qy_user.id = qy_question_answer.uid  WHERE ( pid=30 )  [ RunTime:0.0009s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0006s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000108s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000166s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016247s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016325s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000902s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000977s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001078s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001158s ]
+
+[ 2017-06-28T22:34:57+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/lectureinfo/id/49.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.004137s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005066s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001077s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001176s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0055s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0047s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0046s ]
+SQL: SHOW COLUMNS FROM `qy_lecture_like` [ RunTime:0.0050s ]
+SQL: SELECT qy_lecture.id,qy_lecture.title,qy_lecture.content,qy_lecture.money,qy_lecture.icon,qy_lecture.rewardnum,qy_lecture.content_icon,qy_lecture.likeup,qy_user.username,qy_user.face,qy_user.company,qy_user.position FROM `qy_lecture` INNER JOIN qy_user on qy_lecture.uid = qy_user.id  WHERE ( qy_lecture.id=49 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `uid` FROM `qy_lecture_like` WHERE ( pid=49 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `qy_user` [ RunTime:0.0047s ]
+SQL: SELECT `nickname` FROM `qy_user` WHERE `uid` IN ('3') LIMIT 3   [ RunTime:0.0004s ]
+NOTIC: [2] array_column() expects parameter 1 to be array, null given F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+NOTIC: [2] implode(): Invalid arguments passed F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000082s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000183s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012350s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012460s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000806s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000876s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001096s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001175s ]
+
+[ 2017-06-28T22:35:35+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/lectureinfo/id/49.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002569s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000647s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000707s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0046s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0066s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0054s ]
+SQL: SHOW COLUMNS FROM `qy_lecture_like` [ RunTime:0.0039s ]
+SQL: SELECT qy_lecture.id,qy_lecture.title,qy_lecture.content,qy_lecture.money,qy_lecture.icon,qy_lecture.rewardnum,qy_lecture.content_icon,qy_lecture.likeup,qy_user.username,qy_user.face,qy_user.company,qy_user.position FROM `qy_lecture` INNER JOIN qy_user on qy_lecture.uid = qy_user.id  WHERE ( qy_lecture.id=49 ) LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `uid` FROM `qy_lecture_like` WHERE ( pid=49 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `qy_user` [ RunTime:0.0044s ]
+SQL: SELECT `nickname` FROM `qy_user` WHERE `uid` IN ('3') LIMIT 3   [ RunTime:0.0004s ]
+NOTIC: [2] array_column() expects parameter 1 to be array, null given F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+NOTIC: [2] implode(): Invalid arguments passed F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000074s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000119s ]
+NOTIC: [8] Undefined variable: _title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 7 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 38 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 40 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 48 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 50 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 57 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 59 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 67 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 69 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 77 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 79 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009803s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009858s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000470s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000505s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000569s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000606s ]
+
+[ 2017-06-28T22:35:46+08:00 ] 127.0.0.1 /qiyun/index.php?s=/Home/Lecture/lectureinfo/id/49.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000022s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.003540s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004367s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000978s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001070s ]
+SQL: SHOW COLUMNS FROM `qy_config` [ RunTime:0.0057s ]
+SQL: SELECT `type`,`name`,`value` FROM `qy_config` WHERE `status` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `qy_category` [ RunTime:0.0366s ]
+SQL: SELECT `id`,`title` FROM `qy_category` WHERE ( pid=1 )  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `qy_lecture` [ RunTime:0.0048s ]
+SQL: SHOW COLUMNS FROM `qy_lecture_like` [ RunTime:0.0046s ]
+SQL: SELECT qy_lecture.id,qy_lecture.title,qy_lecture.content,qy_lecture.money,qy_lecture.icon,qy_lecture.rewardnum,qy_lecture.content_icon,qy_lecture.likeup,qy_user.username,qy_user.face,qy_user.company,qy_user.position FROM `qy_lecture` INNER JOIN qy_user on qy_lecture.uid = qy_user.id  WHERE ( qy_lecture.id=49 ) LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `uid` FROM `qy_lecture_like` WHERE ( pid=49 )  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `qy_user` [ RunTime:0.0067s ]
+SQL: SELECT `nickname` FROM `qy_user` WHERE `uid` IN ('3') LIMIT 3   [ RunTime:0.0003s ]
+NOTIC: [2] array_column() expects parameter 1 to be array, null given F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+NOTIC: [2] implode(): Invalid arguments passed F:\xampp\htdocs\qiyun\Application\Home\Controller\LectureController.class.php 第 158 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000086s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000138s ]
+NOTIC: [8] Undefined variable: _title F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 7 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 38 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 40 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 48 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 50 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 57 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 59 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 67 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 69 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 77 行.
+NOTIC: [8] Undefined variable: class F:\xampp\htdocs\qiyun\Runtime\Cache\Home\263d5580ab7d0f0748be8da7be930abe.php 第 79 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011638s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011719s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000705s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000754s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000828s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000879s ]
+
