@@ -18,7 +18,6 @@ use OT\DataDictionary;
 class IndexController extends HomeController
 {
 
-
     //系统首页
     public function index()
     {
@@ -37,7 +36,7 @@ class IndexController extends HomeController
         $show  = $Page -> show();// 分页显示输出
         // 进行分页数据查询
 
-        $field = "qy_question.id,qy_question.title,qy_question.content,qy_user.nickname,qy_user.company,qy_user.area,qy_user.position";
+        $field = "qy_question.id,qy_question.title,qy_question.content,qy_user.face,qy_user.nickname,qy_user.company,qy_user.area,qy_user.position";
         $list  = $question -> where($where) -> order('id')
             -> join("JOIN qy_user ON qy_user.id = qy_question.uid")
             //->join("JOIN qy_question_answer ON qy_question_answer.pid = qy_question.id")
@@ -59,7 +58,7 @@ class IndexController extends HomeController
                 exit;
             }
         }
-        $list2 = M('category')->where("pid=1")->field('id,title')->select();
+        $list2 = M('category') -> where("pid=1") -> field('id,title') -> select();
 //        var_dump($list);
         require_once 'JSSDK.php';
         $jssdk       = new \JSSDK($this -> appid, $this -> AppSecret);
@@ -71,8 +70,8 @@ class IndexController extends HomeController
         $this -> assign('cate_list', $list2);//分类列表
         $this -> assign('type', $id ? $id : 0);
         $this -> assign('page', count($list) == 10 ? "1" : "0");
-        $this->assign('_title','问答');
-        $this->assign('class',I('type'));
+        $this -> assign('_title', '问答');
+        $this -> assign('class', 1);
         $this -> display();
     }
 
@@ -116,7 +115,8 @@ class IndexController extends HomeController
                 exit;
             }
         }
-        $this -> assign('cate_list', $this -> cate_list);//分类列表
+        $list = M('category') -> where("pid=1") -> field('id,title') -> select();
+        $this -> assign('cate_list', $list);//分类列表
         $this -> display();
     }
 
@@ -143,8 +143,24 @@ class IndexController extends HomeController
         if (in_array(session('uid'), $uids)) {
             $flag = true;
         }
-        $quesUser = M('user')->where('id='.$info['uid'])->find();
-
+        $quesUser = M('user') -> where('id=' . $info['uid']) -> find();
+        //判断当前访问用户是否为提交者，否则新添一条浏览记录
+        if ($info['uid'] != $_COOKIE['qy_user']) {
+            $hmodel      = M('view_history');
+            $hisw['qid'] = $id;
+            $hisw['uid'] = $_COOKIE['qy_user'];
+            $hres        = $hmodel -> where($hisw) -> find();
+            if ($hres) {
+                //如果已有记录则更新时间
+                $his['create_time'] = time();
+                $hmodel -> where($hisw) -> save($his);
+            } else {
+                $his['qid']         = $id;
+                $his['uid']         = $_COOKIE['qy_user'];
+                $his['create_time'] = time();
+                $hmodel -> add($his);
+            }
+        }
         //相关问题
         $where['qy_question.type']  = ['like', '%' . sprintf('%04d', $info['type']) . '%'];
         $where['qy_question.id']    = ['neq', $id];
@@ -165,7 +181,7 @@ class IndexController extends HomeController
         $this -> assign('xglist', $xglist); //相关问答
         $this -> assign('info', $info);//提问详情
         $this -> assign('quesUser', $quesUser);//提问详情
-
+        $this -> assign('class', 1);
         $this -> assign('flag', $flag);
         $this -> assign('id', $id);
         $this -> assign('_title', '问题详情');
@@ -310,7 +326,7 @@ class IndexController extends HomeController
             $where['id'] = $id;
             $res         = $model -> where($where) -> find();
             $model -> where($where) -> setInc('num');
-            $imgUrl      = "." . $res['content'];
+            $imgUrl = "." . $res['content'];
             if (time() < $res['dead_time']) {
                 $msg['status'] = 1;
                 $msg['data']   = $res['media_id'];
@@ -354,6 +370,7 @@ class IndexController extends HomeController
         }
 
     }
+
     public function userinfo()
     {
         $uid = I('uid');
@@ -363,12 +380,30 @@ class IndexController extends HomeController
             if (empty($info['username'])) {
                 $info['username'] = $info['nickname'];
             }
-            $this->assign('info',$info);
+            $this -> assign('info', $info);
             $this -> assign('_title', '用户信息');
             $this -> display();
         } else {
 //            echo "<script>alert('访问的用户不存在');history.back()</script>";
         }
+    }
+
+    public function userinfo2()
+    {
+        $uid = I('id');
+
+        //用户基本信息
+        $info = M('user') -> where("id={$uid}") -> field('id,username,nickname,company,position,area,face,phone') -> find();
+        if (empty($info['username'])) {
+            $info['username'] = $info['nickname'];
+        }
+        //他的回答
+        $model2 = M('question_answer');
+        $hisanswer =$model2->where('uid='.$uid)->select();
+        $this -> assign('info', $info);
+        $this->assign('answer',$hisanswer);
+        $this -> assign('_title', '用户信息');
+        $this -> display();
     }
 
     public function curl_post($url, $data = null)
@@ -420,6 +455,25 @@ class IndexController extends HomeController
             echo "Error";
             exit();
         }
+    }
+
+    //删除提问
+    public function delQues()
+    {
+        $id           = I('id');
+        $model        = M('question');
+        $where['id']  = $id;
+        $where['uid'] = $_COOKIE['qy_user'];
+        $res          = $model -> where($where) -> delete();
+        if ($res) {
+            $msg['code'] = 0;
+            $msg['msg']  = "删除成功！";
+        } else {
+            $msg['code'] = 0;
+            $msg['msg']  = "删除失败，请稍后再试";
+            $msg['a']    = $model -> getLastSql();
+        }
+        $this -> ajaxReturn($msg);
     }
 
 

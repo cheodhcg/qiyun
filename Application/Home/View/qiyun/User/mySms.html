@@ -15,7 +15,7 @@
             <p class="my_tz_p underline container oh">
                 <span class="fl"><img src="images/laba_03.png" alt="aa" width="100%"></span>
                 <span class="fl">{$vo['content']}</span>
-                <span class="fr">{$vo['addtime']|date='Y-m-d H:i',###}</span>
+                <span class="fr">{$vo['create_time']|time_format}</span>
             </p>
         </volist>
         <else/>

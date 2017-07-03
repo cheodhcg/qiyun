@@ -2,167 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>会员主页</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/common.css">
-    <!--<link rel="stylesheet" href="../style.css">-->
-    <style>
-        .my{
-            background: url("/qiyun/images/bg_03.png");
-            background-size: 100%;
-        }
-        .my_text p:first-child span{
-            position: relative;
-        }
-        .my_text p:first-child .zj{
-            position: absolute;
-            right: 5px;
-            bottom: 2px;
-            border:none;
-        }
-    </style>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title><?php echo ($_title); ?></title>
+<link rel="stylesheet" href="/qiyun/Public/Home/css/style.css">
+<link rel="stylesheet" href="/qiyun/Public/Home/css/common.css">
+<link rel="stylesheet" href="/qiyun/Public/Home/css/bootstrap.min.css">
 </head>
-<body style="">
-<div class="my container oh">
+<body style="background: #eef3f9">
+<div class="mine-header">
+    <div class="mine-h-box container">
+        <div class="apply-vip fr text-center">
+            <a href="<?php echo U('User/myAuthentication');?>">申请会员</a>
+            <!--<a href="<?php echo U('WxJsApi/applyMember');?>">申请会员</a>-->
+        </div>
+        <div class="mine-h-img text-center">
+            <div class="mine-t">
+                <img class="mine-head" src="<?php echo ($info['face']); ?>" alt="i" width="60" height="60">
 
+                <?php if($info.level): ?><img class="mine-v" src="/qiyun/Public/Home/images/m2_03.png" alt="1" width="18"><?php endif; ?>
 
-    <div class="my_text">
-        <p><span>
-		<?php if($info['face']): ?><img src="<?php echo ($info['face']); ?>" alt="aa" width="100%">
-		<?php else: ?>
-		<img src="images/timg.jpg" alt="aa" width="100%"><?php endif; ?>
-            <img class="zj" src="/qiyun/images/zj.png" alt="i" width="15px">
-		</span></p>
-        <p><strong><?php echo ($info['nickname']); ?></strong></p>
+            </div>
+
+        </div>
+        <div class="text-center mine-name">
+            <a href="##"><?php echo ($info['nickname']); ?></a>
+        </div>
     </div>
 </div>
-<ul class="ul_option">
-    <li class="user_option">
-        <a href="<?php echo U('User/myQuestion');?>">
-                <span class="option-icon">
-                    <img src="images/m.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的提问
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/myAnswer');?>">
-                <span class="option-icon">
-                    <img src="images/m2.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的回答
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/myheard');?>">
-                <span class="option-icon">
-                    <img src="images/m3.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我听过的
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/myLecture');?>">
-                <span class="option-icon">
-                    <img src="images/m4.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的讲座
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/myFollow');?>">
-                <span class="option-icon">
-                    <img src="images/关注.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的关注
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/myMoney');?>">
-                <span class="option-icon">
-                    <img src="images/m5.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的账户
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/myAuthentication');?>">
-                <span class="option-icon">
-                    <img src="images/m6.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                申请会员
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/mySms');?>">
-                <span class="option-icon">
-                    <img src="images/m7.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的通知
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="<?php echo U('User/about');?>">
-                <span class="option-icon">
-                    <img src="images/m8.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                关于企知道
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-<!--    <li class="user_option">
-        <a href="<?php echo U('User/news');?>">
-                <span class="option-icon">
-                    <img src="images/m9.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                系统动态
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>-->
-    <li class="user_option">
-        <a href="<?php echo U('User/myinfo');?>">
-                <span class="option-icon">
-                    <img src="images/m10.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的信息
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-</ul>
-<!--<a href="<?php echo U('user/phpinfo');?>">phpinfo</a>-->
-
+<div class="one">
+    <ul>
+        <li>
+            <a href="<?php echo U('User/myQuestion');?>">
+                <img src="/qiyun/Public/Home/images/my_07.png" alt="i" width="50">
+                <br>
+                <span>  我的提问</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo U('User/myAnswer');?>">
+                <img src="/qiyun/Public/Home/images/my_09.png" alt="i" width="50">
+                <br>
+                <span>  我的回答</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo U('User/myheard');?>">
+                <img src="/qiyun/Public/Home/images/my_11.png" alt="i" width="50">
+                <br>
+                <span>  我听过的</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo U('User/myLecture');?>">
+                <img src="/qiyun/Public/Home/images/my_16.png" alt="i" width="50">
+                <br>
+                <span>  我的讲座</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo U('User/myMoney');?>">
+                <img src="/qiyun/Public/Home/images/my_17.png" alt="i" width="50">
+                <br>
+                <span> 我的账户</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo U('User/apply');?>">
+                <img src="/qiyun/Public/Home/images/my_19.png" alt="i" width="50">
+                <br>
+                <span>  专家认证</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="mine-info container">
+    <div class="mine-list">
+        <div class="m-icon m-icon1  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="<?php echo U('User/mySms');?>">我的通知</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon2  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="<?php echo U('User/about');?>">关于企业知道</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon3  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="##">系统动态</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon4  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="<?php echo U('User/myinfo');?>">我的信息</a></div>
+    </div>
+</div>
+<div class="f">
+</div>
 <div class="nav oh">
     <ul class="nav_ul">
         <a href="<?php echo U('Index/index?type=1');?>">
@@ -219,26 +152,5 @@
 <script src="/qiyun/Public/Home/js/jquery-1.9.1.min.js"></script>
 <script src="/qiyun/Public/Home/js/bootstrap.min.js"></script>
 
-<script src="js/jquery-1.9.1.min.js"></script>
-<script>
-    //    $(function () {
-    //        var w = $('.my_fl_ul li p:first-child').width();
-    //        var q = $('.my_fl_ul li p:last-child').width();
-    //        console.log(w,q);
-    //        $('.my_fl_ul li').css({
-    //            height:w + q
-    //        })
-    //    })
-</script>ooter"/>
-
-<script src="js/jquery-1.9.1.min.js"></script>
-<script>
-    //    $(function () {
-    //        var w = $('.my_fl_ul li p:first-child').width();
-    //        var q = $('.my_fl_ul li p:last-child').width();
-    //        console.log(w,q);
-    //        $('.my_fl_ul li').css({
-    //            height:w + q
-    //        })
-    //    })
-</script>
+</body>
+</html>

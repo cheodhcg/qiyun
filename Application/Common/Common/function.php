@@ -1198,3 +1198,11 @@ function write_inv($goodsId){
     }
 }
 
+//获取讲座人头像
+function get_lecture_head($uid){
+    $model = M('user');
+    $where['id'] = $uid;
+    $res = $model->where($where)->find();
+    return $res;
+}
+

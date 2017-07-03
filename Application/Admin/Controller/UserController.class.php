@@ -262,8 +262,10 @@ class UserController extends AdminController {
     //专业会员审核
     public function ProfessionalMembers(){
 	    $model = M('apply_expert_info');
+	    $field = array('qy_apply_expert_info.id'=>'eid','qy_user.*');
 	    $data = $model
             ->join('qy_user on qy_apply_expert_info.uid = qy_user.id')
+            ->field($field)
             ->select();
         $this->assign('meta_title','专业会员审核');
         $this->assign('list',$data);
@@ -271,9 +273,7 @@ class UserController extends AdminController {
     }
 	
 	public function info(){
-		$uid = I('uid');
-		$user = M('user');
-		$sms_log = M('sms_log');
+
 		if(IS_POST){
 			if($_POST['is_apply'] == 2){ //通过
 				$data['level'] = 3;
@@ -294,9 +294,12 @@ class UserController extends AdminController {
 				$this->error('操作失败');
 			}
 		}
+        $uid = I('uid');
+        $user = M('apply_expert_info');
+        $sms_log = M('sms_log');
 		$info = $user
-            ->join('qy_apply_expert_info on qy_user.id = qy_apply_expert_info.uid')
-            ->where("qy_user.id={$uid}")
+            ->join('qy_user on qy_apply_expert_info.uid = qy_user.id')
+            ->where("qy_apply_expert_info.id={$uid}")
             ->field('qy_user.*,qy_apply_expert_info.is_pass')
             ->find();
 		$this->assign('info',$info);

@@ -12,16 +12,19 @@
 <body>
 <div class=" qa-header ">
     <div class="container-fluid qa-box">
-        <div class="wd-nac qa-nav text-center" style="padding-left: 0;"><a class="qa-a" href="##">推荐</a> <i class="qa-i"></i></div>
-        <div class="wd-nac qa-nav text-center"><a href="##">推荐</a> <i></i></div>
-        <div class="wd-nac qa-nav text-center"><a href="##">推荐</a> <i></i></div>
-        <div class="wd-nac qa-nav text-center"><a href="##">推荐</a> <i></i></div>
-        <div class="wd-nac qa-nav text-center"><a href="##">推荐</a> <i></i></div>
-        <div class=" qa-nav text-center fr">
-            <a href="##">
-                <img style="margin-left: 3px;" src="/qiyun/Public/Home/images/xx_03.png" alt="w" width="22">
-            </a>
+        <div class="wd-nac qa-nav text-center" style="padding-left: 0;">
+            <a href="<?php echo U('Index/index');?>" <?php if($type == 0): ?>class="qa-a"<?php endif; ?>>推荐</a>
+            <i <?php if($type == 0): ?>class="qa-i"<?php endif; ?>></i>
         </div>
+        <?php if(is_array($cate_list)): $i = 0; $__LIST__ = $cate_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="wd-nac qa-nav text-center">
+                <a href="<?php echo U('Index/index',array('id'=>$v['id']));?>" <?php if($type == $v['id']): ?>class="qa-a"<?php endif; ?>><?php echo ($v["title"]); ?></a>
+                <i <?php if($type == $v['id']): ?>class="qa-i"<?php endif; ?>></i>
+            </div><?php endforeach; endif; else: echo "" ;endif; ?>
+        <!--<div class=" qa-nav text-center fr">-->
+            <!--<a href="##">-->
+                <!--<img style="margin-left: 3px;" src="/qiyun/Public/Home/images/xx_03.png" alt="w" width="22">-->
+            <!--</a>-->
+        <!--</div>-->
     </div>
     <img class="qa-bg" src="/qiyun/Public/Home/images/qa_02.png" alt="i" width="100%">
 </div>
@@ -30,14 +33,14 @@
                 <div class="qa-info oh container underline">
                     <div class="qa-i-tit col-xs-12  ">
                         <div class="col-xs-3 qa-i-header">
-                            <img src="/qiyun/Public/Home/images/qa_13.png" alt="1" width="60">
+                            <img src="<?php echo ($v["face"]); ?>" alt="1" width="60">
                         </div>
                         <div class="col-xs-9 qa-i-introduce">
                             <div class="col-xs-6"><?php echo ($v["nickname"]); ?>（<?php echo ($v["position"]); ?>）</div>
                             <div class="col-xs-6"><?php echo ($v["company"]); ?></div>
                         </div>
                     </div>
-                    <div class="col-xs-12  qa-i-txt">
+                    <div class="col-xs-12  qa-i-txt" style="color: #585858">
                         <?php echo ($v['content']); ?>
                     </div>
                     <div class="col-xs-12  qa-answer">

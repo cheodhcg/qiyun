@@ -31,7 +31,7 @@ class LectureController extends HomeController
             $where['is_tj'] = 1;
         }
         //获取推荐的问答培训
-        $field = "id,title,content,money,icon,number";
+        $field = "id,uid,title,content,money,icon,number";
         $count = $Lecture -> where($where) -> count();// 查询满足要求的总记录数 $map表示查询条件
         $Page  = new \Think\Page($count, 5);// 实例化分页类 传入总记录数和每页显示的记录数(25)
         $show  = $Page -> show();// 分页显示输出
@@ -42,6 +42,14 @@ class LectureController extends HomeController
             -> limit($Page -> firstRow . ',' . $Page -> listRows)
             -> field($field)
             -> select(); // $Page->firstRow 起始条数 $Page->listRows 获取多少条
+        foreach ($list as $key=>$value){
+            $model = M('user');
+            $where['id'] = $value['uid'];
+            $r = $model->where($where)->find();
+            $value['face'] = $r['face'];
+            $list[$key] = $value;
+
+        }
         if ($p > 1) {
             if ($list) {
                 $this -> success($list);
@@ -55,7 +63,7 @@ class LectureController extends HomeController
         $this -> assign('list', $list);// 赋值数据集
         $this -> assign('cate_list', $list2);//分类列表
         $this -> assign('type', $id ? $id : 0);
-        $this->assign('class',I('type'));
+        $this->assign('class',2);
         $this -> assign('page', count($list) == 5 ? "1" : "0");
         $this->assign('_title','微讲座');
         $this -> display();
@@ -65,31 +73,7 @@ class LectureController extends HomeController
     public function lecture_release()
     {
         if (IS_POST) {
-            /*if ($_FILES['icon']['error']){
-                echo $_FILES['icon']['error'];
-            }else{
 
-                $date    = date("Ymd", time());
-                $count = count($_FILES['file']['name']);
-                for ($i = 0; $i < $count; $i++) {
-                    $tmpfile = $_FILES['file']['tmp_name'][$i];  //tmp文件
-                    $filefix = array_pop(explode(".", $_FILES['file']['name'][$i]));//文件名后缀
-                    if ($filefix == "mp4")
-                    $path    = "./Upload/Jiangzuo" . $date;   //讲座保存路径，相对当前文件的路径
-                    if (!is_dir($path)) {
-                        //检查是否为目录，如果没有目录则创建一个目录
-                        mkdir($path);
-                    }
-                    $fileName = 1;
-//                    $icon = _upload($_FILES['icon'], $savePath);
-                    if (move_uploaded_file($tmpfile, $path)) {
-                        echo "<script>alert('succeed!');window.location.href='index_uploads.php';</script>";
-                    } else {
-                        echo "<script>alert('fail!');window.location.href='index_uploads.php';</script>";
-                    }
-                }
-
-            }*/
             if ($_FILES['icon']) {
                 $icon = _upload($_FILES['icon'], 'Jiangzuo/');
             } else {
@@ -117,7 +101,9 @@ class LectureController extends HomeController
                 $this -> error('发布失败');
             }
         } else {
-            $this -> assign('cate_list', $this -> cate_list);//分类列表
+            $list = M('category')->where("pid=1")->field('id,title')->select();
+            $this -> assign('cate_list', $list);//分类列表
+            $this->assign('class',2);
             $this -> display();
         }
     }
@@ -164,7 +150,9 @@ class LectureController extends HomeController
         $signPackage = $jssdk -> GetSignPackage();
         $this -> assign('jssdk', $signPackage);*/
         $this -> assign('info', $info);//分类列表
+//        var_dump($info);
         $this->assign('uid',$_COOKIE['qy_user']);
+        $this->assign('class',2);
         $this -> display();
     }
 

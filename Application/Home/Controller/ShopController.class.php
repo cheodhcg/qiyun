@@ -56,7 +56,7 @@ class ShopController extends HomeController
         $this -> assign('cate_list', $list2);//分类列表
         $this -> assign('page', count($list) == 8 ? "1" : "0");
         $this->assign('_title','商城');
-        $this->assign('class',I('type'));
+        $this->assign('class',3);
         $this -> display();
     }
 
@@ -76,6 +76,7 @@ class ShopController extends HomeController
 //        $this -> assign('jssdk', $signPackage);
         $this -> assign('info', $info);
         $this -> assign('_title', '商品详情');
+        $this->assign('class',3);
         $this -> display();
     }
 

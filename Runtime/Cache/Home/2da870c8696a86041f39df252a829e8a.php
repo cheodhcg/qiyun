@@ -2,33 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title><?php echo ($_title); ?></title>
-<link rel="stylesheet" href="/qiyun/Public/Home/css/style.css">
-<link rel="stylesheet" href="/qiyun/Public/Home/css/common.css">
-<link rel="stylesheet" href="/qiyun/Public/Home/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>会员申请</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .vip_btn2{
+    width: 180px;
+    height: 35px;
+    /*background: #dd5044;*/
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    font-size: 16px;
+    margin: 40px auto 0 auto;
+    display: block;
+    border-radius: 5px;
+}
+    </style>
 </head>
-<body>
-<div class="container single-video-tit">
-    <p>王小利</p>
-    <p>六月的欧洲为何青草空袭</p>
-</div>
-<div class="single-video underline-e2">
-    <img src="/qiyun/Public/Home/images/td_02.png" alt="w" width="100%">
-    <a href="##"><img src="/qiyun/Public/Home/images/sp_03.png" alt="w" width="60"></a>
-</div>
-
-<div class="container single-video-profile">
-    <div class="col-lg-12 row single-video-profile-tit">
-        六月的欧洲为何青草空袭？
-    </div>
-    <p>1、六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭</p>
-    <p>2、六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭</p>
-    <p>3、六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭</p>
-
-    <div class="single-video-f">
-        六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭六月的欧洲为何青草空袭
+<body style="">
+<div class="my_vip container oh" style="height: 100%">
+    <p><?php echo C('VIP_CONTENT');?></p>
+    <div>
+        <?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$m): $mod = ($i % 2 );++$i; if(($m[type]) == "0"): ?><a href="<?php echo U('WxJsApi/applyMember?id='.$m[id]);?>" <?php if(($level) == "1"): ?>class="vip_btn2" <?php else: ?> class="vip_btn"<?php endif; ?>>
+                成为<?php echo ($m["title"]); ?>(<?php echo ($m["money"]); ?>/一年)
+                </a><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+        <!--<a href="<?php echo U('WxJsApi/applyMember?id=1');?>" <?php if(($level) == "1"): ?>class="vip_btn2" <?php else: ?> class="vip_btn"<?php endif; ?>>-->
+        <!--成为会员(99/一年)</a>-->
+        <!--<a href="<?php echo U('WxJsApi/applyMember?id=2');?>" <?php if(($level) == "2"): ?>class="vip_btn2" <?php else: ?> class="vip_btn"<?php endif; ?>>-->
+        <!--成为VIP会员(199/一年)</a>-->
+        <a href="<?php echo U('User/invitation');?>" <?php if(($level) == "0"): ?>class="vip_btn2" <?php else: ?> class="vip_btn"<?php endif; ?>>
+        输入邀请码</a>
     </div>
 </div>
 
@@ -87,13 +93,3 @@
 </div>
 <script src="/qiyun/Public/Home/js/jquery-1.9.1.min.js"></script>
 <script src="/qiyun/Public/Home/js/bootstrap.min.js"></script>
-<script>
-    $(function () {
-        $('.single-video a').css({
-            top:($('.single-video img').height() - 60 ) / 2,
-            left:($('.single-video').width() - 60 ) / 2
-        })
-    })
-</script>
-</body>
-</html>

@@ -15,7 +15,7 @@
     <a href="{:U('Index/questioninfo',array('id'=>$vo['id']))}">
     <div class="wdtw_info container oh underline">
         <div class="gb">
-            <a href="##" class="gb_btn" style="color: #e71f19;font-size: 16px;"> x </a>
+            <a href="javascript:void(0);" class="gb_btn" style="color: #e71f19;font-size: 16px;" onclick="delQues({$vo.id})"> x </a>
         </div>
        <div>
            <p>{$vo['title']}</p>
@@ -39,7 +39,7 @@
     </a>
 </volist>
 </div>
-
+<a href="{:U('Index/question_release')}" class="" style="color: #fff">
 <div style="background: #0076c2;
     position: fixed;
     width: 100%;
@@ -48,11 +48,11 @@
     text-align: center;
     line-height: 30px;
     bottom: 65px;">
-    <a href="##" class="" style="color: #fff">提问</a>
-</div>
+    提问
+</div></a>
 <div class="gb-ts" style="display: none">
     <span>确认删除提问！</span>
-    <a href="##">确认</a><a href="##">取消</a>
+    <a href="javascript:void(0);" onclick="delQues()">确认</a><a href="##">取消</a>
 </div>
 <div class="gb-zz" style="display: none">
 
@@ -68,16 +68,16 @@
 
 <script src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-    $(function () {
-        $('.gb_btn').click(function () {
-            $('.gb-ts').show();
-            $('.gb-zz').show();
-        });
-        $('.gb-ts a').click(function () {
-            $('.gb-ts').hide();
-            $('.gb-zz').hide();
-        })
-    });
+//    $(function () {
+//        $('.gb_btn').click(function () {
+//            $('.gb-ts').show();
+//            $('.gb-zz').show();
+//        });
+//        $('.gb-ts a').click(function () {
+//            $('.gb-ts').hide();
+//            $('.gb-zz').hide();
+//        })
+//    });
     var p = 2;
     $("#gengduo").click(function(event) {
         $.ajax({
@@ -105,5 +105,25 @@
             }
         })
     });
+    //删除我的提问
+    function delQues($id) {
+        var r=confirm("确认删除该条记录？");
+        if (r==true)
+        {
+
+            $.post("{:U('Index/delQues')}",{id:$id},function (data) {
+                if (data.code){
+                    alert(data.msg);
+                }else{
+                    alert(data.msg);
+                    location.reload();
+                }
+            })
+        }
+        else
+        {
+
+        }
+    }
 </script>
 <include file="Public/footer"/>

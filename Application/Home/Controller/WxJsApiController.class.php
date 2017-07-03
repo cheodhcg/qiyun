@@ -137,6 +137,90 @@ class WxJsApiController extends Controller
 
     }
 
+    //用户自己申请会员
+    public function applyMember(){
+        //①、获取用户openid
+        $tools  = new \JsApiPay();
+        $openId = $tools -> GetOpenid();
+
+        //②、统一下单
+        $id    = I('id');
+        if (empty($id)) {
+            $this -> error('请选择一个商品');
+        }
+//        $info = $this->getGoodsInfo($id);
+        $model = M('member_type');
+        $where['id'] = $id;
+        $data = $model->where($where)->find();
+
+        $input = new \WxPayUnifiedOrder();
+        $input -> SetBody($data['title']);
+        $input -> SetAttach($data['id']);//设置附加数据，在查询API和支付通知中原样返回，该字段主要用于商户携带订单的自定义数据
+        $input -> SetOut_trade_no(\WxPayConfig::MCHID . date("YmdHis"));
+        $input -> SetTotal_fee("1"); //设置金额
+        $input -> SetTime_start(date("YmdHis"));
+        $input -> SetTime_expire(date("YmdHis", time() + 600));
+        $input -> SetGoods_tag("test3");//设置商品标记，代金券或立减优惠功能的参数，说明详见代金券或立减优惠
+        $input -> SetNotify_url("http://qiyun.mmqo.com/index.php/Home/WxJsApi/wx_notify_applyMember");
+//        $input -> SetNotify_url("http://qiyun.mmqo.com/ThinkPHP/Library/Vendor/notify.php");
+        $input -> SetTrade_type("JSAPI");
+        $input -> SetOpenid($openId);
+        $order = \WxPayApi ::unifiedOrder($input);
+//        echo '<font color="#f00"><b>统一下单支付单信息</b></font><br/>';
+//        printf_info($order);
+        $jsApiParameters = $tools -> GetJsApiParameters($order);
+        //获取共享收货地址js函数参数
+//        $editAddress = $tools->GetEditAddressParameters();
+
+        $this -> assign('jsApiParameters', $jsApiParameters);
+        $this->assign('data',$data);
+        $this -> assign('_title', '商品详情');
+        $this -> display();
+    }
+
+    public function wx_notify_applyMember(){
+        vendor('Wxpay.WxPay#Notify');
+        vendor('Wxpay.WxPay#NotifyCallBack');
+        $raw_xml = $GLOBALS['HTTP_RAW_POST_DATA'];//获取XML信息
+//        $raw_xml = file_get_contents("php://input");
+        $notify = new \WxPayNotifyCallBack();
+        $notify->Handle(false);
+        $res = $notify->GetValues();
+        if($res['return_code'] ==="SUCCESS" && $res['return_msg'] ==="OK"){
+            libxml_disable_entity_loader(true);
+            $ret = json_decode(json_encode(simplexml_load_string($raw_xml, 'SimpleXMLElement', LIBXML_NOCDATA)), true);
+            \Think\Log::write('微信APP支付成功订单号'.$ret['out_trade_no'], \Think\Log::DEBUG);
+            //在此处处理业务逻辑部分
+            $path = "./log/".date('Ymd',time());
+            if (!is_dir($path)) {
+                //检查是否为目录，如果没有目录则创建一个目录
+                mkdir($path);
+            }
+            $path = $path."/Wxpay_notify.log";
+            log_result($path,"【Notice of payment received】:\n".json_encode($ret)."\n");
+            if ($ret['result_code']){
+                $id = $ret['attach'];//商品ID
+                $model = M('member_type');
+                $where['id'] = $id;
+                $data = $model->where($where)->find();
+                $model2= M('user');
+                $where2['id'] = $_COOKIE['qy_user'];
+                $data2['level'] = $data['level'];
+                $model2->where($where2)->save($data2);
+                //添加通知
+                $logM = M('sms_log');
+                $lg['uid'] = $_COOKIE['qy_user'];
+                $lg['content'] = "您已成功开通".$data['title']."!可享受一下特权：".$data['description'];
+                $lg['create_time'] = time();
+                $logM->add($lg);
+
+            }else{
+
+            }
+
+        }
+    }
+
     function getGoodsInfo($id){
         //获取商品信息
 

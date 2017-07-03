@@ -152,4 +152,8 @@ class ShopController extends AdminController {
         }
     }
 
+    public function test($cate_id = null, $model_id = null, $position = null,$group_id=null){
+
+    }
+
 }

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="Public/head"/>
+</head>
+<body style="background: #eef3f9">
+<div class="card container" style="background-color: #fff;margin-top: 0;padding-top: 10px;">
+    <div class="card-wd">
+        <div class="col-xs-4 r-head text-right">
+            <img src="{$info.face}" alt="i" width="75" height="75">
+        </div>
+        <div class="col-xs-7 r-introduce col-xs-offset-1">
+            <p>
+                <span>{$info.username}</span>
+            </p>
+            <p style="margin-top: 15px;">
+                <img src="__IMG__/yicon.png" alt="i" width="15">
+                {$info.position}
+            </p>
+            <p style="">
+                <img src="__IMG__/rmq_10.png" alt="i" width="15">
+                Tel:{$info.phone}
+            </p>
+
+            <p>
+                <img src="__IMG__/rmq_15.png" alt="i" width="15">
+                {$info.company}
+            </p>
+        </div>
+
+    </div>
+    <div class="user-tw ">
+        <div class="col-xs-6 text-center" style="border-right: 1px solid #ccc;"><a href="##">向他提问</a></div>
+        <div class="col-xs-6 text-center"><a href="javascript:void(0);" onclick="guanzhu({$info['id']})">关注</a></div>
+    </div>
+
+</div>
+
+<div class="user-txt-list  container" style="background: #fff">
+
+    <div class="user-txt-tit underline-d col-xs-12" style="">
+        <img src="__IMG__/wd_07.png" alt="w" width="20"> 他的回答
+    </div>
+    <notEmpty name="answer">
+        <volist name="answer" id="an">
+            <div class="qa-info oh  underline-d">
+                <div class="qa-i-tit col-xs-12  ">
+                    <div class="col-xs-3 qa-i-header">
+                        <img src="__IMG__/qa_13.png" alt="1" width="60">
+                    </div>
+                    <div class="col-xs-9 qa-i-introduce">
+                        <div class="col-xs-6">张晓磊（律师）</div>
+                        <div class="col-xs-6">启明律师事务所</div>
+                    </div>
+                </div>
+                <div class="col-xs-12  qa-i-txt">
+                    最近遇到代缴社保的问题，心中一直不明白要怎么办。想来问问大家，希望大家能给我一个答案！
+                </div>
+                <div class="col-xs-12  qa-answer">
+                    <div class="col-xs-2 qa-i-da row">
+                        <img src="__IMG__/qa_05.png" alt="1" width="25">
+                    </div>
+                    <div class="col-xs-6 qa-i-voice">
+                        <div class="voice-txt">1元收听</div>
+                    </div>
+                </div>
+                <div class="col-xs-12  qa-look">
+                    <span class="fr"><img src="__IMG__/qa_09.png" alt="i" width="25"><i>15</i>人看过</span>
+                </div>
+            </div>
+        </volist>
+        <else/>
+        <p>他暂时还没有回答问题哦</p>
+    </notEmpty>
+
+</div>
+
+
+<include file="Public/footer"/>
+<script>
+    function guanzhu($id) {
+        $.post("{:U('Contact/follow')}",{id:$id,type:1},function(data){
+            if(!data.status){
+                $('#rmq_follow').html("已关注");
+                $('#rmq_follow').attr('href',"#");
+            }
+            alert(data.code);
+        })
+    }
+</script>
+</body>
+</html>

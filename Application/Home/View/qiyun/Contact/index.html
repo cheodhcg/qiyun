@@ -1,129 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>人脉圈</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/common.css">
-    <!--<link rel="stylesheet" href="css/swiper.min.css">-->
-    <!--<script type="text/javascript" src="js/swiper.min.js"></script>-->
-
-
-    <style>
-        #overflow {
-            /*border: 1px solid #000;*/
-            overflow-x: scroll;
-            overflow-y: hidden;
-        }
-
-        #overflow .container div {
-            float: left;
-        }
-
-        #currentorders {
-            max-height: 365px;
-        }
-
-    </style>
+    <include file="Public/head"/>
 </head>
-<body>
-<div class="rmq_title oh">
-    <ul class="rmq_t_ul">
-        <li><a href="{:U('Contact/index')}" class="rmq_a">人脉</a></li>
-        <li><a href="{:U('Contact/news')}">商机</a></li>
-        <li><a href="{:U('Contact/release_news')}">发布</a></li>
-        <a href="搜索.html" class="search_r">
-            <img src="images/search.png" alt="aa" width="100%">
-        </a>
-    </ul>
-    <div class="rmq_list container oh" align="center">
-        <ul>
+<body style="background: #eef3f9">
+<div class="rmq-tit-box">
+    <div class="rmq-tit oh">
+        <div class="col-xs-4 text-center ra"><a href="人脉圈.html">人脉</a></div>   <!-- 类名 ra -->
+        <div class="col-xs-4 text-center"><a href="人脉圈信息交流.html">商机</a></div>    <!-- 类名 ra2 -->
+        <div class="col-xs-4 text-center"><a href="信息发布.html">发布</a></div>    <!-- 类名 ra3 -->
+    </div>
+    <div class=" qa-header ">
+        <div class="container-fluid qa-box rmq-box">
+            <div class="col-xs-2 qa-nav text-center rmq-nav"><a class="" href="##">推荐</a> <i class="rv-i"></i></div>
             <volist name="catelist" id="v">
-                <li><a href="{:U('index?cate_id='.$v['id'])}"
-                    <eq name="v['id']" value="$cate_id"> class="rmq_a2"</eq>
-                    >{$v['title']}</a></li>
+                <div class="col-xs-2 qa-nav text-center rmq-nav">
+                    <a href="{:U('index?cate_id='.$v['id'])}">{$v['title']}</a> <i></i>
+                </div>
             </volist>
-        </ul>
+            <div class="col-xs-2 qa-nav text-center rmq-nav1">
+                <a href="##"> <img src="__IMG__/rmq_03.png" alt="i" width="20"></a>
+            </div>
+        </div>
 
     </div>
+
+
 </div>
+<div class="rmq-tit-box2"></div>
 
-<div data-role="page" id="currentorders" style="margin-top: 100px;height: 365px;z-index: 99">
-    <header data-role="header" data-position="fixed">
-        <nav data-role="navbar">
-            <div id="overflow">
-                <div class="container" style="padding-top: 55px">
-                    <volist name="list" id="vo">
-
-                        <div class="rmq_person oh ">
-                            <eq name="vo['id']|is_follow" value="0">
-                                <a href="javascript:void(0);" data-id="{$vo['id']}" class="rmq_follow" id="rmq_follow">
-                                    关注
-                                </a>
-                                <else/>
-                                <span class="rmq_follow" style="color: #fff">已关注</span>
-                            </eq>
-
-                            <div class="card_img">
-                                <img src="{$vo['face']}" alt="企知道用户头像" width="50" style="border-radius: 25px">
-                            </div>
-                            <div class="card-userinfo">
-                                <h3 style="color: #ff827e;">
-                                    <notEmpty name="vo['username']">
-                                        {$vo['username']}
-                                        <else/>
-                                        {$vo['nickname']}
-                                    </notEmpty>
-
-                                </h3>
-                                <p>{$vo['position']}</p>
-                            </div>
-                            <div class="card-contact">
-                                <p>
-                                    Tel:{$vo['phone']}
-                                </p>
-                                <p>
-                                    {$vo['company']}
-                                </p>
-                            </div>
-
-                        </div>
-                    </volist>
+<div class="rmq-list container">
+    <volist name="list" id="vo">
+        <div class="rmq-info col-xs-12">
+            <a href="{:U('Index/userinfo2?id='.$vo[id])}">
+                <div class="col-xs-3 r-head">
+                    <img src="__IMG__/sm_21.png" alt="i" width="100%" height="100%">
                 </div>
-            </div>
-        </nav>
+                <div class="col-xs-7 r-introduce">
+                    <p>
+                        <span>
+                            <notEmpty name="vo['username']">
+                                {$vo['username']}
+                                <else/>
+                                {$vo['nickname']}
+                            </notEmpty>
+                        </span>
+                        <i>
+                            <notEmpty name="vo['username']">
+                                {$vo['position']}
+                                <else/>
+                                未填写
+                            </notEmpty>
+                        </i>
+                    </p>
+                    <p>
+                        <img src="__IMG__/rmq_10.png" alt="i" width="15">
+                        Tel:<notEmpty name="vo['username']">
+                        {$vo['phone']}
+                        <else/>
+                        未填写
+                    </notEmpty>
+                    </p>
+                    <p>
+                        <img src="__IMG__/rmq_15.png" alt="i" width="15">
+                        <notEmpty name="vo['username']">
+                            {$vo['company']}
+                            <else/>
+                            未填写
+                        </notEmpty>
+                    </p>
+                </div>
+                <div class="col-xs-2  r-collection fr">
+                    <eq name="vo['id']|is_follow" value="0">
+                        <a href="javascript:void(0);" class="not-concern rmq-c" onclick="guanzhu({$vo['id']})">
+                            <img src="__IMG__/rmq_07.png" alt="w" width="35">
+                            <br>
+                            <span>加关注</span>
+                        </a>
+                        <else/>
+                        <a href="javascript:void(0);" class=" concern rmq-c">
+                            <img src="__IMG__/rmq_19.png" alt="w" width="35">
+                            <br>
+                            <span>已关注</span>
+                        </a>
+                    </eq>
 
-    </header>
 
+                </div>
+            </a>
+
+        </div>
+    </volist>
+
+    <!--<div class="rmq-info col-xs-12">-->
+    <!--<a href="##">-->
+    <!--<div class="col-xs-3 r-head">-->
+    <!--<img src="__IMG__/sm_21.png" alt="i" width="100%" height="100%">-->
+    <!--</div>-->
+    <!--<div class="col-xs-7 r-introduce">-->
+    <!--<p>-->
+    <!--<span> 王晓理</span>-->
+    <!--<i>项目经理</i>-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_10.png" alt="i" width="15">-->
+    <!--Tel:18345454545-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_15.png" alt="i" width="15">-->
+    <!--成都腾讯有限公司-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2  r-collection fr">-->
+
+    <!--<a href="##" class="not-concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_07.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>加关注</span>-->
+    <!--</a>-->
+    <!--<a href="##" class="dn concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_19.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>已关注</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</a>-->
+
+    <!--</div>-->
+    <!--<div class="rmq-info col-xs-12">-->
+    <!--<a href="##">-->
+    <!--<div class="col-xs-3 r-head">-->
+    <!--<img src="__IMG__/sm_21.png" alt="i" width="100%" height="100%">-->
+    <!--</div>-->
+    <!--<div class="col-xs-7 r-introduce">-->
+    <!--<p>-->
+    <!--<span> 王晓理</span>-->
+    <!--<i>项目经理</i>-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_10.png" alt="i" width="15">-->
+    <!--Tel:18345454545-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_15.png" alt="i" width="15">-->
+    <!--成都腾讯有限公司-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2  r-collection fr">-->
+
+    <!--<a href="##" class="dn not-concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_07.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>加关注</span>-->
+    <!--</a>-->
+    <!--<a href="##" class=" concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_19.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>已关注</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</a>-->
+
+    <!--</div>-->
+    <!--<div class="rmq-info col-xs-12">-->
+    <!--<a href="##">-->
+    <!--<div class="col-xs-3 r-head">-->
+    <!--<img src="__IMG__/sm_21.png" alt="i" width="100%" height="100%">-->
+    <!--</div>-->
+    <!--<div class="col-xs-7 r-introduce">-->
+    <!--<p>-->
+    <!--<span> 王晓理</span>-->
+    <!--<i>项目经理</i>-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_10.png" alt="i" width="15">-->
+    <!--Tel:18345454545-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_15.png" alt="i" width="15">-->
+    <!--成都腾讯有限公司-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2  r-collection fr">-->
+
+    <!--<a href="##" class="not-concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_07.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>加关注</span>-->
+    <!--</a>-->
+    <!--<a href="##" class="dn concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_19.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>已关注</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</a>-->
+
+    <!--</div>-->
+    <!--<div class="rmq-info col-xs-12">-->
+    <!--<a href="##">-->
+    <!--<div class="col-xs-3 r-head">-->
+    <!--<img src="__IMG__/sm_21.png" alt="i" width="100%" height="100%">-->
+    <!--</div>-->
+    <!--<div class="col-xs-7 r-introduce">-->
+    <!--<p>-->
+    <!--<span> 王晓理</span>-->
+    <!--<i>项目经理</i>-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_10.png" alt="i" width="15">-->
+    <!--Tel:18345454545-->
+    <!--</p>-->
+    <!--<p>-->
+    <!--<img src="__IMG__/rmq_15.png" alt="i" width="15">-->
+    <!--成都腾讯有限公司-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2  r-collection fr">-->
+
+    <!--<a href="##" class="not-concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_07.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>加关注</span>-->
+    <!--</a>-->
+    <!--<a href="##" class="dn concern rmq-c">-->
+    <!--<img src="__IMG__/rmq_19.png" alt="w" width="35">-->
+    <!--<br>-->
+    <!--<span>已关注</span>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</a>-->
+
+    <!--</div>-->
 </div>
-</div>
-<script src="js/jquery-1.9.1.min.js"></script>
 
+<div class="f">
+</div>
+<include file="Public/footer"/>
 <script>
-
     $(function () {
-        var width = 0;
-        var bh=$(window).height();//获取屏幕高度
-        $('#overflow .container div.rmq_person').each(function () {
-            width += $(this).width()+42;//42为margin和padding
+        $('.qa-nav i ').css({
+            width: $('.qa-nav a:first-child').width() - 10
         });
-        $('#overflow .container').css("height",bh);
+        $('.qa-nav a').click(function () {
+            $('.qa-nav i ').css({
+                width: $(this).width() - 10
+            });
+            $('.qa-nav i ').removeClass('rv-i');
+            $(this).parent('.qa-nav').children('i').addClass('rv-i')
+        });
 
-        $('html,body').addClass('ovfHiden');
-
-        var rmqW = $(window).width();
-        $('.rmq_person').css({
-            width:rmqW * 0.7,
-            height:bh*0.6
+    });
+    window.onload = function () {
+        $('.r-head img').css({
+            height: $('.r-head').width()
         });
-        $('#overflow .container').css({
-            width: ($('.rmq_person').length) * 310
-        });
-    })
-    $("#rmq_follow").click(function () {
-        var $id = $(this).attr('data-id');
+    }
+    function guanzhu($id) {
         $.post("{:U('Contact/follow')}",{id:$id,type:1},function(data){
             if(!data.status){
                 $('#rmq_follow').html("已关注");
@@ -131,7 +264,7 @@
             }
             alert(data.code);
         })
-    })
+    }
 </script>
-
-<include file="Public/footer"/>
+</body>
+</html>

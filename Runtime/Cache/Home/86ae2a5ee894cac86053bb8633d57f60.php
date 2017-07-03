@@ -22,11 +22,11 @@
             </div><?php endforeach; endif; else: echo "" ;endif; ?>
 
 
-        <div class=" qa-nav text-center jz-nav1 fr">
-            <a href="##">
-                <img src="/qiyun/Public/Home/images/xx_03.png" alt="w" width="22">
-            </a>
-        </div>
+        <!--<div class=" qa-nav text-center jz-nav1 fr">-->
+            <!--<a href="##">-->
+                <!--<img src="/qiyun/Public/Home/images/xx_03.png" alt="w" width="22">-->
+            <!--</a>-->
+        <!--</div>-->
     </div>
     <img class="jz-bg" src="/qiyun/Public/Home/images/mi_02.png" alt="i" width="100%">
 </div>
@@ -35,7 +35,7 @@
     <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><a href="<?php echo U('lectureinfo?id='.$v['id']);?>">
         <div class="mi-info container-fluid underline-c">
             <div class="col-xs-2  mi-header">
-                <img src="/qiyun/Public/Home/images/qa_13.png" alt="i" width="60">
+                <img src="<?php echo ($v["face"]); ?>" alt="i" width="60" style="border-radius: 30px">
             </div>
             <div class="col-xs-10  mi-txt">
                 <p>

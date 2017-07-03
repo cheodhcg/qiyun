@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>会员申请</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .vip_btn2{
+            width: 180px;
+            height: 35px;
+            /*background: #dd5044;*/
+            text-align: center;
+            line-height: 35px;
+            color: #fff;
+            font-size: 16px;
+            margin: 40px auto 0 auto;
+            display: block;
+            border-radius: 5px;
+        }
+    </style>
+    <script type="text/javascript">
+        //调用微信JS api 支付
+        function jsApiCall()
+        {
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest',
+                {$jsApiParameters},
+                function(res){
+                    //弹出支付状态
+                    WeixinJSBridge.log(res.err_msg);
+//                    alert(res.err_code+res.err_desc+res.err_msg);
+
+                    if(res.err_msg == "get_brand_wcpay_request:ok"){
+                        alert("支付成功！");
+                        history.back();
+                    }else{
+                        alert("支付失败！");
+                        history.back();
+                    }
+                }
+            );
+        }
+
+        function callpay()
+        {
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }else{
+                jsApiCall();
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        //获取共享地址
+        /*   function editAddress()
+         {
+         WeixinJSBridge.invoke(
+         'editAddress',
+         <?php echo $editAddress; ?>,
+         function(res){
+         var value1 = res.proviceFirstStageName;
+         var value2 = res.addressCitySecondStageName;
+         var value3 = res.addressCountiesThirdStageName;
+         var value4 = res.addressDetailInfo;
+         var tel = res.telNumber;
+
+         alert(value1 + value2 + value3 + value4 + ":" + tel);
+         }
+         );
+         }*/
+
+        window.onload = function(){
+            if (typeof WeixinJSBridge == "undefined"){
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', editAddress, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', editAddress);
+                    document.attachEvent('onWeixinJSBridgeReady', editAddress);
+                }
+            }else{
+                editAddress();
+            }
+        };
+
+    </script>
+</head>
+<body style="">
+<div class="my_vip container oh" style="height: 100%">
+    <p>{:C('VIP_CONTENT')}</p>
+    <p>服务：{$data.title}</p>
+    <p>服务特权：{$data.description}</p>
+    <div>
+        <a href="##" <eq name="level" value="1"> class="vip_btn2" <else/> class="vip_btn" </eq> onclick="callpay()" >
+        成为{$data.title}({$data.money}/一年)</a>
+    </div>
+</div>
+
+<include file="Public/footer"/>
+</body>
+</html>
+

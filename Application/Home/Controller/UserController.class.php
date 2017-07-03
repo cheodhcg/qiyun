@@ -125,30 +125,13 @@ class UserController extends HomeController {
 
 	//我听过的
 	public function myHeard(){
-		$question_heard = M('question_heard'); //记录表，用户听讲座和问答
-		$where['uid'] = session('uid');
-	    $count = $question_heard->where($where)->count();// 查询满足要求的总记录数 $map表示查询条件
-	    $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
-	    $show = $Page->show();// 分页显示输出
-	    // 进行分页数据查询
-	    $where1['qy_question_heard.uid'] = session('uid');
-	    $list = $question_heard->where($where1)
-	    		->join("join qy_question ON qy_question.id = qy_question_heard.pid")
-	    		->field("qy_question.id,qy_question.content,qy_question_heard.addtime")
-	    		->limit($Page->firstRow.','.$Page->listRows)
-	    		->select(); // $Page->firstRow 起始条数 $Page->listRows 获取多少条
-	    if($list){
-	    	foreach ($list as $key => $value) {
-	    		$list[$key]['addtime'] = date('Y-m-d H:i',$value['addtime']);
-	    	}
-	    }
-	    if($p > 1){
-            if($list){
-                $this->success($list);exit;
-            }else{
-                $this->error('没有更多信息');exit;
-            }
-        }
+		$question_heard = M('view_history'); //记录表，用户听讲座和问答
+        $where['qy_view_history.uid'] = $_COOKIE['qy_user'];
+        $list = $question_heard
+            ->join('qy_question on qy_view_history.qid = qy_question.id')
+            ->where($where)
+            ->field('qy_question.*,qy_view_history.create_time')
+            ->select();
 	    $this->assign('list',$list);// 赋值数据集
 	    $this->assign('page',count($list) == 10 ? "1" : "0");
 		$this->display();
@@ -196,6 +179,7 @@ class UserController extends HomeController {
 		}
 	    $this->assign('list',$list);// 赋值数据集
 	    $this->assign('page',count($list) == 5 ? "1" : "0");
+	    $this->assign('id',$_COOKIE['qy_user']);
 		$this->display();
 	}
 
@@ -252,9 +236,12 @@ class UserController extends HomeController {
 
 	//我的认证
 	public function myAuthentication(){
+	    $model = M('member_type');
+	    $data = $model->select();
 	    $uid = $_COOKIE['qy_user'];
 		$info = get_user_info($uid);
 		$level = $info['level'];
+		$this->assign('data',$data);
 		$this->assign('level',$level);
 		$this->display();
 	}
@@ -263,6 +250,10 @@ class UserController extends HomeController {
 	public function apply(){
 		if(IS_POST){
 			$uid = $_COOKIE['qy_user'];
+			$level = get_user_level($uid);
+			if ($level == 3){
+			    $this->error("您已是专家会员无需申请");
+            }
 			$_POST['status'] = 1;
 			$where['id'] = $uid;
             $data['uid'] = $uid;
@@ -277,7 +268,8 @@ class UserController extends HomeController {
 		}
 		$list = M('category')->where("pid=42")->field('id,title')->select();
 		$this->assign('list',$list);
-		$this->assign('cate_list',$this->cate_list);//分类列表 
+        $list2 = M('category')->where("pid=1")->field('id,title')->select();
+		$this->assign('cate_list',$list2);//分类列表
 		$this->display();
 	}
 

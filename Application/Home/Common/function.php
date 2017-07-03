@@ -79,6 +79,13 @@ function get_user_info($uid){
         ->find();
     return $user;
 }
+//
+function get_user_level($uid){
+    $user = M('user')
+        ->where("id={$uid}")
+        ->find();
+    return $user['level'];
+}
 
 
 /**

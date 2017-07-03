@@ -1,192 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>会员主页</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/common.css">
-    <!--<link rel="stylesheet" href="../style.css">-->
-    <style>
-        .my{
-            background: url("__ROOT__/images/bg_03.png");
-            background-size: 100%;
-        }
-        .my_text p:first-child span{
-            position: relative;
-        }
-        .my_text p:first-child .zj{
-            position: absolute;
-            right: 5px;
-            bottom: 2px;
-            border:none;
-        }
-    </style>
+    <include file="Public/head"/>
 </head>
-<body style="">
-<div class="my container oh">
+<body style="background: #eef3f9">
+<div class="mine-header">
+    <div class="mine-h-box container">
+        <div class="apply-vip fr text-center">
+            <a href="{:U('User/myAuthentication')}">申请会员</a>
+            <!--<a href="{:U('WxJsApi/applyMember')}">申请会员</a>-->
+        </div>
+        <div class="mine-h-img text-center">
+            <div class="mine-t">
+                <img class="mine-head" src="{$info['face']}" alt="i" width="60" height="60">
 
+                <if condition="$info.level">
+                    <img class="mine-v" src="__IMG__/m2_03.png" alt="1" width="18">
+                </if>
 
-    <div class="my_text">
-        <p><span>
-		<if condition="$info['face']">
-		<img src="{$info['face']}" alt="aa" width="100%">
-		<else/>
-		<img src="images/timg.jpg" alt="aa" width="100%">
-		</if>
-            <img class="zj" src="__ROOT__/images/zj.png" alt="i" width="15px">
-		</span></p>
-        <p><strong>{$info['nickname']}</strong></p>
+            </div>
+
+        </div>
+        <div class="text-center mine-name">
+            <a href="##">{$info['nickname']}</a>
+        </div>
     </div>
 </div>
-<ul class="ul_option">
-    <li class="user_option">
-        <a href="{:U('User/myQuestion')}">
-                <span class="option-icon">
-                    <img src="images/m.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的提问
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/myAnswer')}">
-                <span class="option-icon">
-                    <img src="images/m2.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的回答
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/myheard')}">
-                <span class="option-icon">
-                    <img src="images/m3.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我听过的
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/myLecture')}">
-                <span class="option-icon">
-                    <img src="images/m4.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的讲座
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/myFollow')}">
-                <span class="option-icon">
-                    <img src="images/关注.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的关注
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/myMoney')}">
-                <span class="option-icon">
-                    <img src="images/m5.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的账户
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/myAuthentication')}">
-                <span class="option-icon">
-                    <img src="images/m6.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                申请会员
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/mySms')}">
-                <span class="option-icon">
-                    <img src="images/m7.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的通知
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-    <li class="user_option">
-        <a href="{:U('User/about')}">
-                <span class="option-icon">
-                    <img src="images/m8.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                关于企知道
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-<!--    <li class="user_option">
-        <a href="{:U('User/news')}">
-                <span class="option-icon">
-                    <img src="images/m9.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                系统动态
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>-->
-    <li class="user_option">
-        <a href="{:U('User/myinfo')}">
-                <span class="option-icon">
-                    <img src="images/m10.png" alt="aa" width="25">
-                </span>
-            <p class="option-text">
-                我的信息
-            </p>
-        </a>
-        <div class="option_border_box"></div>
-    </li>
-</ul>
-<!--<a href="{:U('user/phpinfo')}">phpinfo</a>-->
-
+<div class="one">
+    <ul>
+        <li>
+            <a href="{:U('User/myQuestion')}">
+                <img src="__IMG__/my_07.png" alt="i" width="50">
+                <br>
+                <span>  我的提问</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myAnswer')}">
+                <img src="__IMG__/my_09.png" alt="i" width="50">
+                <br>
+                <span>  我的回答</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myheard')}">
+                <img src="__IMG__/my_11.png" alt="i" width="50">
+                <br>
+                <span>  我听过的</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myLecture')}">
+                <img src="__IMG__/my_16.png" alt="i" width="50">
+                <br>
+                <span>  我的讲座</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/myMoney')}">
+                <img src="__IMG__/my_17.png" alt="i" width="50">
+                <br>
+                <span> 我的账户</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('User/apply')}">
+                <img src="__IMG__/my_19.png" alt="i" width="50">
+                <br>
+                <span>  专家认证</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="mine-info container">
+    <div class="mine-list">
+        <div class="m-icon m-icon1  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="{:U('User/mySms')}">我的通知</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon2  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="{:U('User/about')}">关于企业知道</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon3  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="##">系统动态</a></div>
+    </div>
+    <div class="mine-list">
+        <div class="m-icon m-icon4  col-xs-1"></div>
+        <div class="m-txt col-xs-10 underline-c"><a href="{:U('User/myinfo')}">我的信息</a></div>
+    </div>
+</div>
+<div class="f">
+</div>
 <include file="Public/footer"/>
 
-<script src="js/jquery-1.9.1.min.js"></script>
-<script>
-    //    $(function () {
-    //        var w = $('.my_fl_ul li p:first-child').width();
-    //        var q = $('.my_fl_ul li p:last-child').width();
-    //        console.log(w,q);
-    //        $('.my_fl_ul li').css({
-    //            height:w + q
-    //        })
-    //    })
-</script>ooter"/>
-
-<script src="js/jquery-1.9.1.min.js"></script>
-<script>
-    //    $(function () {
-    //        var w = $('.my_fl_ul li p:first-child').width();
-    //        var q = $('.my_fl_ul li p:last-child').width();
-    //        console.log(w,q);
-    //        $('.my_fl_ul li').css({
-    //            height:w + q
-    //        })
-    //    })
-</script>
+</body>
+</html>

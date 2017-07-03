@@ -1,6 +1,7 @@
 /*问答*/
 .qa-header{
     position: relative;
+    height: 65px;
 }
 .qa-box{
     position: absolute;
@@ -21,14 +22,14 @@
     margin-top: 5px;
     position: relative;
     float: left;
-
+    box-sizing: border-box;
 }
 .qa-nav:first-child{
     border-left:none;
 }
 .qa-nav a{
     color:#fff;
-    font-size: 15px;
+    /*font-size: 15px;*/
 }
 .qa-a{
     color: #57C4FF !important;

@@ -26,11 +26,20 @@
 <div class="my_vip container oh" style="height: 100%">
     <p>{:C('VIP_CONTENT')}</p>
     <div>
-        <a href="##" <eq name="level" value="1"> class="vip_btn2" <else/> class="vip_btn" </eq>>成为会员</a>
-        <a href="##" <eq name="level" value="2"> class="vip_btn2" <else/> class="vip_btn" </eq>>成为VIP会员</a>
-        <a href="{:U('User/invitation')}" <eq name="level" value="0"> class="vip_btn2" <else/> class="vip_btn" </eq>>输入邀请码</a>
+        <volist name="data" id="m">
+            <eq name="m[type]" value="0">
+                <a href="{:U('WxJsApi/applyMember?id='.$m[id])}" <eq name="level" value="1"> class="vip_btn2" <else/> class="vip_btn" </eq>>
+                成为{$m.title}({$m.money}/一年)
+                </a>
+            </eq>
 
-        <a href="{:U('User/apply')}" <eq name="level" value="3"> class="vip_btn2" <else/> class="vip_btn" </eq>>成为专业会员</a>
+        </volist>
+        <!--<a href="{:U('WxJsApi/applyMember?id=1')}" <eq name="level" value="1"> class="vip_btn2" <else/> class="vip_btn" </eq>>-->
+        <!--成为会员(99/一年)</a>-->
+        <!--<a href="{:U('WxJsApi/applyMember?id=2')}" <eq name="level" value="2"> class="vip_btn2" <else/> class="vip_btn" </eq>>-->
+        <!--成为VIP会员(199/一年)</a>-->
+        <a href="{:U('User/invitation')}" <eq name="level" value="0"> class="vip_btn2" <else/> class="vip_btn" </eq>>
+        输入邀请码</a>
     </div>
 </div>
 

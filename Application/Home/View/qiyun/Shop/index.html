@@ -1,147 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>商城</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/common.css">
+    <include file="Public/head"/>
     <link rel="stylesheet" href="css/swiper.min.css">
-    <style>
-        .sb_mc {
-            width: 55%;
-            display: block;
-            color: #000 !important;
-            word-break: break-all;
-            text-overflow: ellipsis;
-            display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
-            -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
-            -webkit-line-clamp: 1; /** 显示的行数 **/
-            overflow: hidden; /** 隐藏超出的内容 **/
-        }
-
-        .sb_mc2 {
-            width: 45%;
-            display: block;
-            word-break: break-all;
-            text-overflow: ellipsis;
-            display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
-            -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
-            -webkit-line-clamp: 1; /** 显示的行数 **/
-            overflow: hidden; /** 隐藏超出的内容 **/
-        }
-        .sc-nav {
-            overflow: hidden;
-            padding: 15px 0;
-        }
-        .sc-nav ul{
-            width: 100%;
-        }
-        .sc-nav ul li{
-            width: 20%  ;
-            text-align: center;
-            float: left;
-        }
-    </style>
 </head>
-<body>
-<div class="sc_banner">
-
+<body style="background: #eef3f9;position: relative">
+<div class="sm-banner">
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <volist name="bannerlist" id="v">
-                <div class="swiper-slide">
-                    <a href="{:U('Shop/info',array('id'=>$v['id']))}">
-                        <img src="{$v['cover_id']|get_cover='path'}" alt="aa" width="100%" height="220">
-                    </a>
-                </div>
+                    <div class="swiper-slide">
+                        <a href="{:U('Shop/info',array('id'=>$v['id']))}">
+                        <img src="{$v['cover_id']|get_cover='path'}" alt="w" width="100%">
+                        </a>
+                    </div>
             </volist>
-
+            <!--<div class="swiper-slide"><img src="__IMG__/sm2_03.png" alt="w" width="100%"></div>-->
+            <!--<div class="swiper-slide"><img src="__IMG__/sm2_03.png" alt="w" width="100%"></div>-->
+            <!--<div class="swiper-slide"><img src="__IMG__/sm2_03.png" alt="w" width="100%"></div>-->
         </div>
         <!-- Add Pagination -->
-        <div class="swiper-pagination" style="bottom: 10px;"></div>
-        <!-- Add Arrows -->
-        <!--<div class="swiper-button-next"></div>-->
-        <!--<div class="swiper-button-prev"></div>-->
+        <div class="swiper-pagination"></div>
     </div>
 </div>
-<div class="sc-nav">
-    <ul>
-        <li><a href="{:U('Shop/index')}"><img src="images/sc01.png" alt="i" width="80%"> <br>服务</a></li>
-        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc02.png" alt="i" width="80%"> <br>房产</a></li>
-        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc03.png" alt="i" width="80%"> <br>律师</a></li>
-        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc04.png" alt="i" width="80%"> <br>咨询</a></li>
-        <li><a href="javascript:void (0);" onclick="alert1()"><img src="images/sc05.png" alt="i" width="80%"> <br>商务</a></li>
-    </ul>
-</div>
-<script>
-    function alert1() {
-        alert("敬请期待");
-    }
-</script>
-<div class="sc_list  oh" id="listdiv">
-    <volist name="list" id="vo">
-        <div class="sc_list_info fl oh">
-            <!--<a href="{:U('info?id='.$vo['id'])}">-->
-            <a href="{:U('WxJsApi/buyMember?id='.$vo['id'])}">
-                <img src="__ROOT__{$vo.path}" alt="aa" width="100%" height="96">
-                <p><span class="sb_mc fl">{$vo.title}</span><span class="fr sb_mc2" style="text-align: right">￥{$vo.money}</span>
-                </p>
+<div class="sm-nav ">
+    <volist name="cate_list" id="v">
+        <div class="col-xs-2">
+            <a href="{:U('Shop/index?id='.$v[id])}">
+                <img src="__ROOT__{$v.path}" alt="i" width="100%">
+                <br>
+                <span>{$v.title}</span>
             </a>
         </div>
     </volist>
 
+    <!--<div class="col-xs-2">-->
+        <!--<a href="##">-->
+            <!--<img src="__IMG__/sm_05.png" alt="i" width="100%">-->
+            <!--<br>-->
+            <!--<span>  法律</span>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2">-->
+        <!--<a href="##">-->
+            <!--<img src="__IMG__/sm_07.png" alt="i" width="100%">-->
+            <!--<br>-->
+            <!--<span>  健康</span>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2">-->
+        <!--<a href="##">-->
+            <!--<img src="__IMG__/sm_09.png" alt="i" width="100%">-->
+            <!--<br>-->
+            <!--<span> 税务</span>-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="col-xs-2">-->
+        <!--<a href="##">-->
+            <!--<img src="__IMG__/sm_11.png" alt="i" width="100%">-->
+            <!--<br>-->
+            <!--<span>  金融</span>-->
+        <!--</a>-->
+    <!--</div>-->
 </div>
-<if condition="$page eq 1">
-<span class="loading">
-   <img class="fl" src="images/load.png" alt="aa" height="100%"> 
-   <span id="gengduo">点击加载更多</span>
-</span>
-</if>
+<div class="sm-list container">
+    <ul class=" sm-list-ul">
+        <volist name="list" id="vo">
+            <li class="span6 col-xs-5 sm-list-info">
+                <a href="{:U('WxJsApi/buyMember?id='.$vo['id'])}" class="">
+                    <img src="__ROOT__{$vo.path}" alt="i" width="100%" style="max-height: 95px">
+
+                    <p>{$vo[title],0,8|msubstr}</p>
+                    <p>￥{$vo.money}</p>
+                </a>
+            </li>
+        </volist>
+
+
+
+</div>
+<div class="f">
+</div>
 <include file="Public/footer"/>
-<script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/swiper.min.js"></script>
-
 <script>
-    var p = 2;
-    $("#gengduo").click(function (event) {
-        $.ajax({
-            url: "{:U('Shop/index')}",
-            type: 'GET',
-            dataType: 'json',
-            data: {p: p},
-            success: function (data, textStatus, xhr) {
-                var tmp = '';
-                if (data.status == 0) {
-                    $("#gengduo").text('没有更多信息');
-                    $(".loading").css("background-color", "#cccccc");
-                    return false;
-                }
-                ;
-                $.each(data.info, function (index, v) {
-                    tmp += '<div class="sc_list_info fl oh"><a href="index.php?s=/Home/Shop/info/id/' + v.id + '"><img src="' + v.path + '" alt="aa" width="100%"><p><span class="sb_mc fl">' + v.title + '</span><span class="fr sb_mc2" style="text-align: right">￥' + v.money + '</span></p></a></div>';
-                });
-                if (tmp) {
-                    $('#listdiv').append(tmp);
-                }
-                ;
-                p++;
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-            }
-        })
-    });
     var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
         paginationClickable: true,
         spaceBetween: 30,
-        centeredSlides: true,
-        autoplay: 2500,
-        autoplayDisableOnInteraction: false
+        autoplay:2000
     });
-
+    window.onload =  function () {
+        $('.sm-nav').css({
+            top:$('.swiper-slide img').height() - 15
+        });
+        $('.sm-list').css({
+            "margin-top": $('.sm-nav').height() +20
+        });
+        $('.sm-list-info:odd').css({
+            "margin-left":"4%"
+        })
+    }
 </script>
+</body>
+</html>

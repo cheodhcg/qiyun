@@ -3,106 +3,279 @@
 <head>
     <include file="Public/head"/>
 </head>
-<body>
-<div class="wt_info ">
-    <div class="question_info container  oh underline">
-            <h3>{$info['title']}</h3>
-            <p>{$info['content']}</p>
-        <if condition="$info['userinfo']['face']">
-            <p>
-            <span class="q_img1 fl">
-                <a href="{:U('Index/userinfo?uid='.$info['uid'])}">
-                     <img class="fl" src="{$info['userinfo']['face']}" alt="aa" width="40">
-                </a>
 
-            <span class="q_text1" style="">{$info['userinfo']['username']}</span>
-            </span>
-            <span class="q_text2 fr">{$info['userinfo']['company']} | {$info['userinfo']['position']}</span></p>
-        </if>
-    </div>
-    <div class="q_a container oh">
-        <div class="q_a_title oh">
-            <a href="{:U('Index/question_release')}"><span><img src="images/wt_03.png" alt="aa" width="100%" align="absmiddle"></span>我要提问</a>
-            <if condition="$flag">
-            <a href="{:U('Index/answer',array('id'=>$info['id']))}"
-            style="pointer-events:none; color:#ccc; cursor:default "><span><img src="images/h_03.png" alt=" aa" width="100%" align="absmiddle"></span>我已回答</a>
-            <else/>
-            <a href="{:U('Index/answer',array('id'=>$info['id']))}"><span><img src="images/h_03.png" alt=" aa" width="100%" align="absmiddle"></span>我要回答</a>
-            </if>
-            <a href="##" class="fr r_2"> <span>{$info['number']}</span>人回答</a>
-        </div>
-        <div class="q_a_info1">
-        <if condition="$info['questionlist']">
-        <volist name="info['questionlist']" id="v">
-            <!--<div class="yy_btn yy_btn2 ">-->
-            <div class="answer_list" style="min-height: 48px;border-bottom: 1px solid #ccc;padding: 3px">
-                <div class="wd_img_t fl">
-                    <img src="{$v['face']}" alt="aa" width="45" style="border-radius: 23px">
-                </div>
-                <!--<div class="wd_img_y fl">
-                    <img src="images/w_10.png" alt="aa" width="100%" align="bottom">
+<body style="background: #eef3f9">
+<style>
+    @-webkit-keyframes shake {
+        0% {
+            height: 5px;
+            margin-top: 0;
+        }
+        50% {
+            height: 100px;
+            margin-top: -50px;
+        }
+        100% {
+            height: 5px;
+            margin-top: 0;
+        }
+    }
+    @keyframes shake {
+        0% {
+            height: 5px;
+            margin-top: 0;
+        }
+        50% {
+            height: 100px;
+            margin-top: -50px;
+        }
+        100% {
+            height: 5px;
+            margin-top: 0;
+        }
+    }
+    .waves {
+        position: relative;
+        width: 260px;
+        margin: 0 auto;
+        padding: 60px 0;
+    }
+    .waves i {
+        display: inline-block;
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        background: skyblue;
+    }
+    .waves i:nth-last-child(1) {
+        left: 10px;
+        -webkit-animation: shake 1s 0.02857s infinite;
+    }
+    .waves i:nth-last-child(2) {
+        left: 20px;
+        -webkit-animation: shake 1s 0.05714s infinite;
+    }
+    .waves i:nth-last-child(3) {
+        left: 30px;
+        -webkit-animation: shake 1s 0.08571s infinite;
+    }
+    .waves i:nth-last-child(4) {
+        left: 40px;
+        -webkit-animation: shake 1s 0.11429s infinite;
+    }
+    .waves i:nth-last-child(5) {
+        left: 50px;
+        -webkit-animation: shake 1s 0.14286s infinite;
+    }
+    .waves i:nth-last-child(6) {
+        left: 60px;
+        -webkit-animation: shake 1s 0.17143s infinite;
+    }
+    .waves i:nth-last-child(7) {
+        left: 70px;
+        -webkit-animation: shake 1s 0.2s infinite;
+    }
+    .waves i:nth-last-child(8) {
+        left: 80px;
+        -webkit-animation: shake 1s 0.22857s infinite;
+    }
+    .waves i:nth-last-child(9) {
+        left: 90px;
+        -webkit-animation: shake 1s 0.25714s infinite;
+    }
+    .waves i:nth-last-child(10) {
+        left: 100px;
+        -webkit-animation: shake 1s 0.28571s infinite;
+    }
+    .waves i:nth-last-child(11) {
+        left: 110px;
+        -webkit-animation: shake 1s 0.31429s infinite;
+    }
+    .waves i:nth-last-child(12) {
+        left: 120px;
+        -webkit-animation: shake 1s 0.34286s infinite;
+    }
+    .waves i:nth-last-child(13) {
+        left: 130px;
+        -webkit-animation: shake 1s 0.37143s infinite;
+    }
+    .waves i:nth-last-child(14) {
+        left: 140px;
+        -webkit-animation: shake 1s 0.4s infinite;
+    }
+    .waves i:nth-last-child(15) {
+        left: 150px;
+        -webkit-animation: shake 1s 0.42857s infinite;
+    }
+    .waves i:nth-last-child(16) {
+        left: 160px;
+        -webkit-animation: shake 1s 0.45714s infinite;
+    }
+    .waves i:nth-last-child(17) {
+        left: 170px;
+        -webkit-animation: shake 1s 0.48571s infinite;
+    }
+    .waves i:nth-last-child(18) {
+        left: 180px;
+        -webkit-animation: shake 1s 0.51429s infinite;
+    }
+    .waves i:nth-last-child(19) {
+        left: 190px;
+        -webkit-animation: shake 1s 0.54286s infinite;
+    }
+    .waves i:nth-last-child(20) {
+        left: 200px;
+        -webkit-animation: shake 1s 0.57143s infinite;
+    }
+    .waves i:nth-last-child(21) {
+        left: 210px;
+        -webkit-animation: shake 1s 0.6s infinite;
+    }
+    .waves i:nth-last-child(22) {
+        left: 220px;
+        -webkit-animation: shake 1s 0.62857s infinite;
+    }
+    .waves i:nth-last-child(23) {
+        left: 230px;
+        -webkit-animation: shake 1s 0.65714s infinite;
+    }
+    .waves i:nth-last-child(24) {
+        left: 240px;
+        -webkit-animation: shake 1s 0.68571s infinite;
+    }
+    .waves i:nth-last-child(25) {
+        left: 250px;
+        -webkit-animation: shake 1s 0.71429s infinite;
+    }
+</style>
 
-                    &lt;!&ndash;语音上显示价格&ndash;&gt;
-                    <span>{$v['money']}元试听</span>
-                </div>-->
-                <div class="weixinAudio fl">
-                    <!--http://wbcfzk.natappfree.cc/qiyun/Public/static/webchataudio/sound/2.mp3-->
-                    <!--<audio src="__ROOT__{$v.content}" id="media" width="1" height="1" preload></audio>-->
-                    <span id="audio_area" class="db audio_area">
-                                <span class="audio_wrp db" data-id="{$info['questionlist'][0][id]}" onclick="playRecord(this)">
-                                <span class="audio_play_area">
-                                    <i class="db icon_audio_default"></i>
-                                    <i class="db icon_audio_playing"></i>
-                                </span>
-
-                                <span class="db audio_info_area">
-                                    <strong class="db audio_title">{$v['money']}元试听</strong>
-                                </span>
-                                <span id="audio_progress" class="progress_bar" style="width: 0%;"></span>
-                                </span>
-                                </span>
-                    <span id="audio_length" class="audio_length tips_global" style="float: right;"></span>
-                </div>
-                <div class="wd_t fl"><span>{$v['num']}</span>人听过</div>
+<div class="user-txt-list  container" style="background: #fff ;margin-top: 0;">
+    <div class="qa-info oh  ">
+        <div class="qa-i-tit col-xs-12  ">
+            <div class="col-xs-3 qa-i-header">
+                <img src="{$quesUser.face}" alt="1" width="60">
             </div>
-            <div style="clear: both"></div>
-        </volist>
-        <else/>
-        <div class="yy_btn"><span style="width:65px;">暂无回答</span></div>
-        </if>
+            <div class="col-xs-9 qa-i-introduce">
+                <div class="col-xs-6">{$quesUser.username}（{$quesUser.position}）</div>
+                <div class="col-xs-6">{$quesUser.company}</div>
+            </div>
         </div>
-    </div>
-    <div class="xg_question oh ">
-        <div class="xg_title underline oh container ">
-            <a href=""><span><img src="images/wt_06.png" alt=" aa" width="100%" align="absmiddle"></span>相关问题</a>
+        <div class="col-xs-12  qa-i-txt">
+            {$info['content']}
         </div>
-        <div class="xg_info container">
-            <div class="wd_cont ">
-            <volist name="xglist" id="x">
-                <a href="{:U('Index/questioninfo?id='.$x['pid'])}">
-                <div class="wd_c_box underline oh ">
-                    <p>{$x['title']}</p>
-                    <p>{$x.userinfo.username}（{$x.userinfo.position}）  |  {$x.userinfo.area}   {$x.userinfo.company}</p>
-                    <if condition="$x['questionlist']">
-                    <div style="">
-                        <div class="wd_img_t fl"><img src="{$x.questionlist.face}" alt="aa" width="48" style="border-radius: 24px"></div>
-                        <div class="wd_img_y fl"><img src="images/w_10.png" alt="aa" width="100%" align="bottom"><span>{$x['questionlist']['money']}</span></div>
-                        <div class="wd_t fr"><span>{$x.questionlist.num}</span>人听过</div>
 
+        <div class="col-xs-12  qa-look underline-d">
+            <span class="fr"><img src="__IMG__/micon_10.png" alt="i" width="25"><i>{$info['number']}</i>人回答</span>
+        </div>
+        <div class="jie underline-d container" style="padding: 0;">
+
+        </div>
+        <div class="huida oh">
+            <notEmpty name="info['questionlist']">
+                <volist name="info['questionlist']" id="v">
+                    <div class="col-xs-12  qa-answer" data-id="{$info['questionlist'][0][id]}" onclick="playRecord(this)">
+                        <div class="col-xs-2 qa-i-da row">
+                            <img src="__IMG__/qa_05.png" alt="1" width="25">
+                        </div>
+                        <div class="col-xs-6 qa-i-voice">
+                            <div class="voice-txt">1元收听</div>
+                        </div>
                     </div>
-                    </if>
-                </div>
-                </a>
-            </volist>
+                </volist>
+                <else/>
+                暂时没有回答哦
+            </notEmpty>
 
-            </div>
+
+        </div>
+
+        <div class="col-xs-12  qa-look ">
+            <span class="fr"><img src="__IMG__/qa_09.png" alt="i" width="25"><i>{$v['num']}</i>人看过</span>
         </div>
     </div>
 </div>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
-<script src="__STATIC__/jquery-2.0.3.min.js"></script>
+<div class="xg-wt container" >
+    <div class="xg-tit underline-d" >
+        <img src="__IMG__/wt.jpg" alt="w" width="20">
+        相关问题
+    </div>
+    <div class="qa-list ">
+        <volist name="xglist" id="x">
+            <div class="qa-info oh  underline-d">
+                <div class="qa-i-tit col-xs-12  ">
+                    <div class="col-xs-3 qa-i-header">
+                        <img src="__IMG__/qa_13.png" alt="1" width="60">
+                    </div>
+                    <div class="col-xs-9 qa-i-introduce">
+                        <div class="col-xs-6">{$x.userinfo.username}（{$x.userinfo.position}）</div>
+                        <div class="col-xs-6">{$x.userinfo.company}</div>
+                    </div>
+                </div>
+                <div class="col-xs-12  qa-i-txt">
+                    {$x['title']}
+                </div>
+                <div class="col-xs-12  qa-answer">
+                    <div class="col-xs-2 qa-i-da row">
+                        <img src="__IMG__/qa_05.png" alt="1" width="25">
+                    </div>
 
+                    <div class="col-xs-6 qa-i-voice">
+                        <div class="voice-txt">{$x['questionlist']['money']}元收听</div>
+                    </div>
+                </div>
+                <div class="col-xs-12  qa-look">
+                    <span class="fr"><img src="__IMG__/qa_09.png" alt="i" width="25"><i>{$x.questionlist.num}</i>人看过</span>
+                </div>
+            </div>
+        </volist>
+
+
+
+    </div>
+</div>
+<div class="ly-btn" style="z-index: 99999">
+
+    <img src="__IMG__/wd_11.png" alt="40" width="60" class="startRecord">
+</div>
+<div class="yy-css dn" style="position: fixed;top: 0;background: rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 99998" >
+    <div style="height: 120px;width: 100%;position: fixed;top: 30%;">
+        <div class="waves">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+</div>
+<div class="f">
+
+</div>
+<include file="Public/footer"/>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
+
+
     var voice = {
         localId: '',
         serverId: ''
@@ -127,7 +300,6 @@
             'downloadVoice'
         ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
-
     //假设全局变量已经在外部定义
     //按下开始录音
     $('.startRecord').on('touchstart', function (event) {
@@ -136,9 +308,10 @@
 
         recordTimer = setTimeout(function () {
             wx.startRecord({
-                /*    success: function(){
-                 localStorage.rainAllowRecord = 'true';
-                 },*/
+                success: function(){
+//                 localStorage.rainAllowRecord = 'true';
+                    $('.yy-css').removeClass('dn');
+                },
                 cancel: function () {
                     alert('用户拒绝授权录音');
                 }
@@ -155,6 +328,7 @@
             START = 0;
             //小于300ms，不录音
             clearTimeout(recordTimer);
+            alert('按住重试！')
         } else {
             wx.stopRecord({
                 success: function (res) {
@@ -163,6 +337,20 @@
                         alert('请先录制一段声音');
                         return;
                     }
+                    $('.yy-css').addClass('dn');
+                    $('.jie').append(
+                        '<div class="col-xs-12  qa-answer">' +
+                        '<div class="col-xs-2 qa-i-da row">'+
+                        '<img src="__IMG__/qa_05.png" alt="1" width="25">'+
+                        '</div>'+
+                        '<div class="col-xs-6 qa-i-voice">'+
+                        '<div class="voice-txt">点击试听</div>'+
+                        '</div>'+
+                        '<div class="col-xs-2 "  style="padding: 0;float: right!important">'+
+                        '<a href="##" class="text-right">删除</a>'+
+                        '</div>'+
+                        '</div>'
+                    )
                 },
                 fail: function (res) {
                     alert(JSON.stringify(res));
@@ -194,12 +382,5 @@
         })
     }
 </script>
-<script src="__STATIC__/webchataudio/js/weixinAudio.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript">
-    $('.weixinAudio').weixinAudio({
-        autoplay:false,
-
-    });
-</script>
-<script src="__ROOT__/wx/wx_jssdk.js"></script>
-<include file="Public/footer"/>
+</body>
+</html>

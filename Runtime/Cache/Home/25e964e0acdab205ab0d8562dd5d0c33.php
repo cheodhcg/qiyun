@@ -9,8 +9,151 @@
 <link rel="stylesheet" href="/qiyun/Public/Home/css/common.css">
 <link rel="stylesheet" href="/qiyun/Public/Home/css/bootstrap.min.css">
 </head>
-<body style="background: #eef3f9">
 
+<body style="background: #eef3f9">
+<style>
+    @-webkit-keyframes shake {
+        0% {
+            height: 5px;
+            margin-top: 0;
+        }
+        50% {
+            height: 100px;
+            margin-top: -50px;
+        }
+        100% {
+            height: 5px;
+            margin-top: 0;
+        }
+    }
+    @keyframes shake {
+        0% {
+            height: 5px;
+            margin-top: 0;
+        }
+        50% {
+            height: 100px;
+            margin-top: -50px;
+        }
+        100% {
+            height: 5px;
+            margin-top: 0;
+        }
+    }
+    .waves {
+        position: relative;
+        width: 260px;
+        margin: 0 auto;
+        padding: 60px 0;
+    }
+    .waves i {
+        display: inline-block;
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        background: skyblue;
+    }
+    .waves i:nth-last-child(1) {
+        left: 10px;
+        -webkit-animation: shake 1s 0.02857s infinite;
+    }
+    .waves i:nth-last-child(2) {
+        left: 20px;
+        -webkit-animation: shake 1s 0.05714s infinite;
+    }
+    .waves i:nth-last-child(3) {
+        left: 30px;
+        -webkit-animation: shake 1s 0.08571s infinite;
+    }
+    .waves i:nth-last-child(4) {
+        left: 40px;
+        -webkit-animation: shake 1s 0.11429s infinite;
+    }
+    .waves i:nth-last-child(5) {
+        left: 50px;
+        -webkit-animation: shake 1s 0.14286s infinite;
+    }
+    .waves i:nth-last-child(6) {
+        left: 60px;
+        -webkit-animation: shake 1s 0.17143s infinite;
+    }
+    .waves i:nth-last-child(7) {
+        left: 70px;
+        -webkit-animation: shake 1s 0.2s infinite;
+    }
+    .waves i:nth-last-child(8) {
+        left: 80px;
+        -webkit-animation: shake 1s 0.22857s infinite;
+    }
+    .waves i:nth-last-child(9) {
+        left: 90px;
+        -webkit-animation: shake 1s 0.25714s infinite;
+    }
+    .waves i:nth-last-child(10) {
+        left: 100px;
+        -webkit-animation: shake 1s 0.28571s infinite;
+    }
+    .waves i:nth-last-child(11) {
+        left: 110px;
+        -webkit-animation: shake 1s 0.31429s infinite;
+    }
+    .waves i:nth-last-child(12) {
+        left: 120px;
+        -webkit-animation: shake 1s 0.34286s infinite;
+    }
+    .waves i:nth-last-child(13) {
+        left: 130px;
+        -webkit-animation: shake 1s 0.37143s infinite;
+    }
+    .waves i:nth-last-child(14) {
+        left: 140px;
+        -webkit-animation: shake 1s 0.4s infinite;
+    }
+    .waves i:nth-last-child(15) {
+        left: 150px;
+        -webkit-animation: shake 1s 0.42857s infinite;
+    }
+    .waves i:nth-last-child(16) {
+        left: 160px;
+        -webkit-animation: shake 1s 0.45714s infinite;
+    }
+    .waves i:nth-last-child(17) {
+        left: 170px;
+        -webkit-animation: shake 1s 0.48571s infinite;
+    }
+    .waves i:nth-last-child(18) {
+        left: 180px;
+        -webkit-animation: shake 1s 0.51429s infinite;
+    }
+    .waves i:nth-last-child(19) {
+        left: 190px;
+        -webkit-animation: shake 1s 0.54286s infinite;
+    }
+    .waves i:nth-last-child(20) {
+        left: 200px;
+        -webkit-animation: shake 1s 0.57143s infinite;
+    }
+    .waves i:nth-last-child(21) {
+        left: 210px;
+        -webkit-animation: shake 1s 0.6s infinite;
+    }
+    .waves i:nth-last-child(22) {
+        left: 220px;
+        -webkit-animation: shake 1s 0.62857s infinite;
+    }
+    .waves i:nth-last-child(23) {
+        left: 230px;
+        -webkit-animation: shake 1s 0.65714s infinite;
+    }
+    .waves i:nth-last-child(24) {
+        left: 240px;
+        -webkit-animation: shake 1s 0.68571s infinite;
+    }
+    .waves i:nth-last-child(25) {
+        left: 250px;
+        -webkit-animation: shake 1s 0.71429s infinite;
+    }
+</style>
 
 <div class="user-txt-list  container" style="background: #fff ;margin-top: 0;">
     <div class="qa-info oh  ">
@@ -30,9 +173,11 @@
         <div class="col-xs-12  qa-look underline-d">
             <span class="fr"><img src="/qiyun/Public/Home/images/micon_10.png" alt="i" width="25"><i><?php echo ($info['number']); ?></i>人回答</span>
         </div>
+        <div class="jie underline-d container" style="padding: 0;">
 
+        </div>
         <div class="huida oh">
-            <?php if(!empty($info['questionlist'])): if(is_array($info['questionlist'])): $i = 0; $__LIST__ = $info['questionlist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="col-xs-12  qa-answer" data-id="<?php echo ($info['questionlist'][0][id]); ?>" onclick="playRecord(this)">
+            <?php if(!empty($info['questionlist'])): if(is_array($info['questionlist'])): $i = 0; $__LIST__ = $info['questionlist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="col-xs-12  qa-answer" data-id="<?php echo ($info['questionlist'][0][id]); ?>" onclick="playRecord(<?php echo ($info['questionlist'][0][id]); ?>)">
                         <div class="col-xs-2 qa-i-da row">
                             <img src="/qiyun/Public/Home/images/qa_05.png" alt="1" width="25">
                         </div>
@@ -74,6 +219,7 @@
                     <div class="col-xs-2 qa-i-da row">
                         <img src="/qiyun/Public/Home/images/qa_05.png" alt="1" width="25">
                     </div>
+
                     <div class="col-xs-6 qa-i-voice">
                         <div class="voice-txt"><?php echo ($x['questionlist']['money']); ?>元收听</div>
                     </div>
@@ -87,9 +233,40 @@
 
     </div>
 </div>
-<div class="ly-btn">
+<div class="ly-btn" style="z-index: 99999">
 
     <img src="/qiyun/Public/Home/images/wd_11.png" alt="40" width="60" class="startRecord">
+</div>
+<div class="yy-css dn" style="position: fixed;top: 0;background: rgba(0,0,0,0.5);width: 100%;height: 100%;z-index: 99998" >
+    <div style="height: 120px;width: 100%;position: fixed;top: 30%;">
+        <div class="waves">
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
 </div>
 <div class="f">
 
@@ -151,6 +328,8 @@
 <script src="/qiyun/Public/Home/js/bootstrap.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script>
+
+
     var voice = {
         localId: '',
         serverId: ''
@@ -183,9 +362,10 @@
 
         recordTimer = setTimeout(function () {
             wx.startRecord({
-                /*    success: function(){
-                 localStorage.rainAllowRecord = 'true';
-                 },*/
+                success: function(){
+//                 localStorage.rainAllowRecord = 'true';
+                    $('.yy-css').removeClass('dn');
+                },
                 cancel: function () {
                     alert('用户拒绝授权录音');
                 }
@@ -202,6 +382,7 @@
             START = 0;
             //小于300ms，不录音
             clearTimeout(recordTimer);
+            alert('按住重试！')
         } else {
             wx.stopRecord({
                 success: function (res) {
@@ -210,6 +391,20 @@
                         alert('请先录制一段声音');
                         return;
                     }
+                    $('.yy-css').addClass('dn');
+                    $('.jie').append(
+                        '<div class="col-xs-12  qa-answer">' +
+                        '<div class="col-xs-2 qa-i-da row">'+
+                        '<img src="/qiyun/Public/Home/images/qa_05.png" alt="1" width="25">'+
+                        '</div>'+
+                        '<div class="col-xs-6 qa-i-voice">'+
+                        '<div class="voice-txt">点击试听</div>'+
+                        '</div>'+
+                        '<div class="col-xs-2 "  style="padding: 0;float: right!important">'+
+                        '<a href="##" class="text-right">删除</a>'+
+                        '</div>'+
+                        '</div>'
+                    )
                 },
                 fail: function (res) {
                     alert(JSON.stringify(res));
@@ -217,8 +412,9 @@
             });
         }
     });
-    function playRecord(obj) {
-        var $id = $(obj).attr('data-id');
+    function playRecord($id) {
+//        var $id = $(obj).attr('data-id');
+        var $id = $id;
         $.post("<?php echo U('Index/recordVoice');?>",{id:$id},function (data) {
             if (data.status){
                 console.log(data);
